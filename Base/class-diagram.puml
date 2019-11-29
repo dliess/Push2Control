@@ -1,0 +1,111 @@
+@startuml
+
+class MusicDevice
+{
+   +void addMidiIn(std::unique_ptr<midi::IMidiInMedium> pMedium) noexcept;
+   +void addMidiOut(std::unique_ptr<midi::IMidiOutMedium> pMedium) noexcept;
+   +float getSoundParameterValue(uint32_t voiceId, uint32_t parameterId) const noexcept;
+   +void setSoundParameterValue(uint32_t voiceId, uint32_t parameterId, float value) noexcept;
+   +float getControllerParameterValue(uint32_t presetId, uint32_t parameterId) const noexcept;
+   +void quarterNotePer24Tick() noexcept;
+   +void startSequencer() noexcept;
+   +void stopSequencer() noexcept;
+   +void registerForControllerParameterChange(ParameterChangeCb cb) noexcept;
+
+   +std::unique_ptr<MusicDeviceDescription> pDescr;
+   -std::optional<midi::Midi1Input>         midiIn;
+   -std::optional<midi::Midi1OutputManager> midiOut;
+   -std::vector<std::vector<float>> m_soundParams;
+   -std::vector<std::vector<float>> m_controlParams;
+}
+
+class midi::Router
+{
+   +bool isRoutedTo(int controllerIdx, int soundDeviceIdx) const noexcept;
+   +void toggleRouted(int controllerIdx, int soundDeviceIdx) noexcept;
+   -std::vector<uint32_t> m_routeMaps; // Concurrent access
+}
+
+class MusicDeviceHolder
+{
+   +ControllerDevices        controllerDevices;
+   +SoundDevices             soundDevices;
+   -DeviceDescriptionLoader  deviceLoader;
+}
+
+class midi::Midi1OutputManager
+{
+   +void noteOn(uint8_t channel, uint8_t note, uint8_t velocity) noexcept;
+   +void noteOff(uint8_t channel, uint8_t note, uint8_t velocity) noexcept;
+   +void pitchBend(uint8_t channel, int16_t value) noexcept;
+   +void controlParameter(uint8_t channel, uint8_t ccId, uint8_t value) noexcept;
+   +void sysEx(const std::vector<uint8_t>& msg) noexcept;
+   +void send(const MidiMessage& msg) noexcept;
+}
+
+class midi::Midi1Output
+{
+}
+
+class midi::Midi1Input
+{
+}
+
+class DeviceDescriptionLoader
+{
+   +void load(const std::string& usbMidiDeviceName, MusicDeviceDescription& rDescr) const;
+}
+
+class MusicDeviceDescription
+{
+}
+
+class ParameterId
+{
+   +uint32_t musicDeviceIdx;
+   +uint32_t voiceId;
+   +uint32_t parameterId;
+}
+
+class ParameterMapper
+{
+   +void setMappingDestinationCandidate(const ParameterId& parameterId) noexcept;
+   +std::optional<ParameterId> getMappingDestinationCandidate() const noexcept;
+   +std::optional<ParameterId> getControllerMappedTo(const ParameterId& paramId) const noexcept;
+   +std::optional<ParameterId> getSoundDeviceOfControl(const ParameterId& paramId) const noexcept;
+   +ValueCurve* getValueCurveOfControl(const ParameterId& paramId) noexcept;
+   +void reactToControllerParameterChange(uint32_t ctrlDevIdx, uint32_t presetId, uint32_t parameterId, float value);
+   -MusicDeviceHolder                &m_rMusicDeviceHolder;
+   -std::optional<ParameterId>        m_mappingDestinationCandidate;
+   -std::unordered_map<ParameterId, MappingDescription, ParameterId::HashFn> m_parameterMap;
+}
+
+class TempoHandler
+{
+   +TempoHandler(MusicDeviceHolder::MusicDevices& musicDevices) noexcept;
+   +void start() noexcept;
+   +void stop() noexcept;
+   +void nextTimeSlot() noexcept;
+   +void incBpm(int cents) noexcept;
+}
+
+class TransportControl
+{
+   +void startAllEnabled() noexcept;
+   +void stopAllEnabled() noexcept;
+   +void toggle(int musicDeviceIndex) noexcept;
+}
+
+
+midi::Midi1OutputManager *-- midi::Midi1Output
+midi::Router o-- MusicDeviceHolder
+MusicDeviceHolder "1"*--"N" MusicDevice
+MusicDeviceHolder *-- DeviceDescriptionLoader
+MusicDevice *-- midi::Midi1OutputManager
+MusicDevice *-- midi::Midi1Input
+MusicDevice *-- MusicDeviceDescription
+ParameterMapper o-- MusicDeviceHolder
+TempoHandler o-- MusicDeviceHolder
+TransportControl o-- MusicDeviceHolder
+
+@enduml

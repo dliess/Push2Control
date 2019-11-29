@@ -1,0 +1,78 @@
+
+* Qt < Qt5.8
+** in header:
+#+begin_src C++
+
+class EnumerationClass
+{
+    Q_GADGET
+public:
+
+    enum class Value {
+       ...
+    };
+    Q_ENUM(Value)
+private:
+    explicit EnumerationClass();
+};
+
+#+end_src
+
+** in main.cpp:
+#+begin_src C++
+
+qmlRegisterUncreatableType<EnumerationClass>("push2.enums",
+                                              1, 0,
+                                             "EnumerationClass",
+                                             "Not creatable as it is an enum type");
+#+end_src
+
+
+* Qt >= Qt5.8
+** in header:
+#+begin_src C++
+
+namespace EnumerationClass
+{
+Q_NAMESPACE         // required for meta object creation
+enum class Value {
+   ...
+};
+Q_ENUM_NS(Value)  // register the enum in meta object
+} // namespace EnumerationClass
+
+#+end_src
+
+
+** in main.cpp:
+#+begin_src C++
+
+qmlRegisterUncreatableMetaObject(EnumerationClass::staticMetaObject,
+                                 "push2.enums",
+                                  1, 0,
+                                 "EnumerationClass",
+                                 "Not creatable as it is an enum type");
+
+#+end_src
+
+* usage in .qml:
+
+import push2.enums 1.0
+
+EnumerationClass.<enum values>
+
+
+* Additionally
+** in header:
+#+begin_src C++
+
+using  MyEnum = EnumerationClass::Value;
+
+#+end_src
+
+** in main.cpp:
+#+begin_src C++
+
+qRegisterMetaType<ButtonPressState>("ButtonPressState");
+
+#+end_src

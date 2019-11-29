@@ -1,0 +1,6 @@
+build
+*.qmlc
+*.jsc
+*.vscode/ipch
+Settings.json
+*__PRESETS__.json

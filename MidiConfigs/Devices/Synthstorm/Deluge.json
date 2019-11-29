@@ -1,0 +1,128 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Synthstorm",
+    "product_name" : "Deluge",
+    "thumbnail": "Pictures/Synthstrom-Deluge.jpg",
+    "soundSection":
+    {
+        "voices":[
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "Filter Cutoff",
+                "description" : "Adjusts the Filter Cutoff",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [3]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Filter Resonance",
+                "description" : "Adjusts the Filter Resonance",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [4]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Filt Env Amount",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [2]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Noise",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [5]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [6]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [7]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [8]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [9]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Filt Env Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [10]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Filt Env Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [11]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Filt Env Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [12]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Filt Env Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [13]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories": [
+            {"category_name": "Filter", "parameter_ids": [0, 1, 2, 8, 9, 10, 11]},
+            {"category_name": "Shape", "parameter_ids": [3]},
+            {"category_name": "Amp", "parameter_ids": [4, 5, 6, 7]}
+        ]
+    },
+    "controllerSection":{
+        "num_presets" : 1,
+        "parameters": [],
+        "parameter_categories": []
+    },
+    "reactsToTransportCommands" : true
+}

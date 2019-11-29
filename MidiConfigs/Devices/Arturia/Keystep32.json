@@ -1,0 +1,13 @@
+{
+    "type" : "controller",
+    "version" : "0.0.0",
+    "manufacturer" : "Arturia",
+    "product_name" : "Keystep32",
+    "thumbnail": "Pictures/Arturia-Keystep32.jpg",
+    "controllerSection":{
+        "num_presets" : 3,
+        "parameters": [],
+        "parameter_categories": []
+    },
+    "reactsToTransportCommands" : true
+}

@@ -1,0 +1,45 @@
+[submodule "FrontPanelIO"]
+	path = FrontPanelIO
+	url = https://github.com/dliess/FrontPanelIO
+[submodule "QuickViewOnFp"]
+	path = QuickViewOnFp
+	url = danita@server:/media/danita/Elements4TB/repos/Projects/QuickViewOnFp
+[submodule "FPIOSimpleGraphicWidgets"]
+	path = FPIOSimpleGraphicWidgets
+	url = https://github.com/dliess/FPIOSimpleGraphicWidgets
+[submodule "FrontPanelSimulation"]
+	path = FrontPanelSimulation
+	url = https://github.com/dliess/FrontPanelSimulation
+[submodule "Midi"]
+	path = Midi
+	url = https://github.com/dliess/Midi.git
+[submodule "Push2Device"]
+	path = Push2Device
+	url = https://github.com/dliess/Push2Device.git
+[submodule "3rdparty/variant"]
+	path = 3rdparty/variant
+	url = https://github.com/mpark/variant.git
+[submodule "3rdparty/rtmidi"]
+	path = 3rdparty/rtmidi
+	url = https://github.com/thestk/rtmidi
+[submodule "3rdparty/rtaudio"]
+	path = 3rdparty/rtaudio
+	url = https://github.com/thestk/rtaudio
+[submodule "3rdparty/MetaStuff"]
+	path = 3rdparty/MetaStuff
+	url = https://github.com/eliasdaler/MetaStuff
+[submodule "3rdparty/json"]
+	path = 3rdparty/json
+	url = https://github.com/nlohmann/json
+[submodule "3rdparty/googletest"]
+	path = 3rdparty/googletest
+	url = https://github.com/google/googletest
+[submodule "3rdparty/loguru"]
+	path = 3rdparty/loguru
+	url = https://github.com/emilk/loguru
+[submodule "3rdparty/fmt"]
+	path = 3rdparty/fmt
+	url = https://github.com/fmtlib/fmt
+[submodule "3rdparty/qt-unix-signals"]
+	path = 3rdparty/qt-unix-signals
+	url = https://github.com/sijk/qt-unix-signals

@@ -1,0 +1,10 @@
+{
+    "type" : "sounddevice",
+    "version" : "0.0.0",
+    "manufacturer" : "Eventide",
+    "product_name" : "Space Pedal",
+    "thumbnail": "Pictures/Eventide-Space.jpg",
+    "voices":[],
+    "parameters": [],
+    "parameter_categories": []
+}

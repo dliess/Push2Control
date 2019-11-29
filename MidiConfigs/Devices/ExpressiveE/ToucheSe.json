@@ -1,0 +1,47 @@
+{
+    "type" : "controller",
+    "version" : "0.0.0",
+    "manufacturer" : "Expressive E",
+    "product_name" : "Touche SE",
+    "thumbnail": "Pictures/ExpressiveE-ToucheSE.jpg",
+    "controllerSection":{
+        "num_presets" : 3,
+        "parameters": [
+            {
+                "name" : "Front",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [17]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Back",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [16]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Left",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [18]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Right",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [19]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories": [
+            {"category_name": "Controls", "parameter_ids": [0, 1, 2, 3]}
+        ]
+    }
+}

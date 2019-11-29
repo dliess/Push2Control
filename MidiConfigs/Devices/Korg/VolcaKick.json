@@ -1,0 +1,105 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Korg",
+    "product_name" : "Volca Kick",
+    "picture": "",
+    "thumbnail" : "Pictures/Korg-VolcaKick.jpg",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "Pulse Color",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [40]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Pulse Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [41]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Amp Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [42]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Amp Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [43]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Drive",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [44]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Tone",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [45]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Resonator Pitch",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [46]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Resonator Bend",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [47]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Resonator Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [48]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Accent",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [49]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "Main", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+        ]
+    },
+    "reactsToTransportCommands" : true
+}

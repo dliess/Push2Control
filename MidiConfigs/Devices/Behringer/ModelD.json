@@ -1,0 +1,23 @@
+{
+    "type" : "sounddevice",
+    "version" : "0.0.0",
+    "manufacturer" : "Behringer",
+    "product_name" : "ModelD",
+    "thumbnail": "Pictures/Behringer-ModelD.jpg",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+        ],
+        "parameter_categories":
+        [
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "Moog Minitaur:Moog Minitaur MIDI 1": "Moog/Minitaur.json",
+    "Push2Pads" : "Ableton/Push2Pads.json",
+    "Deluge:Deluge MIDI 1" : "Synthstorm/Deluge.json",
+    "TOUCHE_SE:TOUCHE_SE MIDI 1" : "ExpressiveE/ToucheSe.json",
+    "Arturia KeyStep 32:Arturia KeyStep 32 MIDI 1" : "Arturia/Keystep32.json",
+    "MODEL D:MODEL D MIDI 1" : "Behringer/ModelD.json",
+    "Space Pedal:Space Pedal MIDI 1" : "Eventide/Space.json",
+    "Launch Control XL:Launch Control XL MIDI 1" : "Novation/LaunchControlXL.json",
+    "Seaboard BLOCK:Seaboard BLOCK MIDI 1" : "Roli/SeaboardBlocks.json",
+    "Buzzzy! polysynth:Buzzzy! polysynth MIDI 1" : "FredsLab/Buzzzy.json",
+    "MicroBrute:MicroBrute MIDI 1" : "Arturia/Microbrute.json"
+}
