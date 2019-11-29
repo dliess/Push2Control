@@ -1,0 +1,11 @@
+{
+    "type" : "controller",
+    "version" : "0.0.0",
+    "manufacturer" : "Roli",
+    "productName" : "Seaboard Blocks",
+    "controllerSection":{
+        "num_presets" : 3,
+        "parameters": [ ],
+        "parameter_categories": [  ]
+    }
+}

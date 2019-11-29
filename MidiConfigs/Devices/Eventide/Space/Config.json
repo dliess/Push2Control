@@ -1,0 +1,17 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Eventide",
+    "productName" : "Space",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : [],
+        "parameter_categories":[]
+    }
+}

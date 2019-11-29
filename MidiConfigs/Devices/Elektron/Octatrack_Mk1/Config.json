@@ -1,0 +1,363 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Elektron",
+    "productName" : "Octatrack Mk1",
+    "picture": "",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "Track-1",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-2",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-3",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-4",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-5",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-6",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-7",
+                "type": "chromatic",
+                "range": [0, 127]
+            },
+            {
+                "name": "Track-8",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "Track Level",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [46]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Cue Level",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [47]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Playback Param #1",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [16]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Playback Param #2",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [17]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Playback Param #3",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [18]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Playback Param #4",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [19]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Playback Param #5",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Playback Param #6",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [21]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Attack",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [22]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Hold",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [23]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Release",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [24]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Volume",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [25]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Balance",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [26]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Lfo Spped #1",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [28]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Lfo Speed #2",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [29]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Lfo Depth #1",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [30]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Lfo Depth #2",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [31]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Lfo Depth #3",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [32]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Lfo Param #6",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [33]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #1",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [34]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #2",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [35]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #3",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [36]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #4",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [37]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #5",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [38]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #6",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [39]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #1",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [40]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #2",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [41]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #3",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [42]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #4",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [43]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #5",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [44]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Param #6",
+                "description" : "",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [45]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "Track/Playback", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7]},
+            {"category_name": "Amp", "parameter_ids": [8, 9, 10, 11, 12]},
+            {"category_name": "LFO", "parameter_ids": [13, 14, 15, 16, 17, 18]},
+            {"category_name": "Effect 1", "parameter_ids": [19, 20, 21, 22, 23, 24]},
+            {"category_name": "Effect 2", "parameter_ids": [25, 26, 27, 28, 29, 30]}
+        ],
+        "parameter_dump_request":
+        {
+            "midi_cc" : { "cc" : [61], "value" : 0 }
+        }
+    },
+    "controllerSection":{
+        "num_presets" : 8,
+        "parameters": [      
+        {
+            "name" : "Cross-Fader",
+            
+            "type" : "continous",
+            "midi" : {
+                "cc" : [48]
+            },
+            "ranges" : []
+        }
+        ],
+        "parameter_categories": [
+            {"category_name": "Controls", "parameter_ids": [0]}
+        ]
+    },
+    "reactsToTransportCommands" : true
+}

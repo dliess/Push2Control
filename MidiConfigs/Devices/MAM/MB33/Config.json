@@ -1,0 +1,22 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "MAM",
+    "productName" : "MB33",
+    "picture": "",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+        ],
+        "parameter_categories":
+        [
+        ]
+    }
+}

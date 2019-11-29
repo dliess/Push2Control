@@ -1,0 +1,10 @@
+{
+    "version" : "",
+    "manufacturer": "Ableton",
+    "productName" : "Push2Pads",
+    "controllerSection" : {
+        "num_presets" : 1,
+        "parameters": [],
+        "parameter_categories": []
+    }
+}

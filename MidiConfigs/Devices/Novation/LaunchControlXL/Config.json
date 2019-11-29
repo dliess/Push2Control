@@ -1,0 +1,305 @@
+{
+    "type" : "controller",
+    "version" : "0.0.0",
+    "manufacturer" : "Novation",
+    "productName" : "Launch Control XL",
+    "controllerSection":{
+        "num_presets" : 1,
+        "parameters": [
+            {
+                "name" : "Fader 1",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [77]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 2",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [78]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 3",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [79]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 4",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [80]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 5",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [81]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 6",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [82]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 7",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [83]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Fader 8",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [84]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 1 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [13]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 2 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [14]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 3 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [15]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 4 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [16]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 5 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [17]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 6 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [18]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 7 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [19]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 8 Top",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 1 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [29]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 2 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [30]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 3 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [31]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 4 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [32]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 5 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [33]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 6 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [34]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 7 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [35]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 8 Mid",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [36]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 1 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [49]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 2 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [50]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 3 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [51]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 4 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [52]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 5 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [53]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 6 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [54]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 7 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [55]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Rotary 8 Bot",
+                
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [56]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories": [
+            {"category_name": "Linear Pot Row", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7]},
+            {"category_name": "Rotary Row 1", "parameter_ids": [8, 9, 10, 11, 12, 13, 14, 15]},
+            {"category_name": "Rotary Row 2", "parameter_ids": [16, 17, 18, 19, 20, 21, 22, 23]},
+            {"category_name": "Rotary Row 3", "parameter_ids": [24, 25, 26, 27, 28, 29, 30, 31]}
+        ]
+    }
+}

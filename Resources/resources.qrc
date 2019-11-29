@@ -1,0 +1,38 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>qmls/BpmAndTransportHandlingScene.qml</file>
+    <file>qmls/ControllerDeviceParameterScene.qml</file>
+    <file>qmls/ControllerDeviceSelectionScene.qml</file>
+    <file>qmls/FilterCurve.qml</file>
+    <file>qmls/main.qml</file>
+    <file>qmls/MidiPortMappingScene.qml</file>
+    <file>qmls/MidiRouteSpecializingScene.qml</file>
+    <file>qmls/PadScaleConfigurationScene.qml</file>
+    <file>qmls/SoundDeviceParameterScene.qml</file>
+    <file>qmls/SoundDeviceSelectionScene.qml</file>
+    <file>qmls/SoundPresetScene.qml</file>
+    <file>qmls/ObjectCreator.js</file>
+</qresource>
+<qresource>
+    <file>Artwork/Devices/Ableton/Push2Pads/Thumbnail.png</file>
+    <file>Artwork/Devices/FredsLab/Buzzzy/Thumbnail.png</file>
+    <file>Artwork/Devices/SuonoBuono/nABC/Thumbnail.png</file>
+    <file>Artwork/Devices/Behringer/ModelD/Thumbnail.png</file>
+    <file>Artwork/Devices/Moog/Minitaur/Thumbnail.png</file>
+    <file>Artwork/Devices/Arturia/Microbrute/Thumbnail.png</file>
+    <file>Artwork/Devices/Arturia/Keystep32/Thumbnail.png</file>
+    <file>Artwork/Devices/Roli/SeaboardBlocks/Thumbnail.png</file>
+    <file>Artwork/Devices/Novation/LaunchControlXL/Thumbnail.png</file>
+    <file>Artwork/Devices/Synthstorm/Deluge/Thumbnail.png</file>
+    <file>Artwork/Devices/Yamaha/A1NX/Thumbnail.png</file>
+    <file>Artwork/Devices/Focusrite/Scarlet6i6/Thumbnail.png</file>
+    <file>Artwork/Devices/Korg/VolcaKeys/Thumbnail.png</file>
+    <file>Artwork/Devices/Korg/VolcaKick/Thumbnail.png</file>
+    <file>Artwork/Devices/ExpressiveE/ToucheSe/Thumbnail.png</file>
+    <file>Artwork/Devices/Eventide/Space/Thumbnail.png</file>
+    <file>Artwork/Devices/KeithMcMillan/KMix/Thumbnail.png</file>
+    <file>Artwork/Devices/Elektron/Analog4_Mk1/Thumbnail.png</file>
+    <file>Artwork/Devices/Elektron/Octatrack_Mk1/Thumbnail.png</file>
+    <file>Artwork/Devices/MAM/MB33/Thumbnail.png</file>
+</qresource>
+</RCC>

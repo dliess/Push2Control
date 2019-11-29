@@ -1,0 +1,9 @@
+@startuml
+
+object musicDevice
+object musicDeviceHolder
+object midiInMsgHandler
+
+musicDeviceHolder -- musicDevice
+
+@enduml
