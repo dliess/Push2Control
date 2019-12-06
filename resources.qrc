@@ -1,0 +1,15 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>qmls/BpmAndTransportHandlingScene.qml</file>
+    <file>qmls/ControllerDeviceParameterScene.qml</file>
+    <file>qmls/ControllerDeviceSelectionScene.qml</file>
+    <file>qmls/FilterCurve.qml</file>
+    <file>qmls/main.qml</file>
+    <file>qmls/MidiPortMappingScene.qml</file>
+    <file>qmls/MidiRouteSpecializingScene.qml</file>
+    <file>qmls/PadScaleConfigurationScene.qml</file>
+    <file>qmls/SoundDeviceParameterScene.qml</file>
+    <file>qmls/SoundDeviceSelectionScene.qml</file>
+    <file>qmls/SoundPresetScene.qml</file>
+</qresource>
+</RCC>

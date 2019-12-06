@@ -30,6 +30,7 @@ add_subdirectory(Push2UI)
 
 add_executable(${PROJECT_NAME}
    "main.cpp"
+   "resources.qrc"
 )
 
 target_link_libraries(${PROJECT_NAME}
@@ -52,3 +53,5 @@ if(${__INSERT_DUMMY_MIDI_DEVICES__})
    target_compile_definitions(${PROJECT_NAME} PRIVATE "__INSERT_DUMMY_MIDI_DEVICES__")
    target_link_libraries(${PROJECT_NAME} MidiMediumDummy)
 endif(${__INSERT_DUMMY_MIDI_DEVICES__})
+
+install(TARGETS ${PROJECT_NAME} DESTINATION "")
