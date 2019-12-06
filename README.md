@@ -18,6 +18,7 @@ SUBSYSTEM=="usb", ATTR{idProduct}=="1967", ATTR{idVendor}=="2982", MODE="0666"
 ## Build Example:
 ```
   cd <repo-dir>
+  (at the very first time) git submodule update --init
   mkdir build
   cd build
   cmake ..

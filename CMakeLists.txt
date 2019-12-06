@@ -54,4 +54,6 @@ if(${__INSERT_DUMMY_MIDI_DEVICES__})
    target_link_libraries(${PROJECT_NAME} MidiMediumDummy)
 endif(${__INSERT_DUMMY_MIDI_DEVICES__})
 
-install(TARGETS ${PROJECT_NAME} DESTINATION "")
+include(GNUInstallDirs)
+install(DIRECTORY "MidiConfigs" DESTINATION "Push2ControlConfigs")
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
