@@ -105,7 +105,7 @@ Rectangle {
                 {
                     case Encoder.E_EncoderTempo:
                     {
-                        ObjectCreator.createSelfDestroyingObject("SoundPresetScene.qml",  display, {})
+                        ObjectCreator.createSelfDestroyingObject("qrc:///qmls/SoundPresetScene.qml",  display, {})
                         break
                     }
                     case Encoder.E_Encoder:

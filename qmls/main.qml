@@ -33,7 +33,7 @@ Item {
         push2Device.onSetLedOfBtn("black", Button.E_BtnT, 7)
 
         push2Pads.activate();
-        pageLoader.source = "MidiPortMappingScene.qml"
+        pageLoader.source = "qrc:///qmls/MidiPortMappingScene.qml"
     }
     Connections {
         target: push2Device
@@ -42,27 +42,27 @@ Item {
             {
                 case Button.E_BtnSetup:
                 {
-                    pageLoader.source = "MidiPortMappingScene.qml"
+                    pageLoader.source = "qrc:///qmls/MidiPortMappingScene.qml"
                     break
                 }
                 case Button.E_BtnScale:
                 {
-                    pageLoader.source = "PadScaleConfigurationScene.qml"
+                    pageLoader.source = "qrc:///qmls/PadScaleConfigurationScene.qml"
                     break
                 }
                 case Button.E_BtnDevice:
                 {
-                    pageLoader.source = "ControllerDeviceSelectionScene.qml"
+                    pageLoader.source = "qrc:///qmls/ControllerDeviceSelectionScene.qml"
                     break
                 }
                 case Button.E_BtnBrowse:
                 {
-                    pageLoader.source = "SoundDeviceSelectionScene.qml"
+                    pageLoader.source = "qrc:///qmls/SoundDeviceSelectionScene.qml"
                     break
                 }
                 case Button.E_BtnTapTempo:
                 {
-                    pageLoader.source = "BpmAndTransportHandlingScene.qml"
+                    pageLoader.source = "qrc:///qmls/BpmAndTransportHandlingScene.qml"
                     break
                 }
                 case Button.E_BtnOctaveUp:
@@ -101,12 +101,12 @@ Item {
             {
                 case Button.E_BtnDevice:
                 {
-                    pageLoader.source = "ControllerDeviceParameterScene.qml"
+                    pageLoader.source = "qrc:///qmls/ControllerDeviceParameterScene.qml"
                     break
                 }
                 case Button.E_BtnBrowse:
                 {
-                    pageLoader.source = "SoundDeviceParameterScene.qml"
+                    pageLoader.source = "qrc:///qmls/SoundDeviceParameterScene.qml"
                     break
                 }
                 case Button.E_BtnPageRight:
