@@ -9,5 +9,6 @@
     "Launch Control XL:Launch Control XL MIDI 1" : "Novation/LaunchControlXL.json",
     "Seaboard BLOCK:Seaboard BLOCK MIDI 1" : "Roli/SeaboardBlocks.json",
     "Buzzzy! polysynth:Buzzzy! polysynth MIDI 1" : "FredsLab/Buzzzy.json",
-    "MicroBrute:MicroBrute MIDI 1" : "Arturia/Microbrute.json"
+    "MicroBrute:MicroBrute MIDI 1" : "Arturia/Microbrute.json",
+    "SUONOBUONO nABC:SUONOBUONO nABC MIDI 1" : "SUONOBUONO/nABC.json"
 }
