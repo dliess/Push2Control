@@ -4,9 +4,8 @@ Midi Controller sw for Abletons Push2
 ## Dependencies:
   + qtbase5-dev
   + qtdeclarative5-dev
-  + qml-module-qtquick
+  + qml-module-qtquick2
   + libasound2-dev
-  + libgtest-dev
   + libusb-1.0-0-dev
 
 ## To make this work as non-root:
