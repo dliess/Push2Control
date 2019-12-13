@@ -8,7 +8,7 @@ push2::QmlSceneLoader::QmlSceneLoader(QuickViewOnFpRenderMedium &rQuickViewOnFpR
     m_rQuickViewOnFpRenderMedium(rQuickViewOnFpRenderMedium)
 {
     m_rQuickViewOnFpRenderMedium.fboQuickView.rootContext()->setContextProperty("qmlSceneLoader", this);
-    m_rQuickViewOnFpRenderMedium.setSource("qrc:///qmls/main.qml");
+    m_rQuickViewOnFpRenderMedium.setSource("qmls/main.qml");
 }
 
 QString push2::QmlSceneLoader::qmlFile() const

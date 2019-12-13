@@ -82,7 +82,7 @@ Item {
                     var _x = x + theOutputPortListView.indexAt(0,0)
                     if(0 <= _x && _x < theOutputPortListView.count)
                     {
-                        ObjectCreator.createSelfDestroyingObject("qrc:///qmls/MidiRouteSpecializingScene.qml",
+                        ObjectCreator.createSelfDestroyingObject("MidiRouteSpecializingScene.qml",
                                                                  display,
                                                                  {x: 0, y: 0, sourceDeviceIndex: theInputPortListView.currentIndex,
                                                                               destinationDeviceIndex: _x})
