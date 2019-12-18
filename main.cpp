@@ -106,10 +106,12 @@ int main(int argc, char *argv[])
     midi::MidiMediumDummy dummy10("Buzzzy! polysynth:Buzzzy! polysynth MIDI 1", midi::IMidiMedium::Type::USB);
     midi::MidiMediumDummy dummy11("MicroBrute:MicroBrute MIDI 1", midi::IMidiMedium::Type::USB);
     midi::MidiMediumDummy dummy12("SUONOBUONO nABC:SUONOBUONO nABC MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy13("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy14("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 2", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy15("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 3", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy16("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 4", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy13("__JUST_4_TEST__MAM/MB33", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy14("__JUST_4_TEST__Korg/VolcaKeys", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy15("__JUST_4_TEST__Korg/VolcaKick", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy16("__JUST_4_TEST__Elektron/Octatrack_Mk1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy17("__JUST_4_TEST__Elektron/Analog4_Mk1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy18("__JUST_4_TEST__Elektron/AnalogRytm_Mk1", midi::IMidiMedium::Type::USB);   
 
     musicDeviceHolder.addMidiInputMedium(dummy1.hijackInMedium());
     musicDeviceHolder.addMidiOutputMedium(dummy1.hijackOutMedium());
@@ -143,6 +145,11 @@ int main(int argc, char *argv[])
     musicDeviceHolder.addMidiOutputMedium(dummy15.hijackOutMedium());
     musicDeviceHolder.addMidiInputMedium(dummy16.hijackInMedium());
     musicDeviceHolder.addMidiOutputMedium(dummy16.hijackOutMedium());
+    musicDeviceHolder.addMidiInputMedium(dummy17.hijackInMedium());
+    musicDeviceHolder.addMidiOutputMedium(dummy17.hijackOutMedium());
+    musicDeviceHolder.addMidiInputMedium(dummy18.hijackInMedium());
+    musicDeviceHolder.addMidiOutputMedium(dummy18.hijackOutMedium());
+
 #endif
     midi::PortNotifiers::instance().update();    
 #ifndef __SIMULATION__MODE__

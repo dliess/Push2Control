@@ -1,680 +1,973 @@
 {
-    "type" : "sounddevice",
     "version" : "0.0.0",
     "manufacturer" : "Elektron",
     "productName" : "Analog4 Mk1",
     "picture": "",
-    "voices":
-    [
-        {
-            "name": "1",
-            "type": "chromatic",
-            "range": [0, 127]
-        },
-        {
-            "name": "2",
-            "type": "chromatic",
-            "range": [0, 127]
-        },
-        {
-            "name": "3",
-            "type": "chromatic",
-            "range": [0, 127]
-        },
-        {
-            "name": "4",
-            "type": "chromatic",
-            "range": [0, 127]
-        }
-    ],
-    "parameters" : 
-    [
-        {
-            "name" : "Performance A",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [3],
-                "nrpn" : [0, 0]
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance B",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [4],
-                "nrpn" : [0, 1]
+            {
+                "name": "2",
+                "type": "chromatic",
+                "range": [0, 127]
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance C",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [8],
-                "nrpn" : [0, 2]
+            {
+                "name": "3",
+                "type": "chromatic",
+                "range": [0, 127]
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance D",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [9],
-                "nrpn" : [0, 3]
+            {
+                "name": "4",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "id" : 0,
+                "name" : "Pitch",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [16, 48],
+                    "nrpn" : [1, 0]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance E",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [11],
-                "nrpn" : [0, 4]
+            {
+                "name" : "Detune",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 2]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance F",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [64],
-                "nrpn" : [0, 5]
+            {
+                "name" : "Keytracking",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 3]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance G",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [65],
-                "nrpn" : [0, 6]
+            {
+                "name" : "Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [69],
+                    "nrpn" : [1, 4]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance H",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [66],
-                "nrpn" : [0, 7]
+            {
+                "name" : "Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [70],
+                    "nrpn" : [1, 5]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance I",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [67],
-                "nrpn" : [0, 8]
+            {
+                "name" : "Sub-Oscillator",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [71],
+                    "nrpn" : [1, 6]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Performance J",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [68],
-                "nrpn" : [0, 9]
+            {
+                "name" : "Pulsewidth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [72],
+                    "nrpn" : [1, 7]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Pitch",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [16, 48],
-                "nrpn" : [1, 0]
+            {
+                "name" : "PWM Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [73],
+                    "nrpn" : [0]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Detune",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 2]
+            {
+                "name" : "PWM Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [74],
+                    "nrpn" : [1, 9]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Keytracking",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 3]
+            {
+                "name" : "Pitch",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [17, 49],
+                    "nrpn" : [1, 20]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Level",
-                      
-            "type" : "continous",
-            "midi" : {
-                "cc" : [69],
-                "nrpn" : [1, 4]
+            {
+                "id" : 10,
+                "name" : "Detune",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 22]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Waveform",
-                     
-            "type" : "continous",
-            "midi" : {
-                "cc" : [70],
-                "nrpn" : [1, 5]
+            {
+                "name" : "Keytracking",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 23]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Sub-Oscillator",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [71],
-                "nrpn" : [1, 6]
+            {
+                "name" : "Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [78],
+                    "nrpn" : [1, 24]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Pulsewidth",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [72],
-                "nrpn" : [1, 7]
+            {
+                "name" : "Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [79],
+                    "nrpn" : [1, 25]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "PWM Speed",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [73],
-                "nrpn" : [0]
+            {
+                "name" : "Sub-Oscillator",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [80],
+                    "nrpn" : [1, 26]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "PWM Depth",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [74],
-                "nrpn" : [1, 9]
+            {
+                "name" : "Pulsewidth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [81],
+                    "nrpn" : [1, 27]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Pitch",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [17, 49],
-                "nrpn" : [1, 20]
+            {
+                "name" : "PWM Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [82],
+                    "nrpn" : []
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Detune",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 22]
+            {
+                "name" : "PWM Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [83],
+                    "nrpn" : [1, 29]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Keytracking",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 23]
+            {
+                "name" : "Noise S&H",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [75],
+                    "nrpn" : [1, 10]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Level",
-                      
-            "type" : "continous",
-            "midi" : {
-                "cc" : [78],
-                "nrpn" : [1, 24]
+            {
+                "name" : "Noise Fade",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [76],
+                    "nrpn" : [1, 12]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Waveform",
-                     
-            "type" : "continous",
-            "midi" : {
-                "cc" : [79],
-                "nrpn" : [1, 25]
+            {
+                "id" : 20,
+                "name" : "Noise Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [77],
+                    "nrpn" : [1, 14]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Sub-Oscillator",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [80],
-                "nrpn" : [1, 26]
+            {
+                "name" : "OSC1 AM",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 30]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Pulsewidth",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [81],
-                "nrpn" : [1, 27]
+            {
+                "name" : "Sync Mode",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 31]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "PWM Speed",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [82],
-                "nrpn" : []
+            {
+                "name" : "Sync Amount",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [84],
+                    "nrpn" : [1, 32]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "PWM Depth",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [83],
-                "nrpn" : [1, 29]
+            {
+                "name" : "Bend Amount",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [85],
+                    "nrpn" : [1, 33]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Noise S&H",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [75],
-                "nrpn" : [1, 10]
+            {
+                "name" : "Slide Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [5],
+                    "nrpn" : [1, 34]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Noise Fade",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [76],
-                "nrpn" : [1, 12]
+            {
+                "name" : "OSC2 AM",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 35]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Noise Level",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [77],
-                "nrpn" : [1, 14]
+            {
+                "name" : "Note Sync",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 36]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "OSC1 AM",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 30]
+            {
+                "name" : "Vibrato Fade",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 37]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Sync Mode",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 31]
+            {
+                "name" : "Vibrato Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [87],
+                    "nrpn" : [1, 38]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Sync Amount",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [84],
-                "nrpn" : [1, 32]
+            {
+                "id" : 30,
+                "name" : "Vibrato Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [88],
+                    "nrpn" : [1, 39]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Bend Amount",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [85],
-                "nrpn" : [1, 33]
+            {
+                "name" : "Filter1 Cutoff",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [18, 50],
+                    "nrpn" : [1, 40]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Slide Time",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [5],
-                "nrpn" : [1, 34]
+            {
+                "name" : "Filter1 Resonance",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [89],
+                    "nrpn" : [1, 41]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "OSC2 AM",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 35]
+            {
+                "name" : "Filter Overdrive",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 42]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Note Sync",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 36]
+            {
+                "name" : "Filter1 Keytrack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 43]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Vibrato Fade",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 37]
+            {
+                "name" : "Filter1 Envelop Am",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [102],
+                    "nrpn" : [1, 44]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Vibrato Speed",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [87],
-                "nrpn" : [1, 38]
+            {
+                "name" : "Filter2 Cutoff",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [19, 51],
+                    "nrpn" : [1, 45]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Vibrato Depth",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [88],
-                "nrpn" : [1, 39]
+            {
+                "name" : "Filter2 Resonance",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [90],
+                    "nrpn" : [1, 46]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter1 Cutoff",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [18, 50],
-                "nrpn" : [1, 40]
+            {
+                "name" : "Filter2 Type",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 47]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter1 Resonance",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [89],
-                "nrpn" : [1, 41]
+            {
+                "name" : "Filter2 Keytracking",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 48]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter Overdrive",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 42]
+            {
+                "id" : 40,
+                "name" : "Filter2 Envelope Am",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [103],
+                    "nrpn" : [1, 49]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter1 Keytrack",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 43]
+            {
+                "name" : "EnvA Attack Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [104],
+                    "nrpn" : [1, 50]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter1 Envelop Am",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [102],
-                "nrpn" : [1, 44]
+            {
+                "name" : "EnvA Decay Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [105],
+                    "nrpn" : [1, 51]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter2 Cutoff",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [19, 51],
-                "nrpn" : [1, 45]
+            {
+                "name" : "EnvA Sustain Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [106],
+                    "nrpn" : [1, 52]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter2 Resonance",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [90],
-                "nrpn" : [1, 46]
+            {
+                "name" : "EnvA Release Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [107],
+                    "nrpn" : [1, 53]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter2 Type",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 47]
+            {
+                "name" : "EnvA Env Shape",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 54]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter2 Keytracking",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 48]
+            {
+                "name" : "Chorus Send Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [91],
+                    "nrpn" : [1, 55]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Filter2 Envelope Am",
-            
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [103],
-                "nrpn" : [1, 49]
+            {
+                "name" : "Delay Send Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [92],
+                    "nrpn" : [1, 56]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "EnvA Attack Time",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [104],
-                "nrpn" : [1, 50]
+            {
+                "name" : "Reverb Send Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [93],
+                    "nrpn" : [1, 57]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "EnvA Decay Time",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [105],
-                "nrpn" : [1, 51]
+            {
+                "name" : "Pan",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [10],
+                    "nrpn" : [1, 58]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "EnvA Sustain Level",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [106],
-                "nrpn" : [1, 52]
+            {
+                "id" : 50,
+                "name" : "Volume",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [7],
+                    "nrpn" : [1, 59]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "EnvA Release Time",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [107],
-                "nrpn" : [1, 53]
+            {
+                "name" : "ENVF Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [108],
+                    "nrpn" : [1, 60]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "EnvA Env Shape",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [],
-                "nrpn" : [1, 54]
+            {
+                "name" : "ENVF Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [109],
+                    "nrpn" : [1, 61]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Chorus Send Level",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [91],
-                "nrpn" : [1, 55]
+            {
+                "name" : "ENVF Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [110],
+                    "nrpn" : [1, 62]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Delay Send Level",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [92],
-                "nrpn" : [1, 56]
+            {
+                "name" : "ENVF Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [111],
+                    "nrpn" : [1, 63]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Reverb Send Level",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [93],
-                "nrpn" : [1, 57]
+            {
+                "name" : "ENVF Env Shape",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 64]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Pan",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [10],
-                "nrpn" : [1, 58]
+            {
+                "name" : "ENVF Env Gate Length",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 65]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        },
-        {
-            "name" : "Volume",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [7],
-                "nrpn" : [1, 59]
+            {
+                "name" : "ENVF Env Destination A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 66]
+                },
+                "ranges" : []
             },
-            "ranges" : []
-        }
-    ],
-    "parameter_categories":
-    [
-        {"category_name": "Performance", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},
-        {"category_name": "OSC 1", "parameter_ids": [10, 11, 12, 13, 14, 15, 16, 17, 18]},
-        {"category_name": "OSC 1", "parameter_ids": [19, 20, 21, 22, 23, 24, 25, 26, 27]},
-        {"category_name": "Noise", "parameter_ids": [28, 29, 30]},
-        {"category_name": "OSC Common", "parameter_ids": [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]},
-        {"category_name": "Filter", "parameter_ids": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50]},
-        {"category_name": "Amp", "parameter_ids": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60]}
-    ],
+            {
+                "name" : "ENVF Depth A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20, 52],
+                    "nrpn" : [1, 67]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENVF Env Destination B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 68]
+                },
+                "ranges" : []
+            },
+            {
+                "id" : 60,
+                "name" : "ENVF Depth B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [21, 53],
+                    "nrpn" : [1, 69]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [112],
+                    "nrpn" : [1, 70]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [113],
+                    "nrpn" : [1, 71]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [114],
+                    "nrpn" : [1, 72]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [115],
+                    "nrpn" : [1, 73]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Env Shape",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 74]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Env Gate Length",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 75]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Env Destination A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 76]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Depth A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [22, 54],
+                    "nrpn" : [1, 77]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "ENV2 Env Destination B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 78]
+                },
+                "ranges" : []
+            },
+            {
+                "id" : 70,
+                "name" : "ENV2 Depth B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [23, 55],
+                    "nrpn" : [1, 79]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [116],
+                    "nrpn" : [1, 80]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Multiplier",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [117],
+                    "nrpn" : [1, 81]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Fade",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 82]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Start Phase",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 83]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Mode",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 84]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 85]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Destination A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 86]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Depth A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [24, 56],
+                    "nrpn" : [1, 87]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Destination B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 88]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO1 Depth B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [25, 57],
+                    "nrpn" : [1, 89]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [118],
+                    "nrpn" : [1, 90]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Multiplier",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [119],
+                    "nrpn" : [1, 91]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Fade",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 92]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Start Phase",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 93]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Mode",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 94]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 95]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Destination A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 96]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Depth A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [26, 58],
+                    "nrpn" : [1, 97]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Destination B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [],
+                    "nrpn" : [1, 98]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO2 Depth B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [27, 59],
+                    "nrpn" : [1, 99]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "OSC 1", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8]},
+            {"category_name": "OSC 2", "parameter_ids": [9, 10, 11, 12, 13, 14, 15, 16, 17]},
+            {"category_name": "Noise", "parameter_ids": [18, 19, 20]},
+            {"category_name": "OSC Common", "parameter_ids": [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]},
+            {"category_name": "Filter", "parameter_ids": [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]},
+            {"category_name": "Amp", "parameter_ids": [41, 42, 43, 44, 45, 46, 47, 48, 49, 50]},
+            {"category_name": "Filter1 Envelope", "parameter_ids": [51, 52, 53, 54, 55, 56, 57, 58, 59, 60]},
+            {"category_name": "Filter2 Envelope", "parameter_ids": [61, 62, 63, 64, 65, 66, 67, 68, 69, 70]},
+            {"category_name": "LFO 1", "parameter_ids": [71, 72, 73, 74, 75, 76, 77, 78, 79, 80]},
+            {"category_name": "LFO 2", "parameter_ids": [81, 82, 83, 84, 85, 86, 87, 88, 89, 90]}
+        ]
+    },
+    "controllerSection":{
+        "num_presets" : 8,
+        "parameters": [      
+            {
+                "name" : "Performance A",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [3],
+                    "nrpn" : [0, 0]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance B",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [4],
+                    "nrpn" : [0, 1]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance C",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [8],
+                    "nrpn" : [0, 2]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance D",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [9],
+                    "nrpn" : [0, 3]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance E",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [11],
+                    "nrpn" : [0, 4]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance F",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [64],
+                    "nrpn" : [0, 5]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance G",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [65],
+                    "nrpn" : [0, 6]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance H",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [66],
+                    "nrpn" : [0, 7]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance I",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [67],
+                    "nrpn" : [0, 8]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Performance J",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [68],
+                    "nrpn" : [0, 9]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories": [
+            {"category_name": "Performance Controls", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+        ]
+    },
     "reactsToTransportCommands" : true
 }
