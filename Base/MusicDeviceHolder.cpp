@@ -3,11 +3,15 @@
 #include "UsbMidiIn.h"
 #include "UsbMidiOut.h"
 #include "MusicDeviceDescription.h"
+#ifdef __INSERT_DUMMY_MIDI_DEVICES__
+#include "MidiMediumDummy.h"
+#endif
 #include <memory>
 #include <loguru.hpp>
 
 MusicDeviceHolder::MusicDeviceHolder()
 {
+#ifndef __INSERT_DUMMY_MIDI_DEVICES__
     midi::PortNotifiers::instance().inputs.registerNewPortCb([this](rtmidiadapt::PortIndex  index,
                                                         const rtmidiadapt::DeviceOnUsbPort& devOnUsbPort){
         auto pMedium = std::make_unique<midi::UsbMidiIn>();
@@ -30,6 +34,7 @@ MusicDeviceHolder::MusicDeviceHolder()
         addMidiOutputMedium(std::move(pMedium));
 
     }, {{}, {"RtMidi", "Ableton Push 2", "Midi Through"}, false});
+#endif
 }
 
 void MusicDeviceHolder::addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium)
@@ -140,3 +145,58 @@ std::shared_ptr<MusicDevice> MusicDeviceHolder::createAndInsertMusicDevice(const
     }
     return std::move(pMusicDevice);
 }
+
+#ifdef __INSERT_DUMMY_MIDI_DEVICES__
+void MusicDeviceHolder::insertMusicDeviceDummies()
+{
+    midi::MidiMediumDummy dummy1("Moog Minitaur:Moog Minitaur MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy2("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy3("TOUCHE_SE:TOUCHE_SE MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy4("Deluge:Deluge MIDI 1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy5("Arturia KeyStep 32:Arturia KeyStep 32 MIDI 1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy6("MODEL D:MODEL D MIDI 1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy7("Space Pedal:Space Pedal MIDI 1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy8("Launch Control XL:Launch Control XL MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy9("Seaboard BLOCK:Seaboard BLOCK MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy10("Buzzzy! polysynth:Buzzzy! polysynth MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy11("MicroBrute:MicroBrute MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy12("SUONOBUONO nABC:SUONOBUONO nABC MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy13("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy14("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 2", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy15("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 3", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy16("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 4", midi::IMidiMedium::Type::USB);   
+
+    addMidiInputMedium(dummy1.hijackInMedium());
+    addMidiOutputMedium(dummy1.hijackOutMedium());
+    addMidiInputMedium(dummy2.hijackInMedium());
+    addMidiOutputMedium(dummy2.hijackOutMedium());
+    addMidiInputMedium(dummy3.hijackInMedium());
+    addMidiOutputMedium(dummy3.hijackOutMedium());
+    addMidiInputMedium(dummy4.hijackInMedium());
+    addMidiOutputMedium(dummy4.hijackOutMedium());
+    addMidiInputMedium(dummy5.hijackInMedium());
+    addMidiOutputMedium(dummy5.hijackOutMedium());
+    addMidiInputMedium(dummy6.hijackInMedium());
+    addMidiOutputMedium(dummy6.hijackOutMedium());
+    addMidiInputMedium(dummy7.hijackInMedium());
+    addMidiOutputMedium(dummy7.hijackOutMedium());
+    addMidiInputMedium(dummy8.hijackInMedium());
+    addMidiOutputMedium(dummy8.hijackOutMedium());
+    addMidiInputMedium(dummy9.hijackInMedium());
+    addMidiOutputMedium(dummy9.hijackOutMedium());
+    addMidiInputMedium(dummy10.hijackInMedium());
+    addMidiOutputMedium(dummy10.hijackOutMedium());
+    addMidiInputMedium(dummy11.hijackInMedium());
+    addMidiOutputMedium(dummy11.hijackOutMedium());
+    addMidiInputMedium(dummy12.hijackInMedium());
+    addMidiOutputMedium(dummy12.hijackOutMedium());
+    addMidiInputMedium(dummy13.hijackInMedium());
+    addMidiOutputMedium(dummy13.hijackOutMedium());
+    addMidiInputMedium(dummy14.hijackInMedium());
+    addMidiOutputMedium(dummy14.hijackOutMedium());
+    addMidiInputMedium(dummy15.hijackInMedium());
+    addMidiOutputMedium(dummy15.hijackOutMedium());
+    addMidiInputMedium(dummy16.hijackInMedium());
+    addMidiOutputMedium(dummy16.hijackOutMedium());
+}
+#endif

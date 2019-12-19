@@ -48,10 +48,4 @@ if(${__SIMULATION__MODE__})
    add_subdirectory(FrontPanelSimulation)
 endif(${__SIMULATION__MODE__})
 
-option(__INSERT_DUMMY_MIDI_DEVICES__ "insert dummy devices for testing" OFF)
-if(${__INSERT_DUMMY_MIDI_DEVICES__})
-   target_compile_definitions(${PROJECT_NAME} PRIVATE "__INSERT_DUMMY_MIDI_DEVICES__")
-   target_link_libraries(${PROJECT_NAME} MidiMediumDummy)
-endif(${__INSERT_DUMMY_MIDI_DEVICES__})
-
 #install(TARGETS ${PROJECT_NAME} DESTINATION "")

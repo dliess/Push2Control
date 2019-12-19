@@ -36,7 +36,9 @@ public:
 
     void addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium);
     void addMidiOutputMedium(std::unique_ptr<midi::IMidiOutMedium> pMedium);
-
+#ifdef __INSERT_DUMMY_MIDI_DEVICES__
+    void insertMusicDeviceDummies();
+#endif
 private:
     DeviceDescriptionLoader  deviceLoader;
     std::shared_ptr<MusicDevice> findMusicDevice(const MusicDeviceId& deviceId) const noexcept;

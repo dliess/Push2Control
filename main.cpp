@@ -21,9 +21,6 @@
 #ifdef __SIMULATION__MODE__
 #include "FpSimulation.h"
 #endif
-#ifdef __INSERT_DUMMY_MIDI_DEVICES__
-#include "MidiMediumDummy.h"
-#endif
 #include "Push2Device.h"
 #include "Push2Topology.h"
 #include "Push2LedOfWidget.h"
@@ -94,62 +91,7 @@ int main(int argc, char *argv[])
     auto &push2Pads = *pPush2Pads.get();
     musicDeviceHolder.addMidiInputMedium(std::move(pPush2Pads));
 #ifdef __INSERT_DUMMY_MIDI_DEVICES__
-    midi::MidiMediumDummy dummy1("Moog Minitaur:Moog Minitaur MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy2("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy3("TOUCHE_SE:TOUCHE_SE MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy4("Deluge:Deluge MIDI 1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy5("Arturia KeyStep 32:Arturia KeyStep 32 MIDI 1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy6("MODEL D:MODEL D MIDI 1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy7("Space Pedal:Space Pedal MIDI 1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy8("Launch Control XL:Launch Control XL MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy9("Seaboard BLOCK:Seaboard BLOCK MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy10("Buzzzy! polysynth:Buzzzy! polysynth MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy11("MicroBrute:MicroBrute MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy12("SUONOBUONO nABC:SUONOBUONO nABC MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy13("__JUST_4_TEST__MAM/MB33", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy14("__JUST_4_TEST__Korg/VolcaKeys", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy15("__JUST_4_TEST__Korg/VolcaKick", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy16("__JUST_4_TEST__Elektron/Octatrack_Mk1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy17("__JUST_4_TEST__Elektron/Analog4_Mk1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy18("__JUST_4_TEST__Elektron/AnalogRytm_Mk1", midi::IMidiMedium::Type::USB);   
-
-    musicDeviceHolder.addMidiInputMedium(dummy1.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy1.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy2.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy2.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy3.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy3.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy4.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy4.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy5.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy5.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy6.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy6.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy7.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy7.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy8.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy8.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy9.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy9.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy10.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy10.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy11.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy11.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy12.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy12.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy13.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy13.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy14.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy14.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy15.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy15.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy16.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy16.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy17.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy17.hijackOutMedium());
-    musicDeviceHolder.addMidiInputMedium(dummy18.hijackInMedium());
-    musicDeviceHolder.addMidiOutputMedium(dummy18.hijackOutMedium());
-
+    musicDeviceHolder.insertMusicDeviceDummies();
 #endif
     midi::PortNotifiers::instance().update();    
 #ifndef __SIMULATION__MODE__
