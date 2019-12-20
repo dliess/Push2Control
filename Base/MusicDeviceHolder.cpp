@@ -161,10 +161,13 @@ void MusicDeviceHolder::insertMusicDeviceDummies()
     midi::MidiMediumDummy dummy10("Buzzzy! polysynth:Buzzzy! polysynth MIDI 1", midi::IMidiMedium::Type::USB);
     midi::MidiMediumDummy dummy11("MicroBrute:MicroBrute MIDI 1", midi::IMidiMedium::Type::USB);
     midi::MidiMediumDummy dummy12("SUONOBUONO nABC:SUONOBUONO nABC MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy13("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy14("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 2", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy15("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 3", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy16("MIDIFACE 8x8:MIDIFACE 8x8 MIDI 4", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy13("__JUST_4_TEST__MAM/MB33", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy14("__JUST_4_TEST__Korg/VolcaKeys", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy15("__JUST_4_TEST__Korg/VolcaKick", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy16("__JUST_4_TEST__Elektron/Octatrack_Mk1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy17("__JUST_4_TEST__Elektron/Analog4_Mk1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy18("__JUST_4_TEST__Elektron/AnalogRytm_Mk1", midi::IMidiMedium::Type::USB);
+    midi::MidiMediumDummy dummy19("__JUST_4_TEST__Mitxela/Flash", midi::IMidiMedium::Type::USB);     
 
     addMidiInputMedium(dummy1.hijackInMedium());
     addMidiOutputMedium(dummy1.hijackOutMedium());
@@ -198,5 +201,11 @@ void MusicDeviceHolder::insertMusicDeviceDummies()
     addMidiOutputMedium(dummy15.hijackOutMedium());
     addMidiInputMedium(dummy16.hijackInMedium());
     addMidiOutputMedium(dummy16.hijackOutMedium());
+    addMidiInputMedium(dummy17.hijackInMedium());
+    addMidiOutputMedium(dummy17.hijackOutMedium());
+    addMidiInputMedium(dummy18.hijackInMedium());
+    addMidiOutputMedium(dummy18.hijackOutMedium());
+    addMidiInputMedium(dummy19.hijackInMedium());
+    addMidiOutputMedium(dummy19.hijackOutMedium());
 }
 #endif
