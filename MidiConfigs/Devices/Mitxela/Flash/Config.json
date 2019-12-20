@@ -1,0 +1,168 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Mitxela",
+    "productName" : "Flash Synth",
+    "picture": "",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1",
+                "type": "chromatic",
+                "range": [0, 127]
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "Modulation",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [1]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Portamento",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [5]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [64]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "LFO Freq",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [76]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Attack rate",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [73]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [72]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Oscillator Detune",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [15]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "FM Ratio",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20, 21]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Effect Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [22]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Effect Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [75]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Effect Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [23]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Algorithm",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [24]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [25]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Wave parameter",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [26]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Arpeggiator Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [27]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Per Channel Tuning",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [3]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "All channels Tuning",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [9]
+                },
+                "ranges" : []
+            },
+            {
+                "name" : "Output Gain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [88]
+                },
+                "ranges" : []
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "OSC 1", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]}
+        ]
+    },
+    "reactsToTransportCommands" : true
+}
