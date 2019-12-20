@@ -51,7 +51,6 @@
         [
             {
                 "name" : "Track Level",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [46]
@@ -59,7 +58,6 @@
             },
             {
                 "name" : "Cue Level",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [47]
@@ -67,7 +65,6 @@
             },
             {
                 "name" : "Playback Param #1",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [16]
@@ -75,7 +72,6 @@
             },
             {
                 "name" : "Playback Param #2",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [17]
@@ -83,7 +79,6 @@
             },
             {
                 "name" : "Playback Param #3",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [18]
@@ -91,7 +86,6 @@
             },
             {
                 "name" : "Playback Param #4",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19]
@@ -99,7 +93,6 @@
             },
             {
                 "name" : "Playback Param #5",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [20]
@@ -107,7 +100,6 @@
             },
             {
                 "name" : "Playback Param #6",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [21]
@@ -115,7 +107,6 @@
             },
             {
                 "name" : "Attack",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [22]
@@ -123,7 +114,6 @@
             },
             {
                 "name" : "Hold",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [23]
@@ -131,7 +121,6 @@
             },
             {
                 "name" : "Release",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [24]
@@ -139,7 +128,6 @@
             },
             {
                 "name" : "Volume",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [25]
@@ -147,7 +135,6 @@
             },
             {
                 "name" : "Balance",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [26]
@@ -155,7 +142,6 @@
             },
             {
                 "name" : "Lfo Spped #1",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [28]
@@ -163,7 +149,6 @@
             },
             {
                 "name" : "Lfo Speed #2",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [29]
@@ -171,7 +156,6 @@
             },
             {
                 "name" : "Lfo Depth #1",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [30]
@@ -179,7 +163,6 @@
             },
             {
                 "name" : "Lfo Depth #2",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [31]
@@ -187,7 +170,6 @@
             },
             {
                 "name" : "Lfo Depth #3",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [32]
@@ -195,7 +177,6 @@
             },
             {
                 "name" : "Lfo Param #6",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [33]
@@ -203,7 +184,6 @@
             },
             {
                 "name" : "Param #1",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [34]
@@ -211,7 +191,6 @@
             },
             {
                 "name" : "Param #2",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [35]
@@ -219,7 +198,6 @@
             },
             {
                 "name" : "Param #3",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [36]
@@ -227,7 +205,6 @@
             },
             {
                 "name" : "Param #4",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [37]
@@ -235,7 +212,6 @@
             },
             {
                 "name" : "Param #5",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [38]
@@ -243,7 +219,6 @@
             },
             {
                 "name" : "Param #6",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [39]
@@ -251,7 +226,6 @@
             },
             {
                 "name" : "Param #1",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [40]
@@ -259,7 +233,6 @@
             },
             {
                 "name" : "Param #2",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [41]
@@ -267,7 +240,6 @@
             },
             {
                 "name" : "Param #3",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [42]
@@ -275,7 +247,6 @@
             },
             {
                 "name" : "Param #4",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [43]
@@ -283,7 +254,6 @@
             },
             {
                 "name" : "Param #5",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [44]
@@ -291,7 +261,6 @@
             },
             {
                 "name" : "Param #6",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [45]

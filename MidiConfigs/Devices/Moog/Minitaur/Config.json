@@ -290,7 +290,6 @@
             },
             {
                 "name" : "VCA Decay/Release",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [29, 61]
@@ -298,7 +297,6 @@
             },
             {
                 "name" : "VCA Sustain",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [30,62]
@@ -306,7 +304,6 @@
             },
             {
                 "name" : "Release Switch",
-                "description" : "",
                 "midi" : {
                     "cc" : [72]
                 },
@@ -319,7 +316,6 @@
             },
             {
                 "name" : "Trigger Mode",
-                "description" : "",
                 "midi" : {
                     "cc" : [73]
                 },
@@ -333,7 +329,6 @@
             },
             {
                 "name" : "VCA Output Level",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [7, 39]
@@ -341,7 +336,6 @@
             },
             {
                 "name" : "Volume Velocity Sens",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [90]
@@ -349,7 +343,6 @@
             },
             {
                 "name" : "Key Priority",
-                "description" : "",
                 "midi" : {
                     "cc" : [91]
                 },
@@ -363,7 +356,6 @@
             },
             {
                 "name" : "Modwheel Response",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [1, 33]
@@ -371,7 +363,6 @@
             },
             {
                 "name" : "Pitch Wheel Bend Up Amnt",
-                "description" : "",
                 "midi" : {
                     "cc" : [107]
                 },
@@ -390,7 +381,6 @@
             },
             {
                 "name" : "Pitch Wheel Bend Down Amnt",
-                "description" : "",
                 "midi" : {
                     "cc" : [108]
                 },
