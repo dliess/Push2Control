@@ -19,64 +19,56 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [12]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Release",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [13]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Threshold",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [14]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Ratio",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [15]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Comp Knee",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [16]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "S/C Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [17]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Gain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [18]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Bypass",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":

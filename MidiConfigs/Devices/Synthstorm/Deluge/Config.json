@@ -19,8 +19,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [3]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter Resonance",
@@ -28,88 +27,77 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [4]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filt Env Amount",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [2]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Noise",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [5]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [6]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [7]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Sustain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [8]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Release",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [9]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filt Env Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [10]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filt Env Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [11]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filt Env Sustain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [12]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filt Env Release",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [13]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories": [

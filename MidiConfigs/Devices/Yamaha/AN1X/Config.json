@@ -19,56 +19,49 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [1]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Scene select",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [3]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Foot Controller",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [4]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Portamento Time",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [5]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Data Entry MSB",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [6]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Main Volume",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [7]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Layer Mode",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [8]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Poly/Mono",
@@ -86,496 +79,434 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [10]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Expression",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [11]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Ribbon Z",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [12]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Ribbon X",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [13]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO Reset Mode",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [14]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Wave",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [15]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Speed",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [16]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Speed",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [17]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 PitchMod Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [18]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF FilterMod Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Delay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [20]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 Pitch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [21, 77]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO Sync Pitch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [22]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO Sync Pitch Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [23]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO Sync Pitch Source",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [24]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "PEG Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [25]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Peg Switch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [26]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Peg Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [27]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "PEG Sustain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [28]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "FEG Release",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [29]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Cutoff KBD Track",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [30]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "AMP EG Sustain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [31]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO Algorithm",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [33]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO Sync Pitch Mod SW",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [34]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "FM Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [35]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "FM Source 1",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [36]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "FM Source 2",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [37]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Data Entry LSB",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [38]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Mixer Noise Level",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [39]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 Wave Type",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [50]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 Wave Type",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [51]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 Pitch Coarse",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [52, 53]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 Edge",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [54]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 Pulse Width",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [55]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 PWM Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [56]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 Pitch Mod Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [57]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF HPF Cutoff",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [58]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Filter Type",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [59]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter EG Velocity Sens",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [60]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Amp EG Velocity Sens",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [61]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCA Volume",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [62]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCA Feedback",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [63]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Sustain Switch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [64]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Portamento Switch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [65]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Mixer VCO1 Level",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [68]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Mixer VCO2 Level",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [69]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Ring Mod Level",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [70]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Filter Resonance",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [71]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Release",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [72]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [73]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Filter Cutoff",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [74]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [75]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 Edge",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [76]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 Pulse Width",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [78]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 PWM Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [79]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCA Amp Mod Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [80]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter EG Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [81]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter EG Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [82]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter EG Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [83]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Portamento Mode",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [85]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO1 PWM Source",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [86]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO2 PWM Source",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [87]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Arpeggio/Step SW",
@@ -594,24 +525,21 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [91]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Chorus Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [93]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Depth",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [94]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":

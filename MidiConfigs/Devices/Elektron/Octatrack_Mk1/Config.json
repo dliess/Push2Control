@@ -55,8 +55,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [46]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Cue Level",
@@ -64,8 +63,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [47]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Playback Param #1",
@@ -73,8 +71,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [16]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Playback Param #2",
@@ -82,8 +79,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [17]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Playback Param #3",
@@ -91,8 +87,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [18]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Playback Param #4",
@@ -100,8 +95,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Playback Param #5",
@@ -109,8 +103,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [20]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Playback Param #6",
@@ -118,8 +111,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [21]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Attack",
@@ -127,8 +119,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [22]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Hold",
@@ -136,8 +127,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [23]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Release",
@@ -145,8 +135,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [24]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Volume",
@@ -154,8 +143,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [25]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Balance",
@@ -163,8 +151,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [26]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Lfo Spped #1",
@@ -172,8 +159,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [28]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Lfo Speed #2",
@@ -181,8 +167,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [29]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Lfo Depth #1",
@@ -190,8 +175,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [30]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Lfo Depth #2",
@@ -199,8 +183,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [31]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Lfo Depth #3",
@@ -208,8 +191,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [32]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Lfo Param #6",
@@ -217,8 +199,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [33]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #1",
@@ -226,8 +207,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [34]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #2",
@@ -235,8 +215,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [35]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #3",
@@ -244,8 +223,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [36]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #4",
@@ -253,8 +231,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [37]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #5",
@@ -262,8 +239,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [38]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #6",
@@ -271,8 +247,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [39]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #1",
@@ -280,8 +255,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [40]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #2",
@@ -289,8 +263,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [41]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #3",
@@ -298,8 +271,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [42]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #4",
@@ -307,8 +279,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [43]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #5",
@@ -316,8 +287,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [44]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Param #6",
@@ -325,8 +295,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [45]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":
@@ -351,8 +320,7 @@
             "type" : "continous",
             "midi" : {
                 "cc" : [48]
-            },
-            "ranges" : []
+            }
         }
         ],
         "parameter_categories": [

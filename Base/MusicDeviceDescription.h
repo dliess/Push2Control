@@ -45,7 +45,7 @@ struct SoundDeviceParameter
    std::string name;
    std::optional<std::string> description;
    MusicDeviceParameterMidi midi;
-   std::vector<MusicDeviceParameterRange> ranges;
+   std::optional<std::vector<MusicDeviceParameterRange>> ranges;
 
    static inline std::string type2String(Type type);
    static inline Type typeFromString(const std::string& str);

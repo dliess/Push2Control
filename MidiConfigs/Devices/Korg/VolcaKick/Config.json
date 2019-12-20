@@ -19,80 +19,70 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [40]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pulse Level",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [41]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Amp Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [42]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Amp Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [43]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Drive",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [44]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Tone",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [45]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Resonator Pitch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [46]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Resonator Bend",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [47]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Resonator Time",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [48]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Accent",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [49]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":

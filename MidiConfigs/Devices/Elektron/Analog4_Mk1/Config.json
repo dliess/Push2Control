@@ -36,8 +36,7 @@
                 "midi" : {
                     "cc" : [16, 48],
                     "nrpn" : [1, 0]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Detune",
@@ -45,8 +44,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 2]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Keytracking",
@@ -54,8 +52,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 3]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Level",
@@ -63,8 +60,7 @@
                 "midi" : {
                     "cc" : [69],
                     "nrpn" : [1, 4]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Waveform",
@@ -72,8 +68,7 @@
                 "midi" : {
                     "cc" : [70],
                     "nrpn" : [1, 5]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Sub-Oscillator",
@@ -81,8 +76,7 @@
                 "midi" : {
                     "cc" : [71],
                     "nrpn" : [1, 6]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pulsewidth",
@@ -90,8 +84,7 @@
                 "midi" : {
                     "cc" : [72],
                     "nrpn" : [1, 7]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "PWM Speed",
@@ -99,8 +92,7 @@
                 "midi" : {
                     "cc" : [73],
                     "nrpn" : [0]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "PWM Depth",
@@ -108,8 +100,7 @@
                 "midi" : {
                     "cc" : [74],
                     "nrpn" : [1, 9]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pitch",
@@ -117,8 +108,7 @@
                 "midi" : {
                     "cc" : [17, 49],
                     "nrpn" : [1, 20]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 10,
@@ -127,8 +117,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 22]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Keytracking",
@@ -136,8 +125,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 23]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Level",
@@ -145,8 +133,7 @@
                 "midi" : {
                     "cc" : [78],
                     "nrpn" : [1, 24]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Waveform",
@@ -154,8 +141,7 @@
                 "midi" : {
                     "cc" : [79],
                     "nrpn" : [1, 25]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Sub-Oscillator",
@@ -163,8 +149,7 @@
                 "midi" : {
                     "cc" : [80],
                     "nrpn" : [1, 26]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pulsewidth",
@@ -172,8 +157,7 @@
                 "midi" : {
                     "cc" : [81],
                     "nrpn" : [1, 27]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "PWM Speed",
@@ -181,8 +165,7 @@
                 "midi" : {
                     "cc" : [82],
                     "nrpn" : []
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "PWM Depth",
@@ -190,8 +173,7 @@
                 "midi" : {
                     "cc" : [83],
                     "nrpn" : [1, 29]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Noise S&H",
@@ -199,8 +181,7 @@
                 "midi" : {
                     "cc" : [75],
                     "nrpn" : [1, 10]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Noise Fade",
@@ -208,8 +189,7 @@
                 "midi" : {
                     "cc" : [76],
                     "nrpn" : [1, 12]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 20,
@@ -218,8 +198,7 @@
                 "midi" : {
                     "cc" : [77],
                     "nrpn" : [1, 14]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "OSC1 AM",
@@ -227,8 +206,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 30]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Sync Mode",
@@ -236,8 +214,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 31]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Sync Amount",
@@ -245,8 +222,7 @@
                 "midi" : {
                     "cc" : [84],
                     "nrpn" : [1, 32]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Bend Amount",
@@ -254,8 +230,7 @@
                 "midi" : {
                     "cc" : [85],
                     "nrpn" : [1, 33]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Slide Time",
@@ -263,8 +238,7 @@
                 "midi" : {
                     "cc" : [5],
                     "nrpn" : [1, 34]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "OSC2 AM",
@@ -272,8 +246,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 35]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Note Sync",
@@ -281,8 +254,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 36]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Vibrato Fade",
@@ -290,8 +262,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 37]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Vibrato Speed",
@@ -299,8 +270,7 @@
                 "midi" : {
                     "cc" : [87],
                     "nrpn" : [1, 38]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 30,
@@ -309,8 +279,7 @@
                 "midi" : {
                     "cc" : [88],
                     "nrpn" : [1, 39]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter1 Cutoff",
@@ -318,8 +287,7 @@
                 "midi" : {
                     "cc" : [18, 50],
                     "nrpn" : [1, 40]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter1 Resonance",
@@ -327,8 +295,7 @@
                 "midi" : {
                     "cc" : [89],
                     "nrpn" : [1, 41]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter Overdrive",
@@ -336,8 +303,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 42]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter1 Keytrack",
@@ -345,8 +311,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 43]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter1 Envelop Am",
@@ -354,8 +319,7 @@
                 "midi" : {
                     "cc" : [102],
                     "nrpn" : [1, 44]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter2 Cutoff",
@@ -363,8 +327,7 @@
                 "midi" : {
                     "cc" : [19, 51],
                     "nrpn" : [1, 45]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter2 Resonance",
@@ -372,8 +335,7 @@
                 "midi" : {
                     "cc" : [90],
                     "nrpn" : [1, 46]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter2 Type",
@@ -381,8 +343,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 47]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter2 Keytracking",
@@ -390,8 +351,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 48]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 40,
@@ -400,8 +360,7 @@
                 "midi" : {
                     "cc" : [103],
                     "nrpn" : [1, 49]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "EnvA Attack Time",
@@ -409,8 +368,7 @@
                 "midi" : {
                     "cc" : [104],
                     "nrpn" : [1, 50]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "EnvA Decay Time",
@@ -418,8 +376,7 @@
                 "midi" : {
                     "cc" : [105],
                     "nrpn" : [1, 51]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "EnvA Sustain Level",
@@ -427,8 +384,7 @@
                 "midi" : {
                     "cc" : [106],
                     "nrpn" : [1, 52]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "EnvA Release Time",
@@ -436,8 +392,7 @@
                 "midi" : {
                     "cc" : [107],
                     "nrpn" : [1, 53]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "EnvA Env Shape",
@@ -445,8 +400,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 54]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Chorus Send Level",
@@ -454,8 +408,7 @@
                 "midi" : {
                     "cc" : [91],
                     "nrpn" : [1, 55]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Send Level",
@@ -463,8 +416,7 @@
                 "midi" : {
                     "cc" : [92],
                     "nrpn" : [1, 56]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Reverb Send Level",
@@ -472,8 +424,7 @@
                 "midi" : {
                     "cc" : [93],
                     "nrpn" : [1, 57]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pan",
@@ -481,8 +432,7 @@
                 "midi" : {
                     "cc" : [10],
                     "nrpn" : [1, 58]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 50,
@@ -491,8 +441,7 @@
                 "midi" : {
                     "cc" : [7],
                     "nrpn" : [1, 59]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Attack",
@@ -500,8 +449,7 @@
                 "midi" : {
                     "cc" : [108],
                     "nrpn" : [1, 60]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Decay",
@@ -509,8 +457,7 @@
                 "midi" : {
                     "cc" : [109],
                     "nrpn" : [1, 61]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Sustain",
@@ -518,8 +465,7 @@
                 "midi" : {
                     "cc" : [110],
                     "nrpn" : [1, 62]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Release",
@@ -527,8 +473,7 @@
                 "midi" : {
                     "cc" : [111],
                     "nrpn" : [1, 63]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Env Shape",
@@ -536,8 +481,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 64]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Env Gate Length",
@@ -545,8 +489,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 65]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Env Destination A",
@@ -554,8 +497,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 66]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Depth A",
@@ -563,8 +505,7 @@
                 "midi" : {
                     "cc" : [20, 52],
                     "nrpn" : [1, 67]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENVF Env Destination B",
@@ -572,8 +513,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 68]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 60,
@@ -582,8 +522,7 @@
                 "midi" : {
                     "cc" : [21, 53],
                     "nrpn" : [1, 69]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Attack",
@@ -591,8 +530,7 @@
                 "midi" : {
                     "cc" : [112],
                     "nrpn" : [1, 70]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Decay",
@@ -600,8 +538,7 @@
                 "midi" : {
                     "cc" : [113],
                     "nrpn" : [1, 71]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Sustain",
@@ -609,8 +546,7 @@
                 "midi" : {
                     "cc" : [114],
                     "nrpn" : [1, 72]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Release",
@@ -618,8 +554,7 @@
                 "midi" : {
                     "cc" : [115],
                     "nrpn" : [1, 73]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Env Shape",
@@ -627,8 +562,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 74]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Env Gate Length",
@@ -636,8 +570,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 75]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Env Destination A",
@@ -645,8 +578,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 76]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Depth A",
@@ -654,8 +586,7 @@
                 "midi" : {
                     "cc" : [22, 54],
                     "nrpn" : [1, 77]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "ENV2 Env Destination B",
@@ -663,8 +594,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 78]
-                },
-                "ranges" : []
+                }
             },
             {
                 "id" : 70,
@@ -673,8 +603,7 @@
                 "midi" : {
                     "cc" : [23, 55],
                     "nrpn" : [1, 79]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Speed",
@@ -682,8 +611,7 @@
                 "midi" : {
                     "cc" : [116],
                     "nrpn" : [1, 80]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Multiplier",
@@ -691,8 +619,7 @@
                 "midi" : {
                     "cc" : [117],
                     "nrpn" : [1, 81]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Fade",
@@ -700,8 +627,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 82]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Start Phase",
@@ -709,8 +635,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 83]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Mode",
@@ -718,8 +643,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 84]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Waveform",
@@ -727,8 +651,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 85]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Destination A",
@@ -736,8 +659,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 86]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Depth A",
@@ -745,8 +667,7 @@
                 "midi" : {
                     "cc" : [24, 56],
                     "nrpn" : [1, 87]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Destination B",
@@ -754,8 +675,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 88]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO1 Depth B",
@@ -763,8 +683,7 @@
                 "midi" : {
                     "cc" : [25, 57],
                     "nrpn" : [1, 89]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Speed",
@@ -772,8 +691,7 @@
                 "midi" : {
                     "cc" : [118],
                     "nrpn" : [1, 90]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Multiplier",
@@ -781,8 +699,7 @@
                 "midi" : {
                     "cc" : [119],
                     "nrpn" : [1, 91]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Fade",
@@ -790,8 +707,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 92]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Start Phase",
@@ -799,8 +715,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 93]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Mode",
@@ -808,8 +723,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 94]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Waveform",
@@ -817,8 +731,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 95]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Destination A",
@@ -826,8 +739,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 96]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Depth A",
@@ -835,8 +747,7 @@
                 "midi" : {
                     "cc" : [26, 58],
                     "nrpn" : [1, 97]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Destination B",
@@ -844,8 +755,7 @@
                 "midi" : {
                     "cc" : [],
                     "nrpn" : [1, 98]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO2 Depth B",
@@ -853,8 +763,7 @@
                 "midi" : {
                     "cc" : [27, 59],
                     "nrpn" : [1, 99]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":
@@ -880,8 +789,7 @@
                 "midi" : {
                     "cc" : [3],
                     "nrpn" : [0, 0]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance B",
@@ -889,8 +797,7 @@
                 "midi" : {
                     "cc" : [4],
                     "nrpn" : [0, 1]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance C",
@@ -898,8 +805,7 @@
                 "midi" : {
                     "cc" : [8],
                     "nrpn" : [0, 2]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance D",
@@ -907,8 +813,7 @@
                 "midi" : {
                     "cc" : [9],
                     "nrpn" : [0, 3]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance E",
@@ -916,8 +821,7 @@
                 "midi" : {
                     "cc" : [11],
                     "nrpn" : [0, 4]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance F",
@@ -925,8 +829,7 @@
                 "midi" : {
                     "cc" : [64],
                     "nrpn" : [0, 5]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance G",
@@ -934,8 +837,7 @@
                 "midi" : {
                     "cc" : [65],
                     "nrpn" : [0, 6]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance H",
@@ -943,8 +845,7 @@
                 "midi" : {
                     "cc" : [66],
                     "nrpn" : [0, 7]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance I",
@@ -952,8 +853,7 @@
                 "midi" : {
                     "cc" : [67],
                     "nrpn" : [0, 8]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Performance J",
@@ -961,8 +861,7 @@
                 "midi" : {
                     "cc" : [68],
                     "nrpn" : [0, 9]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories": [

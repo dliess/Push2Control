@@ -65,7 +65,8 @@ QVariant push2::qt::SoundDeviceParameterModel::data(const QModelIndex &index, in
             const auto value = rDevice.getSoundParameterValue(m_currentVoiceIndex, parameterIdx);
             if(SoundDeviceParameter::Type::List == rParam.type)
             {
-                for(auto& e : rParam.ranges)
+                if(!rParam.ranges) return value;
+                for(auto& e : *rParam.ranges)
                 {
                     const auto min = e.range[0];
                     const auto max = e.range[1];
