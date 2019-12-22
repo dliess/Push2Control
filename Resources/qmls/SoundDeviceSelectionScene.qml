@@ -13,7 +13,8 @@ Item {
             {
                 case Button.E_BtnT:
                 {
-                    var _x = x + soundDeviceSelectionListView.indexAt(0,0)
+                    var idx = soundDeviceSelectionListView.indexAt(soundDeviceSelectionListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x &&_x < soundDeviceSelectionListView.count)
                     {
                         soundDeviceSelectionListView.currentIndex = _x
@@ -22,7 +23,8 @@ Item {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = x + voiceSelectionListView.indexAt(0,0)
+                    var idx = voiceSelectionListView.indexAt(voiceSelectionListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x &&_x < voiceSelectionListView.count)
                     {
                         soundDeviceAndVoiceSelection.setCurrentVoiceIndex(_x)
@@ -37,13 +39,19 @@ Item {
                 case Encoder.E_EncoderTempo:
                 {
                     var idx = soundDeviceSelectionListView.indexAt(soundDeviceSelectionListView.contentX,1)
-                    soundDeviceSelectionListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(soundDeviceSelectionListView.count - 9, idx)
+                    soundDeviceSelectionListView.positionViewAtIndex(idx, ListView.Beginning);
                     break
                 }
                 case Encoder.E_EncoderMetronome:
                 {
                     var idx = voiceSelectionListView.indexAt(voiceSelectionListView.contentX,1)
-                    voiceSelectionListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(soundDeviceSelectionListView.count - 9, idx)
+                    voiceSelectionListView.positionViewAtIndex(idx, ListView.Beginning);
                     break
                 }
             }

@@ -26,7 +26,8 @@ Item {
             {
 		        case Button.E_BtnT:
                 {
-                    var _x = x + theInputPortListView.indexAt(0,0)
+                    var idx = theInputPortListView.indexAt(theInputPortListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x && _x < theInputPortListView.count)
                     {
                         theInputPortListView.currentIndex = _x
@@ -36,7 +37,8 @@ Item {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = x + theOutputPortListView.indexAt(0,0)
+                    var idx = theOutputPortListView.indexAt(theOutputPortListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x && _x < theOutputPortListView.count)
                     {
                         midiOpenedOutputPortsModel.toggleRouted(_x)
@@ -60,13 +62,19 @@ Item {
                 case Encoder.E_EncoderTempo:
                 {
                     var idx = theInputPortListView.indexAt(theInputPortListView.contentX,1)
-                    theInputPortListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(theInputPortListView.count - 9, idx)
+                    theInputPortListView.positionViewAtIndex(idx, ListView.Beginning);
                     break
                 }
                 case Encoder.E_EncoderMetronome:
                 {
                     var idx = theOutputPortListView.indexAt(theOutputPortListView.contentX,1)
-                    theOutputPortListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(theOutputPortListView.count - 9, idx)
+                    theOutputPortListView.positionViewAtIndex(idx, ListView.Beginning);
                     break
                 }
             }

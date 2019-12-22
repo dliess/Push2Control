@@ -23,7 +23,8 @@ Rectangle {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = controllerDeviceParameterListView.indexAt(0,0) + x
+                    var idx = controllerDeviceParameterListView.indexAt(controllerDeviceParameterListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x && _x < controllerDeviceParameterListView.count)
                     {
                         controllerDeviceParameterListView.currentIndex = _x
@@ -38,7 +39,10 @@ Rectangle {
                 case Encoder.E_EncoderTempo:
                 {
                     var idx = controllerDeviceParameterListView.indexAt(controllerDeviceParameterListView.contentX,1)
-                    controllerDeviceParameterListView.positionViewAtIndex(idx + increment, ListView.Beginning)
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(controllerDeviceParameterListView.count - 9, idx)
+                    controllerDeviceParameterListView.positionViewAtIndex(idx, ListView.Beginning)
                     break
                 }
                 case Encoder.E_Encoder:

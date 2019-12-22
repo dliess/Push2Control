@@ -13,7 +13,8 @@ Item {
             {
                 case Button.E_BtnT:
                 {
-                    var _x = x + deviceSelectionListView.indexAt(0,0)
+                    var idx = deviceSelectionListView.indexAt(deviceSelectionListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x &&_x < deviceSelectionListView.count)
                     {
                         deviceSelectionListView.currentIndex = _x
@@ -22,7 +23,8 @@ Item {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = x + presetSelectionListView.indexAt(0,0)
+                    var idx = presetSelectionListView.indexAt(presetSelectionListView.contentX,1)
+                    var _x = x + idx
                     if(0 <= _x &&_x < presetSelectionListView.count)
                     {
                         controllerDeviceAndPresetSelection.setCurrentPresetIndex(x + presetSelectionListView.indexAt(0,0))
@@ -37,13 +39,19 @@ Item {
                 case Encoder.E_EncoderTempo:
                 {
                     var idx = deviceSelectionListView.indexAt(deviceSelectionListView.contentX,1)
-                    deviceSelectionListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(deviceSelectionListView.count - 9, idx)
+                    deviceSelectionListView.positionViewAtIndex(idx, ListView.Beginning);
                     break
                 }
                 case Encoder.E_EncoderMetronome:
                 {
                     var idx = presetSelectionListView.indexAt(presetSelectionListView.contentX,1)
-                    presetSelectionListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    idx += increment
+                    idx = Math.max(0, idx)
+                    idx = Math.min(presetSelectionListView.count - 9, idx)
+                    presetSelectionListView.positionViewAtIndex(idx, ListView.Beginning);
                     break
                 }
             }
