@@ -6,9 +6,7 @@
     {
         "voices":[
             {
-                "name": "1",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "1"
             }
         ],
         "parameters" : 

@@ -2,49 +2,32 @@
     "version" : "0.0.0",
     "manufacturer" : "Elektron",
     "productName" : "Octatrack Mk1",
-    "picture": "",
     "soundSection":{
         "voices":
         [
             {
-                "name": "Track-1",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-1"
             },
             {
-                "name": "Track-2",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-2"
             },
             {
-                "name": "Track-3",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-3"
             },
             {
-                "name": "Track-4",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-4"
             },
             {
-                "name": "Track-5",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-5"
             },
             {
-                "name": "Track-6",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-6"
             },
             {
-                "name": "Track-7",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-7"
             },
             {
-                "name": "Track-8",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "Track-8"
             }
         ],
         "parameters" : 

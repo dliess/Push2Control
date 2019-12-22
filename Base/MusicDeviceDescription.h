@@ -9,17 +9,7 @@
 
 struct MusicDeviceVoice
 {
-   enum class Type
-   {
-      Chromatic,
-      Kit
-   };
    std::string            name;
-   Type                   type;
-   std::array<uint8_t, 2> range;
-
-   static inline std::string type2String(Type type);
-   static inline Type typeFromString(const std::string& str);
 };
 
 struct MusicDeviceParameterMidi
@@ -143,26 +133,6 @@ struct MusicDeviceDescription
 //--------------------- ENUM <-> String conversions --------------------------
 //----------------------------------------------------------------------------
 
-inline 
-std::string MusicDeviceVoice::type2String(MusicDeviceVoice::Type type)
-{
-   switch(type)
-   {
-      case MusicDeviceVoice::Type::Chromatic: return "chromatic";
-      case MusicDeviceVoice::Type::Kit: return "kit";
-      default: return "unknown";
-   }
-}
-
-inline 
-MusicDeviceVoice::Type MusicDeviceVoice::typeFromString(const std::string& str)
-{
-   if(str == "chromatic") return MusicDeviceVoice::Type::Chromatic;
-   else if(str == "kit") return MusicDeviceVoice::Type::Kit;
-   return MusicDeviceVoice::Type::Chromatic;
-
-}
-
 inline
 std::string SoundDeviceParameter::type2String(SoundDeviceParameter::Type type)
 {
@@ -205,18 +175,6 @@ MusicDeviceDescription::Type MusicDeviceDescription::typeFromString(const std::s
 }
 
 template <>
-inline void to_json<MusicDeviceVoice::Type>(nlohmann::json& j, const MusicDeviceVoice::Type& obj)
-{
-   j = MusicDeviceVoice::type2String(obj);
-}
-
-template <>
-inline void from_json<MusicDeviceVoice::Type>(const nlohmann::json& j, MusicDeviceVoice::Type& obj)
-{
-   obj = MusicDeviceVoice::typeFromString(j.get<std::string>());
-}
-
-template <>
 inline void to_json<SoundDeviceParameter::Type>(nlohmann::json& j, const SoundDeviceParameter::Type& obj)
 {
    j = SoundDeviceParameter::type2String(obj);
@@ -251,9 +209,7 @@ template <>
 inline auto registerMembers<MusicDeviceVoice>()
 {
    return members(
-      member("name", &MusicDeviceVoice::name),
-      member("type", &MusicDeviceVoice::type),
-      member("range", &MusicDeviceVoice::range)
+      member("name", &MusicDeviceVoice::name)
    );
 }
 
