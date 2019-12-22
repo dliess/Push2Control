@@ -20,7 +20,8 @@ public:
         NameRole = Qt::UserRole + 1,
         Value,
         Type,
-        MappingCurveRole
+        MappingCurveRole,
+        DestinationParameter
     };
 
     ControllerDeviceParameterModel(MusicDeviceHolder& rMusicDeviceHolder,

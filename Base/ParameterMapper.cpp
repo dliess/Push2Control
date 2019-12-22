@@ -136,6 +136,6 @@ void ParameterMapper::setSettings(const Settings& settings) noexcept
 
       const ParameterId source{uint32_t(srcIdx), e.srcParam.voiceId, e.srcParam.parameterId};
       const ParameterId destination{uint32_t(dstIdx), e.destParam.voiceId, e.destParam.parameterId};
-      m_parameterMap[source] = {destination, ValueCurve()};
+      m_parameterMap[source] = {destination, e.valueCurve};
    }
 }

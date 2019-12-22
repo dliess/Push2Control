@@ -27,6 +27,7 @@ QHash<int, QByteArray> push2::qt::ControllerDeviceParameterModel::roleNames() co
     roles[Value]    = "value";
     roles[Type]     = "type";
     roles[MappingCurveRole] = "mappingCurve";
+    roles[DestinationParameter] = "destinationParameter";
     return roles;
 }
 
@@ -76,6 +77,16 @@ QVariant push2::qt::ControllerDeviceParameterModel::data(const QModelIndex &inde
                 MappingCurve mappingCurve(*valueCurve);
                 return QVariant::fromValue(mappingCurve);
             }
+        }
+        case DestinationParameter:
+        {
+            ParameterId paramId( {uint32_t(m_currentDeviceIndex), uint32_t(m_currentPresetIndex), uint32_t(parameterId(index.row()))} );
+            auto sounDevParameterId = m_rParameterMapper.getSoundDeviceOfControl(paramId);
+            if(!sounDevParameterId) break;
+            const auto& sndDev = *m_rMusicDeviceHolder.soundDevices.atIdx(sounDevParameterId->musicDeviceIdx).second; 
+            const auto sdName = sndDev.pDescr->productName;
+            const auto paramName = sndDev.pDescr->soundSection->parameters[sounDevParameterId->parameterId].name;
+            return QString((sdName + "->" + paramName).c_str());
         }
         default:
         {

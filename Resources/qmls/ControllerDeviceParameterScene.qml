@@ -9,6 +9,11 @@ Rectangle {
     height: 160
     color: "black"
 
+    Component.onCompleted:{
+        push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 0)
+        push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 1)
+        push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 2)
+    }
     Connections {
         target: push2Device
         onButtonPressed: {
@@ -152,22 +157,33 @@ Rectangle {
     Component{
         id: controllerDeviceParameterDelegate
         Rectangle {
+            id: theRect
             //height: display.height / 2
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: display.width / 8
             color: "black"
-            border.color: ListView.isCurrentItem ? "green" : "black"
-            border.width: ListView.isCurrentItem ? 3 : 0
+            //border.color: ListView.isCurrentItem ? "green" : "black"
+            //border.width: ListView.isCurrentItem ? 2 : 0
             radius: 7
+            gradient: Gradient {
+                GradientStop { position: 0.7; color: theRect.ListView.isCurrentItem ? "black" : "black" }
+                GradientStop { position: 1.0; color: theRect.ListView.isCurrentItem ? "blue" : "black" }
+            }
             Column
             {
                 anchors.fill: parent
                 anchors.margins: 3
+                spacing: 3
                 Text {
                     text: name
                     color: "white"
                     font.pointSize: 8
+                }
+                Text {
+                    text: destinationParameter ? " "+destinationParameter : ""
+                    color: "yellow"
+                    font.pointSize: 10
                 }
                 /*
                 Text {
@@ -197,32 +213,32 @@ Rectangle {
                         }
                     }
                     onLoaded:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                             item.setInValue(inValue)
                         }
                     }
                     onBendValueChanged:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                         }
                     }
                     onOutAtMaxChanged:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                         }
                     }
                     onOutAtMinChanged:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                         }
                     }
                     onInValueChanged: {
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setInValue(inValue)
                         }
