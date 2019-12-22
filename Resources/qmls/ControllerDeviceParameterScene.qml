@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import push2.enums 1.0
 import MappingCurveDrawing 1.0
+import "ListViewHelper.js" as ListViewHelper
 
 Rectangle {
     id: display
@@ -23,8 +24,7 @@ Rectangle {
                 }
                 case Button.E_BtnB:
                 {
-                    var idx = controllerDeviceParameterListView.indexAt(controllerDeviceParameterListView.contentX,1)
-                    var _x = x + idx
+                    var _x = x + ListViewHelper.getListViewStartIndex(controllerDeviceParameterListView)
                     if(0 <= _x && _x < controllerDeviceParameterListView.count)
                     {
                         controllerDeviceParameterListView.currentIndex = _x
@@ -38,11 +38,7 @@ Rectangle {
             {
                 case Encoder.E_EncoderTempo:
                 {
-                    var idx = controllerDeviceParameterListView.indexAt(controllerDeviceParameterListView.contentX,1)
-                    idx += increment
-                    idx = Math.max(0, idx)
-                    idx = Math.min(controllerDeviceParameterListView.count - 9, idx)
-                    controllerDeviceParameterListView.positionViewAtIndex(idx, ListView.Beginning)
+                    ListViewHelper.incrementListViewStartIndex(controllerDeviceParameterListView, increment)
                     break
                 }
                 case Encoder.E_Encoder:

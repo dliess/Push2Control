@@ -1,5 +1,6 @@
 import QtQuick 2.5
 import push2.enums 1.0
+import "ListViewHelper.js" as ListViewHelper
 
 Item {
     id: display
@@ -13,8 +14,7 @@ Item {
             {
                 case Button.E_BtnT:
                 {
-                    var idx = soundDeviceSelectionListView.indexAt(soundDeviceSelectionListView.contentX,1)
-                    var _x = x + idx
+                    var _x = x + ListViewHelper.getListViewStartIndex(soundDeviceSelectionListView)
                     if(0 <= _x &&_x < soundDeviceSelectionListView.count)
                     {
                         soundDeviceSelectionListView.currentIndex = _x
@@ -23,8 +23,7 @@ Item {
                 }
                 case Button.E_BtnB:
                 {
-                    var idx = voiceSelectionListView.indexAt(voiceSelectionListView.contentX,1)
-                    var _x = x + idx
+                    var _x = x + ListViewHelper.getListViewStartIndex(voiceSelectionListView)
                     if(0 <= _x &&_x < voiceSelectionListView.count)
                     {
                         soundDeviceAndVoiceSelection.setCurrentVoiceIndex(_x)
@@ -38,20 +37,12 @@ Item {
             {
                 case Encoder.E_EncoderTempo:
                 {
-                    var idx = soundDeviceSelectionListView.indexAt(soundDeviceSelectionListView.contentX,1)
-                    idx += increment
-                    idx = Math.max(0, idx)
-                    idx = Math.min(soundDeviceSelectionListView.count - 9, idx)
-                    soundDeviceSelectionListView.positionViewAtIndex(idx, ListView.Beginning);
+                    ListViewHelper.incrementListViewStartIndex(soundDeviceSelectionListView, increment)
                     break
                 }
                 case Encoder.E_EncoderMetronome:
                 {
-                    var idx = voiceSelectionListView.indexAt(voiceSelectionListView.contentX,1)
-                    idx += increment
-                    idx = Math.max(0, idx)
-                    idx = Math.min(soundDeviceSelectionListView.count - 9, idx)
-                    voiceSelectionListView.positionViewAtIndex(idx, ListView.Beginning);
+                    ListViewHelper.incrementListViewStartIndex(voiceSelectionListView, increment)
                     break
                 }
             }

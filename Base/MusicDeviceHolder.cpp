@@ -164,10 +164,10 @@ void MusicDeviceHolder::insertMusicDeviceDummies()
     midi::MidiMediumDummy dummy13("__JUST_4_TEST__MAM/MB33", midi::IMidiMedium::Type::USB);
     midi::MidiMediumDummy dummy14("__JUST_4_TEST__Korg/VolcaKeys", midi::IMidiMedium::Type::USB);   
     midi::MidiMediumDummy dummy15("__JUST_4_TEST__Korg/VolcaKick", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy16("__JUST_4_TEST__Elektron/Octatrack_Mk1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy17("__JUST_4_TEST__Elektron/Analog4_Mk1", midi::IMidiMedium::Type::USB);   
-    midi::MidiMediumDummy dummy18("__JUST_4_TEST__Elektron/AnalogRytm_Mk1", midi::IMidiMedium::Type::USB);
-    midi::MidiMediumDummy dummy19("__JUST_4_TEST__Mitxela/Flash", midi::IMidiMedium::Type::USB);     
+    midi::MidiMediumDummy dummy16("__JUST_4_TEST__Mitxela/Flash", midi::IMidiMedium::Type::USB);     
+    midi::MidiMediumDummy dummy17("__JUST_4_TEST__Elektron/Octatrack_Mk1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy18("__JUST_4_TEST__Elektron/Analog4_Mk1", midi::IMidiMedium::Type::USB);   
+    midi::MidiMediumDummy dummy19("__JUST_4_TEST__Elektron/AnalogRytm_Mk1", midi::IMidiMedium::Type::USB);
 
     addMidiInputMedium(dummy1.hijackInMedium());
     addMidiOutputMedium(dummy1.hijackOutMedium());

@@ -12,6 +12,7 @@
     <file>qmls/SoundDeviceSelectionScene.qml</file>
     <file>qmls/SoundPresetScene.qml</file>
     <file>qmls/ObjectCreator.js</file>
+    <file>qmls/ListViewHelper.js</file>
 </qresource>
 <qresource>
     <file>Artwork/Devices/Ableton/Push2Pads/Thumbnail.png</file>
