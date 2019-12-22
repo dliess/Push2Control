@@ -213,4 +213,15 @@ Rectangle {
             }
         }
     }
+    Text {
+        x: 40
+        y: 60
+        visible: controllerDeviceParameterListView.count == 0
+        text: "No Controller-device parameters available for control"
+        color: "white"
+        wrapMode: Text.WordWrap
+        font.pointSize: 20
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignTop
+    }
 }
