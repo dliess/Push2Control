@@ -169,6 +169,7 @@ Rectangle {
             height: 70
 
             // Determine the properties that Q_PROPERTY
+            bipolar: false
             name: "clock"
             backgroundColor: "black"
             borderActiveColor: "red"
@@ -207,21 +208,22 @@ Rectangle {
                     font.pointSize: 8
                 }
                 Text {
-                    text: type == "continous" ? value.toFixed(2) : value
+                    text: type != "list" ? value.toFixed(2) : value
                     color: extControlLearnState ? "red" : "blue"
-                    height: type == "continous" ? 10 : 90
-                    font.pointSize: type == "continous" ? 10 : 10
-                    horizontalAlignment: type == "continous" ? Text.AlignLeft : Text.AlignHCenter
-                    verticalAlignment: type == "continous" ? Text.AlignTop : Text.AlignVCenter
+                    height: type != "list" ? 10 : 90
+                    font.pointSize: type != "list" ? 10 : 10
+                    horizontalAlignment: type != "list" ? Text.AlignLeft : Text.AlignHCenter
+                    verticalAlignment: type != "list" ? Text.AlignTop : Text.AlignVCenter
                 }
                                
                 Loader {
                     id: valueCircleLoader
-                    property real angle: type == "continous" ? value : 0
+                    property real angle: type != "list" ? value : 0
                     x: 20
                     sourceComponent: {
                         switch(type) {
                             case "continous": return myValueCircle;
+                            case "continous-bipolar": return myValueCircle;
                             case "list":
                             default: break;
                         }
@@ -229,6 +231,7 @@ Rectangle {
                     onAngleChanged: {
                         switch(type) {
                             case "continous":
+                            case "continous-bipolar":
                                 if(item){
                                 item.setAngle(value * 365);
                                 }
@@ -240,6 +243,11 @@ Rectangle {
                     onLoaded:{
                         switch(type) {
                             case "continous":
+                                item.setBipolar(false)
+                                item.setAngle(value * 365)
+                                break
+                            case "continous-bipolar":
+                                item.setBipolar(true)
                                 item.setAngle(value * 365)
                                 break
                             case "list":

@@ -29,6 +29,7 @@ struct SoundDeviceParameter
    enum class Type
    {
       Continous,
+      ContinousBipolar,
       List
    };
    Type        type;
@@ -139,6 +140,7 @@ std::string SoundDeviceParameter::type2String(SoundDeviceParameter::Type type)
    switch(type)
    {
       case SoundDeviceParameter::Type::Continous: return "continous";
+      case SoundDeviceParameter::Type::ContinousBipolar: return "continous-bipolar";
       case SoundDeviceParameter::Type::List: return "list";
       default: return "unknown";
    }
@@ -148,6 +150,7 @@ inline
 SoundDeviceParameter::Type SoundDeviceParameter::typeFromString(const std::string& str)
 {
    if(str == "continous") return SoundDeviceParameter::Type::Continous;
+   else if(str == "continous-bipolar") return SoundDeviceParameter::Type::ContinousBipolar;
    else if(str == "list") return SoundDeviceParameter::Type::List;
    return SoundDeviceParameter::Type::Continous;
 }

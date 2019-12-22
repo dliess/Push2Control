@@ -29,7 +29,7 @@
             },
             {
                 "name" : "Pan",
-                "type" : "continous",
+                "type" : "continous-bipolar",
                 "midi" : {
                     "cc" : [10]
                 }
