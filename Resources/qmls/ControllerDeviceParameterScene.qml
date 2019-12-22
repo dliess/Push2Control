@@ -14,6 +14,11 @@ Rectangle {
         push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 1)
         push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 2)
     }
+    Component.onDestruction:{
+        push2Device.onSetLedOfBtn("#000000", Button.E_BtnT, 0)
+        push2Device.onSetLedOfBtn("#000000", Button.E_BtnT, 1)
+        push2Device.onSetLedOfBtn("#000000", Button.E_BtnT, 2)
+    }
     Connections {
         target: push2Device
         onButtonPressed: {

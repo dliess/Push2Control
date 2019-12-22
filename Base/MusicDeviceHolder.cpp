@@ -39,8 +39,8 @@ MusicDeviceHolder::MusicDeviceHolder()
 
 void MusicDeviceHolder::addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium)
 {
-    LOG_F(INFO, "adding midi input medium {}", pMedium->getDeviceName());
     const MusicDeviceId deviceId(pMedium->getDeviceName(), pMedium->getPortName());
+    LOG_F(INFO, "Try to add midi input medium \"{}\"", deviceId.toStr());
     auto pMusicDevice = findMusicDevice(deviceId);
     if(!pMusicDevice)
     {
@@ -51,8 +51,8 @@ void MusicDeviceHolder::addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> 
 
 void MusicDeviceHolder::addMidiOutputMedium(std::unique_ptr<midi::IMidiOutMedium> pMedium)
 {
-    LOG_F(INFO, "adding midi output medium {}", pMedium->getDeviceName());
     const MusicDeviceId deviceId(pMedium->getDeviceName(), pMedium->getPortName());
+    LOG_F(INFO, "Try to add midi output medium \"{}\"", deviceId.toStr());
     auto pMusicDevice = findMusicDevice(deviceId);
     if(!pMusicDevice)
     {
@@ -90,7 +90,7 @@ std::shared_ptr<MusicDevice> MusicDeviceHolder::createAndInsertMusicDevice(const
     else
     {
         pDescr = std::make_shared<MusicDeviceDescription>();
-        deviceLoader.load(deviceName, *pDescr);
+        deviceLoader.load(deviceId, *pDescr);
         if(pDescr->soundSection && pDescr->soundSection->parameters.size())
         {
             pSoundPresets = std::make_shared<SoundPresets>(pDescr->manufacturer, pDescr->productName);
