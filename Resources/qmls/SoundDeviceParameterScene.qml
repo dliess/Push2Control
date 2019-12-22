@@ -60,7 +60,7 @@ Rectangle {
                     var _x = x + 8
                     if(0 <= _x && _x < parameterCategoryGridView.count)
                     {
-                        parameterCategoryGridView.currentIndex = x
+                        parameterCategoryGridView.currentIndex = _x
                     }
                     break
                 }
@@ -125,7 +125,7 @@ Rectangle {
 
     GridView {
         id: parameterCategoryGridView
-        width: display.width * 6 / 8
+        width: display.width
         height: display.height
         cellWidth: display.width / 8
         cellHeight: display.height / 2

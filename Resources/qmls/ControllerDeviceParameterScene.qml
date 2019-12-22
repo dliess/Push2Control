@@ -70,7 +70,7 @@ Rectangle {
 
     GridView {
         id: parameterCategoryGridView
-        width: display.width * 6 / 8
+        width: display.width
         height: display.height
         cellWidth: display.width / 8
         cellHeight: display.height / 2
@@ -120,6 +120,17 @@ Rectangle {
         }
     }
 
+    Component{
+        id: notMappedText
+        Text{
+            y: 30
+            text: "Not\n\rmapped"
+            color: "yellow"
+            font.pointSize:12
+             font.italic : true
+        }
+    }
+
 
     ListView {
         id: controllerDeviceParameterListView
@@ -130,12 +141,12 @@ Rectangle {
         orientation: Qt.Horizontal
         spacing: 0
         delegate: controllerDeviceParameterDelegate
-        currentIndex: -1
+        currentIndex: 0
         onCurrentIndexChanged:{
             controllerDeviceParameter.setCurrentParameterInCategoryIndex(currentIndex)
         }
         Component.onCompleted:{
-            currentIndex = controllerDeviceParameter.currentParameterInCategoryIndex
+            //currentIndex = controllerDeviceParameter.currentParameterInCategoryIndex
         }
     }
     Component{
@@ -180,10 +191,17 @@ Rectangle {
                         {
                             return myMappingCurve
                         }
+                        else
+                        {
+                            return notMappedText
+                        }
                     }
                     onLoaded:{
-                        item.setMappingCurve(mappingCurve)
-                        item.setInValue(inValue)
+                        if(mappingCurve)
+                        {
+                            item.setMappingCurve(mappingCurve)
+                            item.setInValue(inValue)
+                        }
                     }
                     onBendValueChanged:{
                         if(mappingCurve)
