@@ -68,12 +68,26 @@ Item {
                 }
                 case Button.E_BtnOctaveUp:
                 {
-                    push2Pads.incOctave()
+                    if(ButtonPressState.Pressed == push2Device.getButtonState(Button.E_BtnScale))
+                    {
+                        push2Pads.incMidiChannel();
+                    }
+                    else
+                    {
+                        push2Pads.incOctave()
+                    }
                     break
                 }
                 case Button.E_BtnOctaveDown:
                 {
-                    push2Pads.decOctave()
+                    if(ButtonPressState.Pressed == push2Device.getButtonState(Button.E_BtnScale))
+                    {
+                        push2Pads.decMidiChannel();
+                    }
+                    else
+                    {
+                        push2Pads.decOctave()
+                    }
                     break
                 }
                 case Button.E_BtnPlay:

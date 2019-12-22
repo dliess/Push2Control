@@ -217,7 +217,7 @@ Rectangle {
         x: 40
         y: 60
         visible: controllerDeviceParameterListView.count == 0
-        text: "No Controller-device parameters available for control"
+        text: "No Controller-device parameters available for setup"
         color: "white"
         wrapMode: Text.WordWrap
         font.pointSize: 20

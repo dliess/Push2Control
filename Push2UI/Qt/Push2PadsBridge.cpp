@@ -4,7 +4,11 @@
 push2::qt::PadsBridge::PadsBridge(push2::Pads& rPads, QObject* parent) :
     QObject(parent),
     m_rPads(rPads)
-{}
+{
+    rPads.registerChannelChangedCb([this](){
+        emit midiChannelChanged();
+    });
+}
 
 void push2::qt::PadsBridge::activate()
 {
@@ -64,4 +68,24 @@ void push2::qt::PadsBridge::decOctave()
 {
    m_rPads.setOctave(m_rPads.getOctave() - 1);
    emit octaveChanged();    
+}
+
+int push2::qt::PadsBridge::midiChannel() const noexcept
+{
+    return m_rPads.getMidiChannel();
+}
+
+void push2::qt::PadsBridge::setMidiChannel(int channelNr)
+{
+    return m_rPads.setMidiChannel(channelNr);
+}
+
+void push2::qt::PadsBridge::incMidiChannel()
+{
+    return m_rPads.setMidiChannel(m_rPads.getMidiChannel() + 1);
+}
+
+void push2::qt::PadsBridge::decMidiChannel()
+{
+    return m_rPads.setMidiChannel(m_rPads.getMidiChannel() - 1);
 }

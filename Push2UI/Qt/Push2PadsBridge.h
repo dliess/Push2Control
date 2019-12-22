@@ -72,6 +72,7 @@ class PadsBridge : public QObject
     Q_PROPERTY(int musicScale READ musicScale NOTIFY musicScaleChanged)
     Q_PROPERTY(int mode READ mode NOTIFY modeChanged)
     Q_PROPERTY(int octave READ octave NOTIFY octaveChanged)
+    Q_PROPERTY(int midiChannel READ midiChannel NOTIFY midiChannelChanged)
 public:
     explicit PadsBridge(push2::Pads& rPads, QObject* parent = Q_NULLPTR);
    
@@ -87,12 +88,17 @@ public:
     int octave() const;
     Q_INVOKABLE void incOctave();
     Q_INVOKABLE void decOctave();
+    int midiChannel() const noexcept;
+    Q_INVOKABLE void setMidiChannel(int channelNr);
+    Q_INVOKABLE void incMidiChannel();
+    Q_INVOKABLE void decMidiChannel();
 
 signals:
     void rootNoteChanged();
     void musicScaleChanged();
     void modeChanged();
     void octaveChanged();
+    void midiChannelChanged();
 
 private:
     push2::Pads& m_rPads;

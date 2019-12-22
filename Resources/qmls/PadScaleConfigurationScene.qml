@@ -193,6 +193,13 @@ Item {
             }
         }
         Text {
+            id: midiChannelNrText
+            x:10
+            y:display.height * 0.1
+            text: "MidiCh: " + push2Pads.midiChannel
+            color: "white" 
+        }
+        Text {
             id: inKeyTxt
             x:10
             y:display.height * 0.8

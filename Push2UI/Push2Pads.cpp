@@ -227,3 +227,20 @@ int Pads::getOctave() const
 {
     return m_octaveOffset;
 }
+
+void Pads::setMidiChannel(int channelNr) noexcept
+{
+    if(channelNr < 1 || channelNr > 16) return;
+    m_channel = channelNr;
+    for(auto cb : m_channelChangedCbs){cb();};
+}
+
+int Pads::getMidiChannel() const noexcept
+{
+    return m_channel;
+}
+
+void Pads::registerChannelChangedCb(std::function<void()> cb) noexcept
+{
+    m_channelChangedCbs.push_back(cb);
+}
