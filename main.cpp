@@ -50,6 +50,7 @@
 #include "TapTempoHandlerBridge.h"
 #include "TransportControl.h"
 #include "TransportControlBridge.h"
+#include "SettingsSaverBridge.h"
 #include "sigwatch.h"
 #include "ThreadedLoop.h"
 
@@ -184,12 +185,14 @@ int main(int argc, char *argv[])
     push2::qt::TempoHandlerBridge       tempoHandlerBridge(tempoHandler);
     push2::qt::TapTempoHandlerBridge    tapTempoHandlerBridge(tapTempoHandler);
     push2::qt::TransportControlBridge   transportControlBridge(musicDeviceHolder.transportCmdDrains, transportControl);
+    push2::qt::SettingsSaverBridge      settingsSaverBridge(settingsFnCollection);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("musicScalesModel", &musicScalesModel);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("musicScalesBaseNoteModel", &musicScalesBaseNoteModel);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("push2Pads", &push2PadsBridge);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("tempoHandler", &tempoHandlerBridge);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("tapTempoHandler", &tapTempoHandlerBridge);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("transportControl", &transportControlBridge);
+    fboQuickView.fboQuickView.rootContext()->setContextProperty("settingsSaver", &settingsSaverBridge);
 
     qmlRegisterUncreatableMetaObject(push2::qt::FpWidget::staticMetaObject, "push2.enums", 1, 0, "FpWidget", "Not creatable as it is an enum type");
     qmlRegisterUncreatableMetaObject(push2::qt::ButtonPressState::staticMetaObject, "push2.enums", 1, 0, "ButtonPressState", "Not creatable as it is an enum type");
