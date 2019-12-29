@@ -1,6 +1,8 @@
 # Push2Control
 Midi Controller sw for Abletons Push2
 
+![FrontPanel1](/Resources/Artwork/Documentation/FrontPanel1.png?raw=true)
+
 ## Dependencies:
   + qtbase5-dev
   + qtdeclarative5-dev
