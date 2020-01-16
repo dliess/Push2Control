@@ -16,6 +16,12 @@ void from_json(const nlohmann::json& j, T& obj)
 namespace meta
 {
 
+template <class T>
+auto getClassNameOrIndex(int i) noexcept
+{
+    return i;
+};
+
 //////////////////// SOME HELPERS
 
 template <typename T>
@@ -136,7 +142,7 @@ nlohmann::json serialize_basic(const mpark::variant<T...>& obj)
       if(p)
       {
          ret = meta::serialize(*p);
-         ret["__type_index__"] = i;
+         ret[".type"] = getClassNameOrIndex<Type>(i);
       }
       return true;
    });
@@ -267,8 +273,8 @@ void deserialize_basic(mpark::variant<T...>& ret, const nlohmann::json& object)
    for_each_in_tuple(tuple, [&ret, &object](int i, auto& typeHolder){
       using Type = std::decay_t<decltype(typeHolder)>;
       try {
-         auto it = object.find("__type_index__");
-         if(it != object.end() && *it != i){
+         auto it = object.find(".type");
+         if(it != object.end() && *it != getClassNameOrIndex<Type>(i)){
                 throw std::runtime_error("");
          }
          ret = object.get<Type>();

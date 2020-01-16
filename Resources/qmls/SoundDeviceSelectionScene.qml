@@ -1,5 +1,6 @@
 import QtQuick 2.5
 import push2.enums 1.0
+import "ListViewHelper.js" as ListViewHelper
 
 Item {
     id: display
@@ -13,7 +14,7 @@ Item {
             {
                 case Button.E_BtnT:
                 {
-                    var _x = x + soundDeviceSelectionListView.indexAt(0,0)
+                    var _x = x + ListViewHelper.getListViewStartIndex(soundDeviceSelectionListView)
                     if(0 <= _x &&_x < soundDeviceSelectionListView.count)
                     {
                         soundDeviceSelectionListView.currentIndex = _x
@@ -22,7 +23,7 @@ Item {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = x + voiceSelectionListView.indexAt(0,0)
+                    var _x = x + ListViewHelper.getListViewStartIndex(voiceSelectionListView)
                     if(0 <= _x &&_x < voiceSelectionListView.count)
                     {
                         soundDeviceAndVoiceSelection.setCurrentVoiceIndex(_x)
@@ -36,14 +37,12 @@ Item {
             {
                 case Encoder.E_EncoderTempo:
                 {
-                    var idx = soundDeviceSelectionListView.indexAt(soundDeviceSelectionListView.contentX,1)
-                    soundDeviceSelectionListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    ListViewHelper.incrementListViewStartIndex(soundDeviceSelectionListView, increment)
                     break
                 }
                 case Encoder.E_EncoderMetronome:
                 {
-                    var idx = voiceSelectionListView.indexAt(voiceSelectionListView.contentX,1)
-                    voiceSelectionListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    ListViewHelper.incrementListViewStartIndex(voiceSelectionListView, increment)
                     break
                 }
             }

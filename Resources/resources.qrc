@@ -12,6 +12,7 @@
     <file>qmls/SoundDeviceSelectionScene.qml</file>
     <file>qmls/SoundPresetScene.qml</file>
     <file>qmls/ObjectCreator.js</file>
+    <file>qmls/ListViewHelper.js</file>
 </qresource>
 <qresource>
     <file>Artwork/Devices/Ableton/Push2Pads/Thumbnail.png</file>
@@ -24,7 +25,7 @@
     <file>Artwork/Devices/Roli/SeaboardBlocks/Thumbnail.png</file>
     <file>Artwork/Devices/Novation/LaunchControlXL/Thumbnail.png</file>
     <file>Artwork/Devices/Synthstorm/Deluge/Thumbnail.png</file>
-    <file>Artwork/Devices/Yamaha/A1NX/Thumbnail.png</file>
+    <file>Artwork/Devices/Yamaha/AN1X/Thumbnail.png</file>
     <file>Artwork/Devices/Focusrite/Scarlet6i6/Thumbnail.png</file>
     <file>Artwork/Devices/Korg/VolcaKeys/Thumbnail.png</file>
     <file>Artwork/Devices/Korg/VolcaKick/Thumbnail.png</file>
@@ -34,5 +35,6 @@
     <file>Artwork/Devices/Elektron/Analog4_Mk1/Thumbnail.png</file>
     <file>Artwork/Devices/Elektron/Octatrack_Mk1/Thumbnail.png</file>
     <file>Artwork/Devices/MAM/MB33/Thumbnail.png</file>
+    <file>Artwork/Devices/Mitxela/Flash/Thumbnail.png</file>
 </qresource>
 </RCC>

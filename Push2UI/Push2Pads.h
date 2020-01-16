@@ -55,10 +55,15 @@ public:
     void setOctave(int octave);
     int getOctave() const;
 
+    void setMidiChannel(int channelNr) noexcept;
+    int getMidiChannel() const noexcept;
+    void registerChannelChangedCb(std::function<void()> cb) noexcept;
+
 private:
     push2device::Push2Device& m_rDevice;
     std::vector<Callback>     m_callbacks;
     uint8_t                   m_channel{1};
+    std::vector<std::function<void()>> m_channelChangedCbs;
 
     std::atomic<uint8_t> m_chromaticViewOffset{0};
     std::atomic<uint8_t> m_inKeyViewOffset{0};

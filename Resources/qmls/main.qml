@@ -23,6 +23,7 @@ Item {
         push2Device.onSetLedOfBtn("white", Button.E_BtnTapTempo)
         push2Device.onSetLedOfBtn("white", Button.E_BtnPageRight)
         push2Device.onSetLedOfBtn("white", Button.E_BtnPageLeft)
+        push2Device.onSetLedOfBtn("white", Button.E_BtnSelect)
         push2Device.onSetLedOfBtn("black", Button.E_BtnT, 0)
         push2Device.onSetLedOfBtn("black", Button.E_BtnT, 1)
         push2Device.onSetLedOfBtn("black", Button.E_BtnT, 2)
@@ -67,12 +68,26 @@ Item {
                 }
                 case Button.E_BtnOctaveUp:
                 {
-                    push2Pads.incOctave()
+                    if(ButtonPressState.Pressed == push2Device.getButtonState(Button.E_BtnScale))
+                    {
+                        push2Pads.incMidiChannel();
+                    }
+                    else
+                    {
+                        push2Pads.incOctave()
+                    }
                     break
                 }
                 case Button.E_BtnOctaveDown:
                 {
-                    push2Pads.decOctave()
+                    if(ButtonPressState.Pressed == push2Device.getButtonState(Button.E_BtnScale))
+                    {
+                        push2Pads.decMidiChannel();
+                    }
+                    else
+                    {
+                        push2Pads.decOctave()
+                    }
                     break
                 }
                 case Button.E_BtnPlay:
@@ -88,6 +103,11 @@ Item {
                 case Button.E_BtnPageLeft:
                 {
                     tempoHandler.setNudgeBpm(-5.0);
+                    break
+                }
+                case Button.E_BtnSelect:
+                {
+                    settingsSaver.saveSettings();
                     break
                 }
                 default:

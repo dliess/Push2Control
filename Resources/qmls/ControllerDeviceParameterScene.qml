@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import push2.enums 1.0
 import MappingCurveDrawing 1.0
+import "ListViewHelper.js" as ListViewHelper
 
 Rectangle {
     id: display
@@ -8,6 +9,16 @@ Rectangle {
     height: 160
     color: "black"
 
+    Component.onCompleted:{
+        push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 0)
+        push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 1)
+        push2Device.onSetLedOfBtn("#AA0000", Button.E_BtnT, 2)
+    }
+    Component.onDestruction:{
+        push2Device.onSetLedOfBtn("#000000", Button.E_BtnT, 0)
+        push2Device.onSetLedOfBtn("#000000", Button.E_BtnT, 1)
+        push2Device.onSetLedOfBtn("#000000", Button.E_BtnT, 2)
+    }
     Connections {
         target: push2Device
         onButtonPressed: {
@@ -23,7 +34,7 @@ Rectangle {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = controllerDeviceParameterListView.indexAt(0,0) + x
+                    var _x = x + ListViewHelper.getListViewStartIndex(controllerDeviceParameterListView)
                     if(0 <= _x && _x < controllerDeviceParameterListView.count)
                     {
                         controllerDeviceParameterListView.currentIndex = _x
@@ -37,8 +48,7 @@ Rectangle {
             {
                 case Encoder.E_EncoderTempo:
                 {
-                    var idx = controllerDeviceParameterListView.indexAt(controllerDeviceParameterListView.contentX,1)
-                    controllerDeviceParameterListView.positionViewAtIndex(idx + increment, ListView.Beginning)
+                    ListViewHelper.incrementListViewStartIndex(controllerDeviceParameterListView, increment)
                     break
                 }
                 case Encoder.E_Encoder:
@@ -70,7 +80,7 @@ Rectangle {
 
     GridView {
         id: parameterCategoryGridView
-        width: display.width * 6 / 8
+        width: display.width
         height: display.height
         cellWidth: display.width / 8
         cellHeight: display.height / 2
@@ -120,6 +130,17 @@ Rectangle {
         }
     }
 
+    Component{
+        id: notMappedText
+        Text{
+            y: 30
+            text: "Not\n\rmapped"
+            color: "yellow"
+            font.pointSize:12
+             font.italic : true
+        }
+    }
+
 
     ListView {
         id: controllerDeviceParameterListView
@@ -130,33 +151,44 @@ Rectangle {
         orientation: Qt.Horizontal
         spacing: 0
         delegate: controllerDeviceParameterDelegate
-        currentIndex: -1
+        currentIndex: 0
         onCurrentIndexChanged:{
             controllerDeviceParameter.setCurrentParameterInCategoryIndex(currentIndex)
         }
         Component.onCompleted:{
-            currentIndex = controllerDeviceParameter.currentParameterInCategoryIndex
+            //currentIndex = controllerDeviceParameter.currentParameterInCategoryIndex
         }
     }
     Component{
         id: controllerDeviceParameterDelegate
         Rectangle {
+            id: theRect
             //height: display.height / 2
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             width: display.width / 8
             color: "black"
-            border.color: ListView.isCurrentItem ? "green" : "black"
-            border.width: ListView.isCurrentItem ? 3 : 0
+            //border.color: ListView.isCurrentItem ? "green" : "black"
+            //border.width: ListView.isCurrentItem ? 2 : 0
             radius: 7
+            gradient: Gradient {
+                GradientStop { position: 0.7; color: theRect.ListView.isCurrentItem ? "black" : "black" }
+                GradientStop { position: 1.0; color: theRect.ListView.isCurrentItem ? "blue" : "black" }
+            }
             Column
             {
                 anchors.fill: parent
                 anchors.margins: 3
+                spacing: 3
                 Text {
                     text: name
                     color: "white"
                     font.pointSize: 8
+                }
+                Text {
+                    text: destinationParameter ? " "+destinationParameter : ""
+                    color: "yellow"
+                    font.pointSize: 10
                 }
                 /*
                 Text {
@@ -180,31 +212,38 @@ Rectangle {
                         {
                             return myMappingCurve
                         }
+                        else
+                        {
+                            return notMappedText
+                        }
                     }
                     onLoaded:{
-                        item.setMappingCurve(mappingCurve)
-                        item.setInValue(inValue)
+                        if(mappingCurve && item)
+                        {
+                            item.setMappingCurve(mappingCurve)
+                            item.setInValue(inValue)
+                        }
                     }
                     onBendValueChanged:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                         }
                     }
                     onOutAtMaxChanged:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                         }
                     }
                     onOutAtMinChanged:{
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setMappingCurve(mappingCurve)
                         }
                     }
                     onInValueChanged: {
-                        if(mappingCurve)
+                        if(mappingCurve && item)
                         {
                             item.setInValue(inValue)
                         }
@@ -212,5 +251,16 @@ Rectangle {
                 }
             }
         }
+    }
+    Text {
+        x: 40
+        y: 60
+        visible: controllerDeviceParameterListView.count == 0
+        text: "No Controller-device parameters available for setup"
+        color: "white"
+        wrapMode: Text.WordWrap
+        font.pointSize: 20
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignTop
     }
 }

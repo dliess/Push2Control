@@ -2,29 +2,20 @@
     "version" : "0.0.0",
     "manufacturer" : "Freds Lab",
     "productName" : "Buzzzy",
-    "picture": "",
     "soundSection":{
         "voices":
         [
             {
-                "name": "1",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "1"
             },
             {
-                "name": "2",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "2"
             },
             {
-                "name": "3",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "3"
             },
             {
-                "name": "4",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "4"
             }
         ],
         "parameters" : 
@@ -34,48 +25,42 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [7]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pan",
-                "type" : "continous",
+                "type" : "continous-bipolar",
                 "midi" : {
                     "cc" : [10]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Tempo",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [16]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Div",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [17]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Repeat",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [18]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Gate",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Engine",
@@ -95,40 +80,35 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [70]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [72]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [73]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Cutoff",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [74]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Resonance",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [71]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Space Model",
@@ -174,48 +154,42 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [89]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Mix",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [90]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Space Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [91]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Space Diffuse",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [92]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Feedback",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [93]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Time",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [94]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":

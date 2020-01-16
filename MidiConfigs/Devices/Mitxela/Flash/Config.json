@@ -1,0 +1,147 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Mitxela",
+    "productName" : "Flash Synth",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1"
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "Modulation",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [1]
+                }
+            },
+            {
+                "name" : "Portamento",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [5]
+                }
+            },
+            {
+                "name" : "Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [64]
+                }
+            },
+            {
+                "name" : "LFO Freq",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [76]
+                }
+            },
+            {
+                "name" : "Attack rate",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [73]
+                }
+            },
+            {
+                "name" : "Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [72]
+                }
+            },
+            {
+                "name" : "Oscillator Detune",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [15]
+                }
+            },
+            {
+                "name" : "FM Ratio",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20, 21]
+                }
+            },
+            {
+                "name" : "Effect Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [22]
+                }
+            },
+            {
+                "name" : "Effect Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [75]
+                }
+            },
+            {
+                "name" : "Effect Decay",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [23]
+                }
+            },
+            {
+                "name" : "Algorithm",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [24]
+                }
+            },
+            {
+                "name" : "Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [25]
+                }
+            },
+            {
+                "name" : "Wave parameter",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [26]
+                }
+            },
+            {
+                "name" : "Arpeggiator Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [27]
+                }
+            },
+            {
+                "name" : "Per Channel Tuning",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [3]
+                }
+            },
+            {
+                "name" : "All channels Tuning",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [9]
+                }
+            },
+            {
+                "name" : "Output Gain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [88]
+                }
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "Params", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]}
+        ]
+    },
+    "reactsToTransportCommands" : true
+}

@@ -10,5 +10,13 @@
     "Seaboard BLOCK:Seaboard BLOCK MIDI 1" : "Roli/SeaboardBlocks",
     "Buzzzy! polysynth:Buzzzy! polysynth MIDI 1" : "FredsLab/Buzzzy",
     "MicroBrute:MicroBrute MIDI 1" : "Arturia/Microbrute",
-    "SUONOBUONO nABC:SUONOBUONO nABC MIDI 1" : "SuonoBuono/nABC"
+    "SUONOBUONO nABC:SUONOBUONO nABC MIDI 1" : "SuonoBuono/nABC",
+
+    "__JUST_4_TEST__Elektron/Octatrack_Mk1": "Elektron/Octatrack_Mk1",
+    "__JUST_4_TEST__Elektron/Analog4_Mk1": "Elektron/Analog4_Mk1",
+    "__JUST_4_TEST__Elektron/AnalogRytm_Mk1": "Elektron/AnalogRytm_Mk1",
+    "__JUST_4_TEST__MAM/MB33": "MAM/MB33",
+    "__JUST_4_TEST__Mitxela/Flash": "Mitxela/Flash",
+    "__JUST_4_TEST__Korg/VolcaKeys": "Korg/VolcaKeys",
+    "__JUST_4_TEST__Korg/VolcaKick": "Korg/VolcaKick"
 }

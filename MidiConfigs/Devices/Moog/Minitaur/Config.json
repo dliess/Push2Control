@@ -2,14 +2,11 @@
     "version" : "0.0.0",
     "manufacturer" : "Moog",
     "productName" : "Minitaur",
-    "picture": "",
     "soundSection":{
         "voices":
         [
             {
-                "name": "1",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "1"
             }
         ],
         "parameters" : 
@@ -20,8 +17,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [3, 35]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO VCO Amount",
@@ -29,8 +25,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [13, 45]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO VCF Amount",
@@ -38,8 +33,7 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [12, 44]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO Midi Sync",
@@ -131,8 +125,7 @@
                 "midi" : {
                     "cc" : [17, 49]
                 },
-                "type" : "continous",
-                "ranges" : []
+                "type" : "continous"
             },
             {
                 "name" : "VCO 2 Breat Freq",
@@ -140,8 +133,7 @@
                 "midi" : {
                     "cc" : [18, 50]
                 },
-                "type" : "continous",
-                "ranges" : []
+                "type" : "continous"
             },
             {
                 "name" : "Note Sync",
@@ -163,8 +155,7 @@
                 "midi" : {
                     "cc" : [5]
                 },
-                "type" : "continous",
-                "ranges" : []
+                "type" : "continous"
             },
             {
                 "name" : "Glide Switch",
@@ -212,8 +203,7 @@
                 "midi" : {
                     "cc" : [15, 47]
                 },
-                "type" : "continous",
-                "ranges" : []
+                "type" : "continous"
             },
             {
                 "name" : "VCO2",
@@ -221,8 +211,7 @@
                 "midi" : {
                     "cc" : [16, 48]
                 },
-                "type" : "continous",
-                "ranges" : []
+                "type" : "continous"
             },
             {
                 "name" : "External In Level",
@@ -230,8 +219,7 @@
                 "midi" : {
                     "cc" : [27, 59]
                 },
-                "type" : "continous",
-                "ranges" : []
+                "type" : "continous"
             },
             {
                 "name" : "Cutoff",
@@ -239,94 +227,80 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19, 51]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Resonance",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [21, 53]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "EG Amount",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [22, 50]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter KB Track",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [20, 54]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter Velocity Sens",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [89]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [23, 55]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Decay Release",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [24, 56]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Sustain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [25, 57]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [28, 60]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCA Decay/Release",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [29, 61]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCA Sustain",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [30,62]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Release Switch",
-                "description" : "",
                 "midi" : {
                     "cc" : [72]
                 },
@@ -339,7 +313,6 @@
             },
             {
                 "name" : "Trigger Mode",
-                "description" : "",
                 "midi" : {
                     "cc" : [73]
                 },
@@ -353,25 +326,20 @@
             },
             {
                 "name" : "VCA Output Level",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [7, 39]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Volume Velocity Sens",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [90]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Key Priority",
-                "description" : "",
                 "midi" : {
                     "cc" : [91]
                 },
@@ -385,16 +353,13 @@
             },
             {
                 "name" : "Modwheel Response",
-                "description" : "",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [1, 33]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Pitch Wheel Bend Up Amnt",
-                "description" : "",
                 "midi" : {
                     "cc" : [107]
                 },
@@ -413,7 +378,6 @@
             },
             {
                 "name" : "Pitch Wheel Bend Down Amnt",
-                "description" : "",
                 "midi" : {
                     "cc" : [108]
                 },

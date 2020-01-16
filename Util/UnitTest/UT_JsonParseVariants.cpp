@@ -56,6 +56,15 @@ inline auto registerMembers<PopLocker>()
    );
 }
 
+template <>
+auto getClassNameOrIndex<Person>(int i) noexcept { return "Person"; }
+
+template <>
+auto getClassNameOrIndex<BreakDancer>(int i) noexcept { return "BreakDancer"; }
+
+template <>
+auto getClassNameOrIndex<PopLocker>(int i) noexcept { return "PopLocker"; }
+
 } // namespace meta
 
 //- -- This is just needed for the lambda overload collection
@@ -80,7 +89,7 @@ TEST(JsonParseVariantsTest, VectorOfVariantToJson) {
    dancers.emplace_back(BreakDancer("BBoyBenny", 30, -123));
 
    nlohmann::json jDancers(dancers);
-   //std::cout << jDancers.dump(1) << std::endl;
+   std::cout << jDancers.dump(1) << std::endl;
 
    std::vector<Dancer> dancersReadBack;
    dancersReadBack = jDancers.get<std::vector<Dancer>>();

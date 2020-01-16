@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import push2.enums 1.0
 import "ObjectCreator.js" as ObjectCreator
+import "ListViewHelper.js" as ListViewHelper
 
 Item {
     id: display
@@ -26,7 +27,7 @@ Item {
             {
 		        case Button.E_BtnT:
                 {
-                    var _x = x + theInputPortListView.indexAt(0,0)
+                    var _x = x + ListViewHelper.getListViewStartIndex(theInputPortListView)
                     if(0 <= _x && _x < theInputPortListView.count)
                     {
                         theInputPortListView.currentIndex = _x
@@ -36,7 +37,7 @@ Item {
                 }
                 case Button.E_BtnB:
                 {
-                    var _x = x + theOutputPortListView.indexAt(0,0)
+                    var _x = x + ListViewHelper.getListViewStartIndex(theOutputPortListView)
                     if(0 <= _x && _x < theOutputPortListView.count)
                     {
                         midiOpenedOutputPortsModel.toggleRouted(_x)
@@ -59,14 +60,12 @@ Item {
             {
                 case Encoder.E_EncoderTempo:
                 {
-                    var idx = theInputPortListView.indexAt(theInputPortListView.contentX,1)
-                    theInputPortListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    ListViewHelper.incrementListViewStartIndex(theInputPortListView, increment)
                     break
                 }
                 case Encoder.E_EncoderMetronome:
                 {
-                    var idx = theOutputPortListView.indexAt(theOutputPortListView.contentX,1)
-                    theOutputPortListView.positionViewAtIndex(idx + increment, ListView.Beginning);
+                    ListViewHelper.incrementListViewStartIndex(theOutputPortListView, increment)
                     break
                 }
             }

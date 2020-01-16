@@ -63,22 +63,34 @@ QVariant push2::qt::SoundDeviceParameterModel::data(const QModelIndex &index, in
         case Value:
         {
             const auto value = rDevice.getSoundParameterValue(m_currentVoiceIndex, parameterIdx);
-            if(SoundDeviceParameter::Type::List == rParam.type)
+            switch(rParam.type)
             {
-                for(auto& e : rParam.ranges)
+                case SoundDeviceParameter::Type::Continous:
                 {
-                    const auto min = e.range[0];
-                    const auto max = e.range[1];
-                    if(min <= int(value * 128) && int(value * 128) <= max)
-                    {
-                        return QString(e.name.c_str());
-                    }
+                    return value;
+                } 
+                case SoundDeviceParameter::Type::ContinousBipolar:
+                {
+                    return value;
                 }
-                return QString("?unknown?");
-            }
-            else
-            {
-                return value;
+                case SoundDeviceParameter::Type::List:
+                {
+                    if(!rParam.ranges) return value;
+                    for(auto& e : *rParam.ranges)
+                    {
+                        const auto min = e.range[0];
+                        const auto max = e.range[1];
+                        if(min <= int(value * 127) && int(value * 127) <= max)
+                        {
+                            return QString(e.name.c_str());
+                        }
+                    }
+                    return QString("?unknown?");
+                }
+                default:
+                {
+                    return value;
+                }
             }
         }
         case Type:

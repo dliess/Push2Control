@@ -2,14 +2,11 @@
     "version" : "0.0.0",
     "manufacturer" : "Korg",
     "productName" : "Volca Keys",
-    "picture": "",
     "soundSection":{
         "voices":
         [
             {
-                "name": "1",
-                "type": "chromatic",
-                "range": [0, 127]
+                "name": "1"
             }
         ],
         "parameters" : 
@@ -19,128 +16,112 @@
                 "type" : "continous",
                 "midi" : {
                     "cc" : [5]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Expression",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [11]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Voice",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [40]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Octave",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [41]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Detune",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [42]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCO Eg",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [43]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Filter Cutoff",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [44]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "VCF Eg",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [45]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO Rate",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [46]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO Pitch",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [47]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "LFO Cutoff",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [48]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Eg Attack",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [49]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Eg Decay",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [50]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Eg Sustain",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [51]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Time",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [52]
-                },
-                "ranges" : []
+                }
             },
             {
                 "name" : "Delay Feedback",
                 "type" : "continous",
                 "midi" : {
                     "cc" : [53]
-                },
-                "ranges" : []
+                }
             }
         ],
         "parameter_categories":

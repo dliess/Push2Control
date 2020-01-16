@@ -11,39 +11,35 @@
      
     void ValueCircle::paint(QPainter *painter)
     {
-        // ????????? ???????
-        QBrush  brush(m_backgroundColor);               // Choose a background color, ...
-        QBrush  brushActive(m_borderActiveColor);       // active color of border, ...
-        QBrush  brushNonActive(m_borderNonActiveColor); // not active color of border
+        QBrush  brush(m_backgroundColor);
+        QBrush  brushActive(m_borderActiveColor);
+        QBrush  brushNonActive(m_borderNonActiveColor);
      
-        painter->setPen(Qt::NoPen);                             // remove the outline
-        painter->setRenderHints(QPainter::Antialiasing, true);  // Enable antialiasing
+        painter->setPen(Qt::NoPen);
+        painter->setRenderHints(QPainter::Antialiasing, true);
      
-        painter->setBrush(brushNonActive);                          // Draw the lowest background in a circle
-/*        painter->drawEllipse(boundingRect().adjusted(1,1,-1,-1));   // with adjustment to the current dimensions, which
-                                                                    // will be determined in QML-layer.
-                                                                    // It will not be an active background rim
-*/
-        painter->drawPie(boundingRect().adjusted(1,1,-1,-1),    // to fit to the size of the layer in QML
-                         -120*16,       // The starting point
-                         -300.0 *16);   // the angle of rotation, which is necessary to render the object
+        painter->setBrush(brushNonActive);
+        painter->drawPie(boundingRect().adjusted(1,1,-1,-1),
+                         -120 * 16,
+                         -300.0 * 16);
 
 
-        // The progress bar will be formed by drawing Pie chart
-        painter->setBrush(brushActive);                         // Draw rim active in the background, depending on the angle of rotation
-        painter->drawPie(boundingRect().adjusted(1,1,-1,-1),    // to fit to the size of the layer in QML
-                         -120*16,         // The starting point
-                         -m_angle * (300.0/360.0) *16);   // the angle of rotation, which is necessary to render the object
+        painter->setBrush(brushActive);
+        auto angle = m_bipolar ? m_angle - 180 : m_angle;
+        angle = -angle * (300.0/360.0) * 16;
+        painter->drawPie(boundingRect().adjusted(1,1,-1,-1),
+                         m_bipolar ? -270 * 16 : -120 * 16, 
+                         angle);
      
-        painter->setBrush(brush);       // the basic background of the timer, which overlap on top
-        painter->drawEllipse(boundingRect().adjusted(5,5,-5,-5));   // Border (aka the progress bar) will be formed
+        painter->setBrush(brush);
+        painter->drawEllipse(boundingRect().adjusted(5,5,-5,-5));
     }
      
     void ValueCircle::clear()
     {
-        setAngle(0);                    // Expose turn to zero
-        update();                       // update object
-        emit cleared();                 // Emits a clear signal
+        setAngle(0);
+        update();
+        emit cleared();
     }
          
     QString ValueCircle::name() const
@@ -69,6 +65,11 @@
     qreal ValueCircle::angle() const
     {
         return m_angle;
+    }
+
+    bool ValueCircle::bipolar() const
+    {
+        return m_bipolar;
     }
          
     void ValueCircle::setName(const QString name)
@@ -120,3 +121,10 @@
         update();
         emit angleChanged(m_angle);
     }
+
+ void ValueCircle::setBipolar(bool bipolar)
+ {
+    if(m_bipolar == bipolar) return;
+    m_bipolar = bipolar;
+    emit bipolarChanged();
+ }

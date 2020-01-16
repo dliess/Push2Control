@@ -27,6 +27,7 @@ add_library(Push2UIQt STATIC
    "Push2DeviceQtAdapter.cpp"
    "Push2PadsBridge.cpp"
    "QmlSceneLoader.cpp"
+   "SettingsSaverBridge.cpp"
    "SoundDeviceAndVoiceSelection.cpp"
    "SoundDeviceParameter.cpp"
    "SoundDeviceParameterCategoryModel.cpp"
