@@ -33,8 +33,10 @@
     <file>Artwork/Devices/Eventide/Space/Thumbnail.png</file>
     <file>Artwork/Devices/KeithMcMillan/KMix/Thumbnail.png</file>
     <file>Artwork/Devices/Elektron/Analog4_Mk1/Thumbnail.png</file>
+    <file>Artwork/Devices/Elektron/Model_Samples/Thumbnail.png</file>
     <file>Artwork/Devices/Elektron/Octatrack_Mk1/Thumbnail.png</file>
     <file>Artwork/Devices/MAM/MB33/Thumbnail.png</file>
     <file>Artwork/Devices/Mitxela/Flash/Thumbnail.png</file>
+    <file>Artwork/Devices/TwistedElectrons/TherapKid/Thumbnail.png</file>
 </qresource>
 </RCC>

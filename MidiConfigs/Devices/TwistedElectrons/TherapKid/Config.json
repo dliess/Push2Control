@@ -1,0 +1,248 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Twisted Electrons",
+    "productName" : "ThreapKid",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1"
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "LFO1 Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [1]
+                }
+            },
+            {
+                "name" : "LFO1 Rate",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [3]
+                }
+            },
+            {
+                "name" : "LFO2 Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [2]
+                }
+            },
+            {
+                "name" : "LFO2 Rate",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [4]
+                }
+            },
+            {
+                "name" : "Filter Cutoff",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [5]
+                }
+            },
+            {
+                "name" : "Filter Resonance",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [6]
+                }
+            },
+            {
+                "name" : "Arp rate",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [8]
+                }
+            },
+            {
+                "name" : "Arp range",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [9]
+                }
+            },
+            {
+                "name" : "Attack",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [13]
+                }
+            },
+            {
+                "name" : "Sustain",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [7]
+                }
+            },
+            {
+                "name" : "Release",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [14]
+                }
+            },
+            {
+                "name" : "Mix",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [15]
+                }
+            },
+            {
+                "name" : "Vol WavF1",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [16]
+                }
+            },
+            {
+                "name" : "Vol WavF2",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [17]
+                }
+            },
+            {
+                "name" : "Vol WavF3",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [18]
+                }
+            },
+            {
+                "name" : "Vol WavF4",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [19]
+                }
+            },
+            {
+                "name" : "Vol WavF5",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20]
+                }
+            },
+            {
+                "name" : "Vol WavF6",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [21]
+                }
+            },
+            {
+                "name" : "Vol WavF7",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [22]
+                }
+            },
+            {
+                "name" : "Vol WavF8",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [23]
+                }
+            },
+            {
+                "name" : "Tune WavF1",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [25]
+                }
+            },
+            {
+                "name" : "Tune WavF2",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [26]
+                }
+            },
+            {
+                "name" : "Tune WavF3",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [27]
+                }
+            },
+            {
+                "name" : "Tune WavF4",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [28]
+                }
+            },
+            {
+                "name" : "Tune WavF5",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [29]
+                }
+            },
+            {
+                "name" : "Tune WavF6",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [30]
+                }
+            },
+            {
+                "name" : "Tune WavF7",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [31]
+                }
+            },
+            {
+                "name" : "Tune WavF8",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [32]
+                }
+            },
+            {
+                "name" : "PW1",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [10]
+                }
+            },
+            {
+                "name" : "PW2",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [24]
+                }
+            },
+            {
+                "name" : "Glide",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [11]
+                }
+            },
+            {
+                "name" : "Tune",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [12]
+                }
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "LFO/Filt/Arp", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7]},
+            {"category_name": "Amp",     "parameter_ids": [8, 9, 10, 11, 28, 29, 30, 31]},
+            {"category_name": "Vol Waveform", "parameter_ids": [12, 13, 14, 15, 16, 17, 18, 19]},
+            {"category_name": "Tune Waveform", "parameter_ids": [20, 21, 22, 23, 24, 25, 26, 27]}
+        ]
+    },
+    "reactsToTransportCommands" : true
+}

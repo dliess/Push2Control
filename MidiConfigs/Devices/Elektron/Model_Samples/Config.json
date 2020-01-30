@@ -1,0 +1,242 @@
+{
+    "version" : "0.0.0",
+    "manufacturer" : "Elektron",
+    "productName" : "Model:Samples",
+    "soundSection":{
+        "voices":
+        [
+            {
+                "name": "1"
+            },
+            {
+                "name": "2"
+            },
+            {
+                "name": "3"
+            },
+            {
+                "name": "4"
+            },
+            {
+                "name": "5"
+            },
+            {
+                "name": "6"
+            }
+        ],
+        "parameters" : 
+        [
+            {
+                "name" : "Note",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [3]
+                }
+            },
+            {
+                "name" : "Mute",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [94]
+                }
+            },
+            {
+                "name" : "Track Level",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [95]
+                }
+            },
+            {
+                "name" : "Pan",
+                "type" : "continous-bipolar",
+                "midi" : {
+                    "cc" : [10]
+                }
+            },
+            {
+                "name" : "Pitch",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [16]
+                }
+            },
+            {
+                "name" : "Decay Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [80]
+                }
+            },
+            {
+                "name" : "Sample Start",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [19]
+                }
+            },
+            {
+                "name" : "Sample Length",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [20]
+                }
+            },
+            {
+                "name" : "Cutoff",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [74]
+                }
+            },
+            {
+                "name" : "Resonance",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [71]
+                }
+            },
+            {
+                "name" : "Delay Send",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [12]
+                }
+            },
+            {
+                "name" : "Reverb Send",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [13]
+                }
+            },
+            {
+                "name" : "Volume+Dist",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [7]
+                }
+            },
+            {
+                "name" : "Swing",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [15]
+                }
+            },
+            {
+                "name" : "Chance",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [14]
+                }
+            },
+            {
+                "name" : "Loop",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [17]
+                }
+            },
+            {
+                "name" : "Reverse",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [18]
+                }
+            },
+            {
+                "name" : "LFO Speed",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [102]
+                }
+            },
+            {
+                "name" : "LFO Multiplier",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [103]
+                }
+            },
+            {
+                "name" : "LFO Fade In/Out",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [104]
+                }
+            },
+            {
+                "name" : "LFO Destination",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [105]
+                }
+            },
+            {
+                "name" : "LFO Waveform",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [106]
+                }
+            },
+            {
+                "name" : "LFO Start Phase",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [107]
+                }
+            },
+            {
+                "name" : "LFO Reset",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [108]
+                }
+            },
+            {
+                "name" : "LFO Depth",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [109]
+                }
+            },
+            {
+                "name" : "Delay Time",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [85]
+                }
+            },
+            {
+                "name" : "Delay Feedback",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [86]
+                }
+            },
+            {
+                "name" : "Reverb Size",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [87]
+                }
+            },
+            {
+                "name" : "Delay Tone",
+                "type" : "continous",
+                "midi" : {
+                    "cc" : [88]
+                }
+            }
+        ],
+        "parameter_categories":
+        [
+            {"category_name": "Track Params", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]},
+            {"category_name": "Playback", "parameter_ids": [15, 16]},
+            {"category_name": "LFO", "parameter_ids": [17, 18, 19, 20, 21, 22, 23, 24]},
+            {"category_name": "FX Parameters", "parameter_ids": [25, 26, 27, 28]}
+        ]
+    },
+    "reactsToTransportCommands" : true
+}
