@@ -21,11 +21,16 @@ public:
     bool sendParameterDumpRequest() noexcept;
     void processMidiOutBuffers() noexcept;
 
+    void noteOn(int voiceIndex, int note, float velocity) noexcept;
+    void noteOff(int voiceIndex, int note, float velocity) noexcept;
+    void pitchBend(int voiceIndex, float value) noexcept;
+
     friend midi::Router;
 private:
     midi::Midi1OutputManager                          m_midiOut;
     std::shared_ptr<MusicDeviceDescription>           m_pDescr;
     std::optional<midi::Message<midi::ControlChange>> m_lastSentCcMsb;
+    float m_pitchBendFactor{1.0};
 };
 
 #endif 

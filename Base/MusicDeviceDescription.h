@@ -92,6 +92,7 @@ struct SoundSection
    std::vector<SoundDeviceParameter>              parameters;
    std::vector<MusicDeviceParameterCategory>      parameter_categories;
    std::optional<MusicDeviceParameterDumpRequest> parameter_dump_request;
+   std::optional<float>                           pitchBendFactor;
    int getParamIdByCatIdx(int catIdx, int paramInCatIdx) const{
       return parameter_categories[catIdx].parameter_ids[paramInCatIdx];
    }

@@ -64,6 +64,11 @@ struct MusicDevice : public utils::Settings<MusicDevice>
     void resetParametersToZeroState(int voiceIdx) noexcept;
     void deleteSoundPreset(int voiceIdx, const std::string& newSelectedPreset) noexcept;
 
+    void noteOn(int voiceIndex, int note, float velocity) noexcept;
+    void noteOff(int voiceIndex, int note, float velocity) noexcept;
+    void pitchBend(int voiceIndex, float value) noexcept;
+
+
     using ParameterChangeCb = std::function<void(uint32_t voiceId, uint32_t parameterId, float value)>;
     void registerForControllerParameterChange(ParameterChangeCb cb) noexcept;
 

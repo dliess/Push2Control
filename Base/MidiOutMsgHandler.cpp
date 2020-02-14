@@ -5,6 +5,10 @@ MidiOutMsgHandler::MidiOutMsgHandler(std::unique_ptr<midi::IMidiOutMedium>   pMe
     m_midiOut(std::move(pMedium)),
     m_pDescr(pDescr)
 {
+    if(m_pDescr->soundSection && m_pDescr->soundSection->pitchBendFactor)
+    {
+        m_pitchBendFactor = *m_pDescr->soundSection->pitchBendFactor;
+    }
 }
 
 void MidiOutMsgHandler::sendSoundParameter(uint32_t voiceId, uint32_t parameterId, float value) noexcept
@@ -93,4 +97,19 @@ bool MidiOutMsgHandler::sendParameterDumpRequest() noexcept
 void MidiOutMsgHandler::processMidiOutBuffers() noexcept
 {
     m_midiOut.processBuffers();
+}
+
+void MidiOutMsgHandler::noteOn(int voiceIndex, int note, float velocity) noexcept
+{
+    m_midiOut.noteOn(voiceIndex + 1, note, velocity * 127.0);
+}
+
+void MidiOutMsgHandler::noteOff(int voiceIndex, int note, float velocity) noexcept
+{
+    m_midiOut.noteOff(voiceIndex + 1, note, velocity * 127.0);
+}
+
+void MidiOutMsgHandler::pitchBend(int voiceIndex, float value) noexcept
+{
+    m_midiOut.pitchBend(voiceIndex + 1, value * m_pitchBendFactor * 16383);
 }

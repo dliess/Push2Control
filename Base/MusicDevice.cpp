@@ -242,6 +242,30 @@ void MusicDevice::deleteSoundPreset(int voiceIdx, const std::string& newSelected
     }
 }
 
+void MusicDevice::noteOn(int voiceIndex, int note, float velocity) noexcept
+{
+    if(m_midiOutHandler)
+    {
+        m_midiOutHandler->noteOn(voiceIndex, note, velocity);
+    }
+}
+
+void MusicDevice::noteOff(int voiceIndex, int note, float velocity) noexcept
+{
+    if(m_midiOutHandler)
+    {
+        m_midiOutHandler->noteOff(voiceIndex, note, velocity);
+    }
+}
+
+void MusicDevice::pitchBend(int voiceIndex, float value) noexcept
+{
+    if(m_midiOutHandler)
+    {
+        m_midiOutHandler->pitchBend(voiceIndex, value);
+    }
+}
+
 void MusicDevice::registerForControllerParameterChange(ParameterChangeCb cb) noexcept
 {
     m_controllerParameterChangeCbsAll.push_back(cb);
