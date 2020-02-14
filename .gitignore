@@ -4,3 +4,4 @@ build
 *.vscode/ipch
 Settings.json
 *__PRESETS__.json
+custom_usbMidiName2device.json
