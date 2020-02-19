@@ -1,12 +1,12 @@
-#include "KitTrack.h"
+#include "KitInstrument.h"
 #include "MusicDeviceHolder.h"
 
-KitTrack::KitTrack(MusicDeviceHolder &rMusicDeviceHolder) noexcept :
+KitInstrument::KitInstrument(MusicDeviceHolder &rMusicDeviceHolder) noexcept :
    m_rMusicDeviceHolder(rMusicDeviceHolder)
 {
 }
 
-void KitTrack::noteOn(int soundIndex, int note, float velocity) noexcept
+void KitInstrument::noteOn(int soundIndex, int note, float velocity) noexcept
 {
    for(auto& voice : m_sounds.at(soundIndex).voices)
    {
@@ -15,7 +15,7 @@ void KitTrack::noteOn(int soundIndex, int note, float velocity) noexcept
    }
 }
 
-void KitTrack::noteOff(int soundIndex, int note, float velocity) noexcept
+void KitInstrument::noteOff(int soundIndex, int note, float velocity) noexcept
 {
    for(auto& voice : m_sounds.at(soundIndex).voices)
    {

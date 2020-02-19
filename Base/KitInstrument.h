@@ -6,10 +6,10 @@
 
 class MusicDeviceHolder;
 
-class KitTrack
+class KitInstrument
 {
 public:
-   KitTrack(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
+   KitInstrument(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
    void noteOn(int soundIndex, int note, float velocity) noexcept;
    void noteOff(int soundIndex, int note, float velocity) noexcept;
 private:

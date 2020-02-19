@@ -7,10 +7,10 @@
 
 class MusicDevice;
 
-class MelodyTrack
+class MelodicInstrument
 {
 public:
-   MelodyTrack(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
+   MelodicInstrument(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
    void noteOn(int note, float velocity) noexcept;
    void noteOff(int note, float velocity) noexcept;
    void pitchBend(float value) noexcept;

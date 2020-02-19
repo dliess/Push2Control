@@ -1,4 +1,5 @@
 #include <loguru.hpp>
+#include "Base.h"
 #include "HomeDir.h"
 #include "UsbMidiInputPortListProvider.h"
 #include "UsbMidiOutputPortListProvider.h"
@@ -98,6 +99,9 @@ int main(int argc, char *argv[])
 #ifndef __SIMULATION__MODE__
     push2Device.init(1000);
 #endif
+
+    base::Base base;
+
     util::ThreadedLoop midiOutThread([&musicDeviceHolder](){
         auto start = std::chrono::high_resolution_clock::now();
         for(auto& musicDevice : musicDeviceHolder.musicDevices){
