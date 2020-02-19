@@ -12,6 +12,7 @@ add_library(Base STATIC
    "MidiOutMsgHandler.cpp"
    "MidiRouter.cpp"
    "MusicDevice.cpp"
+   "MusicDeviceFactory.cpp"
    "MusicDeviceHolder.cpp"
    "ParameterMapper.cpp"
    "SoundPresets.cpp"

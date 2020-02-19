@@ -88,23 +88,21 @@ int main(int argc, char *argv[])
 #else
     push2device::Push2Device push2Device;
 #endif
-    MusicDeviceHolder musicDeviceHolder;
+    base::Base base;
     auto pPush2Pads = std::make_unique<push2::Pads>(push2Device);
     auto &push2Pads = *pPush2Pads.get();
-    musicDeviceHolder.addMidiInputMedium(std::move(pPush2Pads));
+    base.musicDeviceHolder.addMidiInputMedium(std::move(pPush2Pads));
 #ifdef __INSERT_DUMMY_MIDI_DEVICES__
-    musicDeviceHolder.insertMusicDeviceDummies();
+    base.musicDeviceHolder.insertMusicDeviceDummies();
 #endif
     midi::PortNotifiers::instance().update();    
 #ifndef __SIMULATION__MODE__
     push2Device.init(1000);
 #endif
 
-    base::Base base;
-
-    util::ThreadedLoop midiOutThread([&musicDeviceHolder](){
+    util::ThreadedLoop midiOutThread([&base](){
         auto start = std::chrono::high_resolution_clock::now();
-        for(auto& musicDevice : musicDeviceHolder.musicDevices){
+        for(auto& musicDevice : base.musicDeviceHolder.musicDevices){
             musicDevice.second->processMidiOutBuffers();
         }
         auto end = std::chrono::high_resolution_clock::now();
@@ -115,14 +113,14 @@ int main(int argc, char *argv[])
             std::this_thread::sleep_for(PERIOD - diff);
         }
     });
-    TempoHandler tempoHandler(musicDeviceHolder.musicDevices);
+    TempoHandler tempoHandler(base.musicDeviceHolder.musicDevices);
     TapTempoHandler tapTempoHandler(tempoHandler);
     util::ThreadedLoop tempoThread([&tempoHandler](){
         tempoHandler.nextTimeSlot();
         std::this_thread::sleep_for(std::chrono::microseconds(10));
     });   
     tempoHandler.start();
-    TransportControl transportControl(musicDeviceHolder.transportCmdDrains);
+    TransportControl transportControl(base.musicDeviceHolder.transportCmdDrains);
 
     // ************************************************************************************************************
     // ******************** PUSH2::QT *****************************************************************************
@@ -149,9 +147,9 @@ int main(int argc, char *argv[])
     fboQuickView.fboQuickView.rootContext()->setContextProperty("push2Device", &push2DeviceQtAdapter);
     qmlRegisterType<push2::qt::Push2DeviceOverlay>("push2.enums", 1, 0, "Push2DeviceOverlay");
 
-    midi::Router                      midiRouter(musicDeviceHolder);
-    midi::Dumper                      midiDumper(musicDeviceHolder);
-    ParameterMapper                   parameterMapper(musicDeviceHolder);
+    midi::Router                      midiRouter(base.musicDeviceHolder);
+    midi::Dumper                      midiDumper(base.musicDeviceHolder);
+    ParameterMapper                   parameterMapper(base.musicDeviceHolder);
     push2::qt::MidiChannelMappingBridge midiChannelMappingBridge(push2Device, midiRouter);
     push2::qt::MidiDumperModel midiDumperModel(midiDumper);
 
@@ -164,23 +162,23 @@ int main(int argc, char *argv[])
     settingsFnCollection.addSaverFn(std::bind(&ParameterMapper::save, &parameterMapper, "", "Settings.json", "parameter_mapping"));
     settingsFnCollection.invokeLoaders();
 
-    push2::qt::MidiOpenedInputPortsModel  openedInputPortsModel(musicDeviceHolder);
-    push2::qt::MidiOpenedOutputPortsModel openedOutputPortsModel(musicDeviceHolder, midiRouter);
+    push2::qt::MidiOpenedInputPortsModel  openedInputPortsModel(base.musicDeviceHolder);
+    push2::qt::MidiOpenedOutputPortsModel openedOutputPortsModel(base.musicDeviceHolder, midiRouter);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("midiOpenedInputPortsModel", &openedInputPortsModel);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("midiOpenedOutputPortsModel", &openedOutputPortsModel);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("midiChannelMappingBridge", &midiChannelMappingBridge);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("midiDumperModel", &midiDumperModel);
 
-    push2::qt::SoundDeviceAndVoiceSelection soundDeviceAndVoiceSelection(musicDeviceHolder);
+    push2::qt::SoundDeviceAndVoiceSelection soundDeviceAndVoiceSelection(base.musicDeviceHolder);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("soundDeviceAndVoiceSelection", &soundDeviceAndVoiceSelection);
 
-    push2::qt::ControllerDeviceAndPresetSelection controllerDeviceAndPresetSelection(musicDeviceHolder);
+    push2::qt::ControllerDeviceAndPresetSelection controllerDeviceAndPresetSelection(base.musicDeviceHolder);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("controllerDeviceAndPresetSelection", &controllerDeviceAndPresetSelection);   
 
-    push2::qt::SoundDeviceParameter soundDeviceParameter(musicDeviceHolder, parameterMapper);
+    push2::qt::SoundDeviceParameter soundDeviceParameter(base.musicDeviceHolder, parameterMapper);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("soundDeviceParameter", &soundDeviceParameter);   
 
-    push2::qt::ControllerDeviceParameter controllerDeviceParameter(musicDeviceHolder, parameterMapper);
+    push2::qt::ControllerDeviceParameter controllerDeviceParameter(base.musicDeviceHolder, parameterMapper);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("controllerDeviceParameter", &controllerDeviceParameter);   
 
     push2::qt::MusicScalesModel         musicScalesModel(push2Pads);
@@ -188,7 +186,7 @@ int main(int argc, char *argv[])
     push2::qt::PadsBridge               push2PadsBridge(push2Pads);
     push2::qt::TempoHandlerBridge       tempoHandlerBridge(tempoHandler);
     push2::qt::TapTempoHandlerBridge    tapTempoHandlerBridge(tapTempoHandler);
-    push2::qt::TransportControlBridge   transportControlBridge(musicDeviceHolder.transportCmdDrains, transportControl);
+    push2::qt::TransportControlBridge   transportControlBridge(base.musicDeviceHolder.transportCmdDrains, transportControl);
     push2::qt::SettingsSaverBridge      settingsSaverBridge(settingsFnCollection);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("musicScalesModel", &musicScalesModel);
     fboQuickView.fboQuickView.rootContext()->setContextProperty("musicScalesBaseNoteModel", &musicScalesBaseNoteModel);
@@ -227,11 +225,11 @@ int main(int argc, char *argv[])
 
     push2::QmlSceneLoader  qmlSceneLoader(fboQuickView);
 
-    if(musicDeviceHolder.soundDevices.size() > 0)
+    if(base.musicDeviceHolder.soundDevices.size() > 0)
     {
         soundDeviceAndVoiceSelection.setCurrentDeviceIndex(0);
     }
-    if(musicDeviceHolder.controllerDevices.size() > 0)
+    if(base.musicDeviceHolder.controllerDevices.size() > 0)
     {
         controllerDeviceAndPresetSelection.setCurrentDeviceIndex(0);
     }
