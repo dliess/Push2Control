@@ -4,6 +4,7 @@ set (CMAKE_CXX_STANDARD 17)
 
 add_library(Base STATIC
    "DeviceDescriptionLoader.cpp"
+   "Instruments.cpp"
    "KitInstrument.cpp"
    "MelodicInstrument.cpp"
    "Midi1OutputManager.cpp"

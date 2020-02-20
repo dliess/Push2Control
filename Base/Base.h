@@ -16,7 +16,10 @@ struct Base
         instruments(),
         musicDeviceHolder(),
         musicDeviceFactory(musicDeviceHolder, instruments)
-    {}
+    {
+        // TODO: Remove Dummy
+        instruments.load("relDir", "filename", "section");
+    }
     Instruments        instruments;
     MusicDeviceHolder  musicDeviceHolder;
     MusicDeviceFactory musicDeviceFactory;

@@ -7,6 +7,8 @@
 struct MusicDeviceHolder;
 struct MusicDeviceId;
 struct MusicDevice;
+struct Instruments;
+
 namespace midi
 {
 class IMidiInMedium;
@@ -16,7 +18,6 @@ class IMidiOutMedium;
 namespace base
 {
 
-class Instruments;
 
 class MusicDeviceFactory
 {
