@@ -5,7 +5,7 @@
 #include "SoundDeviceSelectionModel.h"
 #include "VoiceSelectionModel.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 
 namespace push2::qt
 {

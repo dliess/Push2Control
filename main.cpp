@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     base::Base base;
     auto pPush2Pads = std::make_unique<push2::Pads>(push2Device);
     auto &push2Pads = *pPush2Pads.get();
-    base.musicDeviceHolder.addMidiInputMedium(std::move(pPush2Pads));
+    base.musicDeviceFactory.addMidiInputMedium(std::move(pPush2Pads));
 #ifdef __INSERT_DUMMY_MIDI_DEVICES__
     base.musicDeviceHolder.insertMusicDeviceDummies();
 #endif

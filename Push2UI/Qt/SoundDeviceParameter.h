@@ -6,7 +6,7 @@
 #include "SoundDeviceParameterModel.h"
 #include "SoundPresetListModel.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 class ParameterMapper;
 
 namespace push2::qt

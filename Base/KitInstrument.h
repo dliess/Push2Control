@@ -4,7 +4,7 @@
 #include <vector>
 #include "FixedSizeVector.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 
 class KitInstrument
 {

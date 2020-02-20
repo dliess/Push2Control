@@ -5,7 +5,7 @@
 #include "ControllerDeviceSelectionModel.h"
 #include "ControllerPresetSelectionModel.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 
 namespace push2::qt
 {

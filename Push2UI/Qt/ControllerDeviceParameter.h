@@ -5,7 +5,7 @@
 #include "ControllerDeviceParameterCategoryModel.h"
 #include "ControllerDeviceParameterModel.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 class ParameterMapper;
 
 namespace push2::qt

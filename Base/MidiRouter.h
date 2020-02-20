@@ -11,7 +11,7 @@
 #include "Meta.h"
 #include "JsonCast.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 
 static constexpr int NUM_MIDI_CHANNELS = 16;
 

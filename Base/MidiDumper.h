@@ -8,7 +8,7 @@
 #include "Ringbuffer.hpp"
 #include "MidiMessage.h"
 
-class MusicDeviceHolder;
+struct MusicDeviceHolder;
 
 namespace midi
 {
