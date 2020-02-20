@@ -2,18 +2,13 @@
 #define BASE_H
 
 #include "KitInstrument.h"
-#include "MelodicInstrument.h"
 #include "MusicDeviceHolder.h"
 #include "MusicDeviceFactory.h"
+#include "Instruments.h"
 #include <vector>
 
 namespace base
 {
-struct Instruments
-{
-    std::vector<KitInstrument>     kitInstruments;
-    std::vector<MelodicInstrument> melodicInstruments;
-};
 
 struct Base
 {

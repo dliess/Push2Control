@@ -1,6 +1,6 @@
 #include "MusicDeviceFactory.h"
 #include "MusicDeviceHolder.h"
-#include "Base.h" // Instruments
+#include "Instruments.h"
 #include "UsbMidiPortNotifier.h"
 #include "UsbMidiIn.h"
 #include "UsbMidiOut.h"
