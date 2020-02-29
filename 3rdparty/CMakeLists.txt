@@ -28,3 +28,17 @@ set(QTUNIXSIGNALS_DIR "${CMAKE_CURRENT_LIST_DIR}/qt-unix-signals")
 add_library(QtUnixSignals STATIC "${QTUNIXSIGNALS_DIR}/sigwatch.cpp")
 target_include_directories(QtUnixSignals PUBLIC "${QTUNIXSIGNALS_DIR}")
 target_link_libraries(QtUnixSignals PUBLIC Qt5::Core)
+
+
+set(qt-qml-models-sources
+    "qt-qml-models/QQmlObjectListModel.cpp"
+    "qt-qml-models/QQmlVariantListModel.cpp"
+)
+set(qt-qml-models-headers
+    "qt-qml-models/QQmlObjectListModel.h"
+    "qt-qml-models/QQmlVariantListModel.h"
+    "qt-qml-models/QtQmlTricksPlugin_SmartDataModels.h"
+)
+add_library(qt-qml-models "${qt-qml-models-sources}" "${qt-qml-models-headers}")
+target_include_directories(qt-qml-models PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/qt-qml-models")
+target_link_libraries(qt-qml-models PUBLIC Qt5::Core)

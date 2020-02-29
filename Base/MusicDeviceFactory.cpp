@@ -267,4 +267,3 @@ void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice>
         }
     }
 }
-

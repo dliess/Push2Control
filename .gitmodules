@@ -37,3 +37,6 @@
 [submodule "3rdparty/qt-unix-signals"]
 	path = 3rdparty/qt-unix-signals
 	url = https://github.com/sijk/qt-unix-signals
+[submodule "3rdparty/qt-qml-models"]
+	path = 3rdparty/qt-qml-models
+	url = http://gitlab.unique-conception.org/qt-qml-tricks/qt-qml-models.git
