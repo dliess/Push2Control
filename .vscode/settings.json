@@ -75,7 +75,9 @@
         "filesystem": "cpp",
         "codecvt": "cpp",
         "qcoreapplication": "cpp",
-        "qobject": "cpp"
+        "qobject": "cpp",
+        "shared_mutex": "cpp",
+        "bit": "cpp"
     },
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }

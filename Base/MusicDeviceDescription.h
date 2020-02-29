@@ -232,13 +232,13 @@ inline void from_json<MusicDeviceDescription::Type>(const nlohmann::json& j, Mus
 }
 
 template <>
-inline void to_json<MusicDeviceDescription::Type>(nlohmann::json& j, const SoundSection::DefaultInstrumentType& obj)
+inline void to_json<SoundSection::DefaultInstrumentType>(nlohmann::json& j, const SoundSection::DefaultInstrumentType& obj)
 {
    j = SoundSection::defaultInstrumentType2String(obj);
 }
 
 template <>
-inline void from_json<MusicDeviceDescription::Type>(const nlohmann::json& j, SoundSection::DefaultInstrumentType& obj)
+inline void from_json<SoundSection::DefaultInstrumentType>(const nlohmann::json& j, SoundSection::DefaultInstrumentType& obj)
 {
    obj = SoundSection::defaultInstrumentTypeFromString(j.get<std::string>());
 }

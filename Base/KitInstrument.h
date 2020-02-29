@@ -43,6 +43,11 @@ public:
    void init(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
    void noteOn(int soundIndex, int note, float velocity) noexcept;
    void noteOff(int soundIndex, int note, float velocity) noexcept;
+   void addKitSound(const KitSound& kitSound) noexcept;
+   void addKitSound(KitSound&& kitSound) noexcept;
+   template<typename T>
+   void add(T&& kitSound) noexcept {m_sounds.emplace_back(std::forward<T>(kitSound));};
+
    friend auto meta::registerMembers<KitInstrument>();
 private:
    std::vector<KitSound> m_sounds;

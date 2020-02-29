@@ -26,3 +26,13 @@ void KitInstrument::noteOff(int soundIndex, int note, float velocity) noexcept
          voice.pSoundDevice->noteOff(voice.voiceIndex, note + voice.noteOffset, velocity);
    }
 }
+
+void KitInstrument::addKitSound(const KitSound& kitSound) noexcept
+{
+   m_sounds.emplace_back(kitSound);
+}
+
+void KitInstrument::addKitSound(KitSound&& kitSound) noexcept
+{
+   m_sounds.emplace_back(kitSound);
+}

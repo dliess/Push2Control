@@ -41,6 +41,11 @@ MusicDevice::~MusicDevice() noexcept
     }
 }
 
+MusicDeviceId MusicDevice::deviceId() const noexcept
+{
+    return m_deviceId;
+}
+
 void MusicDevice::addMidiIn(std::unique_ptr<midi::IMidiInMedium> pMedium) noexcept
 {
     if(!m_midiInMsgHandler)

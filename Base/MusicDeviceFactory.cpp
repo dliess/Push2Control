@@ -223,12 +223,48 @@ void base::MusicDeviceFactory::insertMusicDeviceDummies()
 void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice> pMusicDevice) noexcept
 {
     assert(pMusicDevice->pDescr->soundSection);
-    switch( pMusicDevice->pDescr->soundSection->defaultInstrumentType)
+    switch(pMusicDevice->pDescr->soundSection->defaultInstrumentType)
     {
-        case SoundSection::DefaultInstrumentType::DrumKit : 
-        case SoundSection::DefaultInstrumentType::InstrumentPerVoice :
-        case SoundSection::DefaultInstrumentType::OnePolyphonicInstrument :
-        default:;
+        case SoundSection::DefaultInstrumentType::DrumKit:
+        {
+            KitInstrument kitInstrument;
+            for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
+            {
+                KitSound kitSound;
+                kitSound.voices[0].soundDeviceId = pMusicDevice->deviceId();
+                kitSound.voices[0].pSoundDevice = pMusicDevice;
+                kitSound.voices[0].voiceIndex = i;
+                kitSound.voices[0].noteOffset = 0;
+                kitInstrument.add(kitSound);
+            }
+            m_rInstruments.kitInstruments.push_back(kitInstrument);
+            break;
+        }
+        case SoundSection::DefaultInstrumentType::InstrumentPerVoice:
+        {
+            for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
+            {
+                MelodicInstrument melodicInstrument;
+                melodicInstrument.addVoice(MelodicInstrumentVoice{pMusicDevice->deviceId(), pMusicDevice, i});
+                m_rInstruments.melodicInstruments.push_back(melodicInstrument);
+            }
+            break;
+        }
+        case SoundSection::DefaultInstrumentType::OnePolyphonicInstrument:
+        {
+            MelodicInstrument melodicInstrument;
+            for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
+            {
+                melodicInstrument.addVoice(MelodicInstrumentVoice{pMusicDevice->deviceId(), pMusicDevice, i});
+            }
+            m_rInstruments.melodicInstruments.push_back(melodicInstrument);
+            break;
+        }
+        default:
+        {
+            LOG_F(ERROR, "INTERNAL ERROR");
+            break;
+        }
     }
 }
 

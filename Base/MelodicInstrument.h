@@ -30,6 +30,9 @@ public:
    void pitchBend(int voiceIdx, float value) noexcept;
    void parameterChange(int voiceIdx, int parameterId, float value) noexcept;
 
+   template<typename T>
+   void addVoice(T&& voice) noexcept {m_voices.emplace_back(std::forward<T>(voice));};
+
    friend auto meta::registerMembers<MelodicInstrument>();
 private:
    using VoiceContainer = std::vector<MelodicInstrumentVoice>;

@@ -44,6 +44,8 @@ struct MusicDevice : public utils::Settings<MusicDevice>
                 std::shared_ptr<SoundPresets> soundPresets) noexcept;
     ~MusicDevice() noexcept;
 
+    MusicDeviceId deviceId() const noexcept;
+
     void addMidiIn(std::unique_ptr<midi::IMidiInMedium> pMedium) noexcept;
     void addMidiOut(std::unique_ptr<midi::IMidiOutMedium> pMedium) noexcept;
 
