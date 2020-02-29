@@ -3,6 +3,7 @@
     "manufacturer" : "Moog",
     "productName" : "Minitaur",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

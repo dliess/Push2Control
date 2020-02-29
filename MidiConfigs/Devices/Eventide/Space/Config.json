@@ -3,6 +3,7 @@
     "manufacturer" : "Eventide",
     "productName" : "Space",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

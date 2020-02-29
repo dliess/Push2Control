@@ -3,6 +3,7 @@
     "manufacturer" : "MAM",
     "productName" : "MB33",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

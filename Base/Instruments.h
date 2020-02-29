@@ -16,8 +16,7 @@ struct Instruments : public utils::Settings<Instruments>
     void setSettings(const Settings& settings) noexcept;
     // =======================================
     std::vector<KitInstrument>     kitInstruments;
-    std::vector<int> melodicInstruments;
-    //std::vector<MelodicInstrument> melodicInstruments;
+    std::vector<MelodicInstrument> melodicInstruments;
 };
 
 namespace meta

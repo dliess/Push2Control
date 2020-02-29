@@ -3,6 +3,7 @@
     "manufacturer" : "Elektron",
     "productName" : "Octatrack Mk1",
     "soundSection":{
+        "defaultInstrumentType" : "DrumKit",
         "voices":
         [
             {

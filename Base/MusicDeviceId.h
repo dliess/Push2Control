@@ -8,6 +8,7 @@ struct MusicDeviceId
     std::string deviceName;
     std::string portName;
     inline static const std::string ANY_PORT = "";
+    MusicDeviceId() = default;
     MusicDeviceId(std::string deviceName, std::string portName) noexcept:
         deviceName(std::move(deviceName)), portName(std::move(portName)) 
     {}

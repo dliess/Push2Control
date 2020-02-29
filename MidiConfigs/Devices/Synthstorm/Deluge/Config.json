@@ -2,8 +2,8 @@
     "version" : "0.0.0",
     "manufacturer" : "Synthstorm",
     "productName" : "Deluge",
-    "soundSection":
-    {
+    "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":[
             {
                 "name": "1"

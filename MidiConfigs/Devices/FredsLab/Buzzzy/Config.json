@@ -3,6 +3,7 @@
     "manufacturer" : "Freds Lab",
     "productName" : "Buzzzy",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

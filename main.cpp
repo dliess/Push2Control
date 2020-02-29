@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
     auto &push2Pads = *pPush2Pads.get();
     base.musicDeviceFactory.addMidiInputMedium(std::move(pPush2Pads));
 #ifdef __INSERT_DUMMY_MIDI_DEVICES__
-    base.musicDeviceHolder.insertMusicDeviceDummies();
+    base.musicDeviceFactory.insertMusicDeviceDummies();
 #endif
     midi::PortNotifiers::instance().update();    
 #ifndef __SIMULATION__MODE__

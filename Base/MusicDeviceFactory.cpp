@@ -136,12 +136,14 @@ std::shared_ptr<MusicDevice> base::MusicDeviceFactory::createAndInsertMusicDevic
         case MusicDeviceDescription::Type::SoundDevice:
         {
             m_rMusicDeviceHolder.soundDevices[deviceId] = pMusicDevice;
+            createInstrumentFrom(pMusicDevice);
             break;
         }
         case MusicDeviceDescription::Type::Both:
         {
             m_rMusicDeviceHolder.controllerDevices[deviceId] = pMusicDevice;
             m_rMusicDeviceHolder.soundDevices[deviceId] = pMusicDevice;
+            createInstrumentFrom(pMusicDevice);
             break;
         }
         default:
@@ -215,5 +217,18 @@ void base::MusicDeviceFactory::insertMusicDeviceDummies()
     addMidiInputMedium(dummy19.hijackInMedium());
     addMidiOutputMedium(dummy19.hijackOutMedium());
 }
+
 #endif
+
+void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice> pMusicDevice) noexcept
+{
+    assert(pMusicDevice->pDescr->soundSection);
+    switch( pMusicDevice->pDescr->soundSection->defaultInstrumentType)
+    {
+        case SoundSection::DefaultInstrumentType::DrumKit : 
+        case SoundSection::DefaultInstrumentType::InstrumentPerVoice :
+        case SoundSection::DefaultInstrumentType::OnePolyphonicInstrument :
+        default:;
+    }
+}
 

@@ -3,6 +3,7 @@
     "manufacturer" : "Elektron",
     "productName" : "Model:Samples",
     "soundSection":{
+        "defaultInstrumentType" : "DrumKit",
         "voices":
         [
             {

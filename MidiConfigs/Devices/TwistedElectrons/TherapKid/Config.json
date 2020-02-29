@@ -3,6 +3,7 @@
     "manufacturer" : "Twisted Electrons",
     "productName" : "ThreapKid",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

@@ -88,6 +88,12 @@ struct MusicDeviceParameterDumpRequest
 
 struct SoundSection
 {
+   enum class DefaultInstrumentType{
+      DrumKit,
+      InstrumentPerVoice,
+      OnePolyphonicInstrument
+   };
+   DefaultInstrumentType                          defaultInstrumentType;
    std::vector<MusicDeviceVoice>                  voices;
    std::vector<SoundDeviceParameter>              parameters;
    std::vector<MusicDeviceParameterCategory>      parameter_categories;
@@ -96,6 +102,8 @@ struct SoundSection
    int getParamIdByCatIdx(int catIdx, int paramInCatIdx) const{
       return parameter_categories[catIdx].parameter_ids[paramInCatIdx];
    }
+   static inline std::string defaultInstrumentType2String(DefaultInstrumentType type);
+   static inline DefaultInstrumentType defaultInstrumentTypeFromString(const std::string& str);
 };
 
 struct ControllerSection
@@ -178,6 +186,27 @@ MusicDeviceDescription::Type MusicDeviceDescription::typeFromString(const std::s
    return MusicDeviceDescription::Type::Unknown;
 }
 
+inline 
+std::string SoundSection::defaultInstrumentType2String(DefaultInstrumentType type)
+{
+   switch(type)
+   {
+      case SoundSection::DefaultInstrumentType::DrumKit: return "DrumKit";
+      case SoundSection::DefaultInstrumentType::InstrumentPerVoice : return "InstrumentPerVoice";
+      case SoundSection::DefaultInstrumentType::OnePolyphonicInstrument : return "OnePolyphonicInstrument";
+      default: return "unknown";
+   }
+}
+
+inline 
+SoundSection::DefaultInstrumentType SoundSection::defaultInstrumentTypeFromString(const std::string& str)
+{
+   if(str == "DrumKit") return SoundSection::DefaultInstrumentType::DrumKit;
+   else if(str == "InstrumentPerVoice") return SoundSection::DefaultInstrumentType::InstrumentPerVoice;
+   else if(str == "OnePolyphonicInstrument") return SoundSection::DefaultInstrumentType::OnePolyphonicInstrument;
+   return SoundSection::DefaultInstrumentType::InstrumentPerVoice;
+}
+
 template <>
 inline void to_json<SoundDeviceParameter::Type>(nlohmann::json& j, const SoundDeviceParameter::Type& obj)
 {
@@ -200,6 +229,18 @@ template <>
 inline void from_json<MusicDeviceDescription::Type>(const nlohmann::json& j, MusicDeviceDescription::Type& obj)
 {
    obj = MusicDeviceDescription::typeFromString(j.get<std::string>());
+}
+
+template <>
+inline void to_json<MusicDeviceDescription::Type>(nlohmann::json& j, const SoundSection::DefaultInstrumentType& obj)
+{
+   j = SoundSection::defaultInstrumentType2String(obj);
+}
+
+template <>
+inline void from_json<MusicDeviceDescription::Type>(const nlohmann::json& j, SoundSection::DefaultInstrumentType& obj)
+{
+   obj = SoundSection::defaultInstrumentTypeFromString(j.get<std::string>());
 }
 
 //------------------------------------------------------------

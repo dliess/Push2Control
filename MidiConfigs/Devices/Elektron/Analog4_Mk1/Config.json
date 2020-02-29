@@ -3,6 +3,7 @@
     "manufacturer" : "Elektron",
     "productName" : "Analog4 Mk1",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

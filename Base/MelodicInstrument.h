@@ -1,16 +1,25 @@
-#ifndef MELODY_TRACK_H
-#define MELODY_TRACK_H
+#ifndef MELODIC_INSTRUMENT_H
+#define MELODIC_INSTRUMENT_H
 
 #include <vector>
 #include <array>
 #include "MusicDeviceHolder.h"
+#include "MusicDeviceId.h"
+#include "Meta.h"
 
 class MusicDevice;
+
+struct MelodicInstrumentVoice
+{
+   MusicDeviceId                soundDeviceId;
+   std::shared_ptr<MusicDevice> pSoundDevice;
+   int                          voiceIndex;
+};
 
 class MelodicInstrument
 {
 public:
-   MelodicInstrument(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
+   void init(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
    void noteOn(int note, float velocity) noexcept;
    void noteOff(int note, float velocity) noexcept;
    void pitchBend(float value) noexcept;
@@ -21,14 +30,9 @@ public:
    void pitchBend(int voiceIdx, float value) noexcept;
    void parameterChange(int voiceIdx, int parameterId, float value) noexcept;
 
+   friend auto meta::registerMembers<MelodicInstrument>();
 private:
-   MusicDeviceHolder &m_rMusicDeviceHolder;
-   struct VoiceId
-   {
-      int soundDeviceIndex;
-      int voiceIndex;
-   };
-   using VoiceContainer = std::vector<VoiceId>;
+   using VoiceContainer = std::vector<MelodicInstrumentVoice>;
    VoiceContainer           m_voices;
    int                      m_currentVoiceIndex{-1};
 
@@ -45,10 +49,28 @@ private:
          m_currentVoiceIndex = 0;
       }
    }
-   inline MusicDevice& soundDevice(int soundDeviceIdx) const
-   {
-      return *m_rMusicDeviceHolder.soundDevices.atIdx(soundDeviceIdx).second;
-   }
 };
 
-#endif // MELODY_TRACK_H
+namespace meta
+{
+
+template <>
+inline auto registerMembers<MelodicInstrumentVoice>()
+{
+    return members(
+        member("soundDeviceId", &MelodicInstrumentVoice::soundDeviceId),
+        member("voiceIndex", &MelodicInstrumentVoice::voiceIndex)
+    );
+}
+
+template <>
+inline auto registerMembers<MelodicInstrument>()
+{
+    return members(
+        member("voices", &MelodicInstrument::m_voices)
+    );
+}
+
+} // namespace meta
+
+#endif // MELODIC_INSTRUMENT_H

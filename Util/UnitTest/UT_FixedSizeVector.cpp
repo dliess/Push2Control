@@ -10,6 +10,13 @@ TEST(FixedSizeVectorTest, Construct) {
    FixedSizeVector<int, 10> vector4(FixedSizeVector<int, 10>());
 }
 
+TEST(FixedSizeVectorTest, CopyAssign) {
+   FixedSizeVector<int, 10> vector1;
+   FixedSizeVector<int, 10> vector2(vector1);
+   FixedSizeVector<int, 10> vector3;
+   vector3 = vector2;
+}
+
 TEST(FixedSizeVectorTest, Mutators) {
    FixedSizeVector<int, 10> vector1;
    ASSERT_EQ(0, vector1.size());

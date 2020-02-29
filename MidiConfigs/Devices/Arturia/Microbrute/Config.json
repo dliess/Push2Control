@@ -3,6 +3,7 @@
     "manufacturer" : "Arturia",
     "productName" : "Microbrute",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

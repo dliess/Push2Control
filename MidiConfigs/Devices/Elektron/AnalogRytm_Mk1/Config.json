@@ -3,6 +3,7 @@
     "manufacturer" : "Elektron",
     "productName" : "Analog Rytm",
     "soundSection":{
+        "defaultInstrumentType" : "DrumKit",
         "voices":
         [
             {

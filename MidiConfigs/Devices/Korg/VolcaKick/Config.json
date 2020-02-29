@@ -3,6 +3,7 @@
     "manufacturer" : "Korg",
     "productName" : "Volca Kick",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

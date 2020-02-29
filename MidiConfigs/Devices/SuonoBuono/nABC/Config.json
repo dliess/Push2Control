@@ -3,6 +3,7 @@
     "manufacturer" : "Suonobuono",
     "productName" : "nABC",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

@@ -3,6 +3,7 @@
     "manufacturer" : "YAMAHA",
     "productName" : "Yamaha AN1X",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

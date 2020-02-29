@@ -38,6 +38,7 @@ private:
     std::shared_ptr<MusicDevice> findMusicDevice(const MusicDeviceId& deviceId) const noexcept;
     std::shared_ptr<MusicDevice> createAndInsertMusicDevice(const MusicDeviceId&  deviceId,
                                                             const std::string&    deviceName);
+    void createInstrumentFrom(std::shared_ptr<MusicDevice> pMusicDevice) noexcept;
 };
 
 } // namespace base

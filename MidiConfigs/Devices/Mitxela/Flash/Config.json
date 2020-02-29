@@ -3,6 +3,7 @@
     "manufacturer" : "Mitxela",
     "productName" : "Flash Synth",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

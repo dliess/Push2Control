@@ -3,6 +3,7 @@
     "manufacturer" : "Korg",
     "productName" : "Volca Keys",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

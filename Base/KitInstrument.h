@@ -1,51 +1,53 @@
-#ifndef KIT_TRACK_H
-#define KIT_TRACK_H
+#ifndef KIT_INSTRUMENT_H
+#define KIT_INSTRUMENT_H
 
 #include <vector>
-#include "FixedSizeVector.h"
+#include "MusicDeviceId.h"
+#include "MusicDeviceHolder.h"
 #include "Meta.h"
+#include <memory>
+#include <array>
 
 struct MusicDeviceHolder;
+struct MusicDevice;
 
 // TODO: find a namespacing solution for register_members(),
 // so these classes can get a namespace
 struct VoiceDescr
 {
-   int soundDeviceIndex;
+   MusicDeviceId soundDeviceId;
+   std::shared_ptr<MusicDevice> pSoundDevice;
    int voiceIndex;
    int noteOffset;
+   void updateMusicDevicePtr(MusicDeviceHolder &rMusicDeviceHolder) noexcept{
+       auto iter = rMusicDeviceHolder.soundDevices.find(soundDeviceId);
+       if(rMusicDeviceHolder.soundDevices.end() != iter)
+       {
+           pSoundDevice = iter->second;
+       }
+   }
 };
 struct KitSound
 {
    static constexpr int NUM_MAX_VOICES_PER_KIT_VOICE = 4;
-   //using Voices = util::FixedSizeVector<VoiceDescr, NUM_MAX_VOICES_PER_KIT_VOICE>;
-   using Voices = std::vector<VoiceDescr>;
+   using Voices = std::array<VoiceDescr, NUM_MAX_VOICES_PER_KIT_VOICE>;
    Voices voices;
+   void init(MusicDeviceHolder &rMusicDeviceHolder) noexcept {
+       for(auto& voice : voices) voice.updateMusicDevicePtr(rMusicDeviceHolder);
+   }
 };
 
 class KitInstrument
 {
 public:
-   KitInstrument(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
+   void init(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
    void noteOn(int soundIndex, int note, float velocity) noexcept;
    void noteOff(int soundIndex, int note, float velocity) noexcept;
    friend auto meta::registerMembers<KitInstrument>();
 private:
-   MusicDeviceHolder    &m_rMusicDeviceHolder;
    std::vector<KitSound> m_sounds;
 };
 
-#include <json.hpp>
-void to_json(nlohmann::json& j, const person& p) {
-   j = json{{"name", p.name}, {"address", p.address}, {"age", p.age}};
-}
-
-void from_json(const nlohmann::json& j, person& p) {
-   j.at("name").get_to(p.name);
-   j.at("address").get_to(p.address);
-   j.at("age").get_to(p.age);
-}
-/*
 namespace meta
 {
 
@@ -61,9 +63,9 @@ template <>
 inline auto registerMembers<VoiceDescr>()
 {
     return members(
-        member("soundDeviceIndex", &VoiceDescr::soundDeviceIndex),
-        member("voiceIndex", &VoiceDescr::voiceIndex),
-        member("noteOffset", &VoiceDescr::noteOffset)
+        member("soundDeviceId", &VoiceDescr::soundDeviceId),
+        member("voiceIndex",    &VoiceDescr::voiceIndex),
+        member("noteOffset",    &VoiceDescr::noteOffset)
     );
 }
 
@@ -76,6 +78,6 @@ inline auto registerMembers<KitSound>()
 }
 
 } // namespace meta
-*/
 
-#endif // KIT_TRACK_H
+
+#endif // KIT_INSTRUMENT_H

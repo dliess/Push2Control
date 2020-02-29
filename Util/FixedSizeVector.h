@@ -3,6 +3,8 @@
 
 #include <array>
 
+// TODO: WHat was this exactly for? why not using a simple std::array?
+
 namespace util
 {
 

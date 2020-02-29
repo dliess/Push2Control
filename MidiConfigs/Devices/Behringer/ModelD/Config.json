@@ -4,6 +4,7 @@
     "manufacturer" : "Behringer",
     "productName" : "ModelD",
     "soundSection":{
+        "defaultInstrumentType" : "InstrumentPerVoice",
         "voices":
         [
             {

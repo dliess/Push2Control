@@ -22,6 +22,17 @@ public:
         m_vector.emplace_back(std::make_pair(key, Value()));
         return m_vector.back().second;
     }
+    Value& at(const Key& key)
+    {
+        for(auto &e : m_vector)
+        {
+            if(e.first == key)
+            {
+                return e.second;
+            }
+        }
+        throw std::out_of_range();
+    }
     using iterator = typename std::vector< std::pair<Key, Value> >::iterator;
     using const_iterator = typename std::vector< std::pair<Key, Value> >::const_iterator;
 
