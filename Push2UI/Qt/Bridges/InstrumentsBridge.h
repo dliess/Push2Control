@@ -6,18 +6,20 @@
 #include <QQmlObjectListModel.h>
 #include "KitInstrumentBridge.h"
 
-class QAbstractItemModel;
+#include <QAbstractListModel>
+//class QAbstractListModel;
 
-class InstrumentsBridge
+class InstrumentsBridge : public QObject
 {
-    Q_GADGET
+    Q_OBJECT
+    Q_PROPERTY(QAbstractListModel* kitInstruments READ kitInstruments CONSTANT)
 public:
     InstrumentsBridge();
-    Q_INVOKABLE QAbstractItemModel* kitInstruments() noexcept;
-    Q_INVOKABLE QAbstractItemModel* melodicInstruments() noexcept;
+    QAbstractListModel* kitInstruments() const noexcept;
+    Q_INVOKABLE QAbstractListModel* melodicInstruments() noexcept;
 private:
     std::unique_ptr<QQmlObjectListModel<KitInstrumentBridge>> m_kitInstruments;
-    std::unique_ptr<QAbstractItemModel> m_melodicInstruments;
+    std::unique_ptr<QQmlObjectListModel<KitInstrumentBridge>> m_melodicInstruments;
 };
 
 #endif
