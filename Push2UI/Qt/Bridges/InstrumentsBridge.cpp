@@ -43,7 +43,7 @@ InstrumentsBridge::InstrumentsBridge()
     m_melodicInstruments = std::make_unique<QQmlObjectListModel<KitInstrumentBridge>>();
     {
         auto e = new KitInstrumentBridge;
-        e->setProperty("intProperty", 3);
+        e->setProperty("intProperty", 1);
         e->setProperty("floatProperty", 3.14);
         e->setProperty("stringProperty", "Hello World");
         m_melodicInstruments->append(e);
@@ -57,7 +57,7 @@ InstrumentsBridge::InstrumentsBridge()
     }
     {
         auto e = new KitInstrumentBridge;
-        e->setProperty("intProperty", 3);
+        e->setProperty("intProperty", 5);
         e->setProperty("floatProperty", 3.14);
         e->setProperty("stringProperty", "Hello World");
         m_melodicInstruments->append(e);
