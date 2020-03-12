@@ -36,6 +36,7 @@
 #include "Push2DeviceQtAdapter.h"
 #include "Push2DeviceOverlay.h"
 
+#include "InstrumentsBridge.h"
 #include "MusicScalesModel.h"
 #include "MusicScalesBaseNoteModel.h"
 #include "Push2PadsBridge.h"
@@ -100,6 +101,8 @@ int main(int argc, char *argv[])
     push2Device.init(1000);
 #endif
 
+    InstrumentsBridge instrumentsBridge(base.instruments);
+
     util::ThreadedLoop midiOutThread([&base](){
         auto start = std::chrono::high_resolution_clock::now();
         for(auto& musicDevice : base.musicDeviceHolder.musicDevices){
@@ -141,6 +144,8 @@ int main(int argc, char *argv[])
     const auto displayId = fp::Push2Topology::Display::Id::eDisplay;
     //SelectedSoundDevice               selectedSoundDevice;
     QuickViewOnFpRenderMedium         fboQuickView(push2Device.getRenderMedium(fp::Widget(displayId)));
+
+    fboQuickView.fboQuickView.rootContext()->setContextProperty("instruments", &instrumentsBridge);   
 
     push2::qt::Push2Device push2DeviceQtAdapter(push2Device, &app);
     push2DeviceQtAdapter.setObjectName("push2DeviceQtAdapter");

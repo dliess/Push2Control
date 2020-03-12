@@ -38,6 +38,7 @@ target_link_libraries(${PROJECT_NAME}
    Base
    QuickViewOnFp
    Push2UI
+   QtBridges
    usbmidi
    QtUnixSignals
 )
