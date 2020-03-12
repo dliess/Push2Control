@@ -1,12 +1,13 @@
 #ifndef KIT_INSTRUMENT_H
 #define KIT_INSTRUMENT_H
 
-#include <vector>
 #include "MusicDeviceId.h"
 #include "MusicDeviceHolder.h"
 #include "Meta.h"
 #include <memory>
 #include <array>
+#include <vector>
+#include <string>
 
 struct MusicDeviceHolder;
 struct MusicDevice;
@@ -29,6 +30,7 @@ struct VoiceDescr
 };
 struct KitSound
 {
+   std::string name;
    static constexpr int NUM_MAX_VOICES_PER_KIT_VOICE = 4;
    using Voices = std::array<VoiceDescr, NUM_MAX_VOICES_PER_KIT_VOICE>;
    Voices voices;
@@ -47,9 +49,12 @@ public:
    void addKitSound(KitSound&& kitSound) noexcept;
    template<typename T>
    void add(T&& kitSound) noexcept {m_sounds.emplace_back(std::forward<T>(kitSound));};
+   std::string name() const noexcept; 
+   std::vector<KitSound>& sounds() noexcept;
 
    friend auto meta::registerMembers<KitInstrument>();
 private:
+   std::string m_name;
    std::vector<KitSound> m_sounds;
 };
 

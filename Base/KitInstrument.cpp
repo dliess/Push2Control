@@ -36,3 +36,14 @@ void KitInstrument::addKitSound(KitSound&& kitSound) noexcept
 {
    m_sounds.emplace_back(kitSound);
 }
+
+std::string KitInstrument::name() const noexcept
+{
+   return m_name;
+}
+
+std::vector<KitSound>& KitInstrument::sounds() noexcept
+{
+   return m_sounds;
+}
+

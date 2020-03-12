@@ -33,9 +33,13 @@ public:
    template<typename T>
    void addVoice(T&& voice) noexcept {m_voices.emplace_back(std::forward<T>(voice));};
 
+   std::string name() const noexcept;
+
+   using VoiceContainer = std::vector<MelodicInstrumentVoice>;
+   VoiceContainer &voices() noexcept;
    friend auto meta::registerMembers<MelodicInstrument>();
 private:
-   using VoiceContainer = std::vector<MelodicInstrumentVoice>;
+   std::string              m_name;
    VoiceContainer           m_voices;
    int                      m_currentVoiceIndex{-1};
 

@@ -74,3 +74,14 @@ void MelodicInstrument::parameterChange(int voiceIdx, int parameterId, float val
    if(m_voices[m_currentVoiceIndex].pSoundDevice)
       m_voices[m_currentVoiceIndex].pSoundDevice->setSoundParameterValue(m_voices[voiceIndex].voiceIndex, parameterId, value);
 }
+
+MelodicInstrument::VoiceContainer &MelodicInstrument::voices() noexcept
+{
+   return m_voices;
+}
+
+std::string MelodicInstrument::name() const noexcept
+{
+   return m_name;
+}
+
