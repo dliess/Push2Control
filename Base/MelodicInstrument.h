@@ -34,6 +34,7 @@ public:
    void addVoice(T&& voice) noexcept {m_voices.emplace_back(std::forward<T>(voice));};
 
    std::string name() const noexcept;
+   void setName(const std::string& name) noexcept;
 
    using VoiceContainer = std::vector<MelodicInstrumentVoice>;
    VoiceContainer &voices() noexcept;

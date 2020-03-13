@@ -42,6 +42,11 @@ std::string KitInstrument::name() const noexcept
    return m_name;
 }
 
+void KitInstrument::setName(const std::string& name) noexcept
+{
+   m_name = name;
+}
+
 std::vector<KitSound>& KitInstrument::sounds() noexcept
 {
    return m_sounds;

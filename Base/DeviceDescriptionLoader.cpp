@@ -18,8 +18,7 @@ DeviceDescriptionLoader::DeviceDescriptionLoader()
     }
     if(customMapFile.fail())
     {
-        LOG_F(ERROR, "could not find custom file '{}'", customMapFileName);
-        return;
+        LOG_F(INFO, "could not find custom file '{}'", customMapFileName);
     }
     try{
         mapFile >> m_jUsbMidiName2deviceMap;

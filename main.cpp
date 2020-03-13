@@ -228,6 +228,8 @@ int main(int argc, char *argv[])
     qRegisterMetaType<push2::qt::MusicNote::Value>("MusicNote::Value");
     qRegisterMetaType<push2::qt::MusicScales::Value>("MusicScales::Value");
 
+    qRegisterMetaType<QAbstractListModel*>("QAbstractListModel*");
+
     push2::QmlSceneLoader  qmlSceneLoader(fboQuickView);
 
     if(base.musicDeviceHolder.soundDevices.size() > 0)

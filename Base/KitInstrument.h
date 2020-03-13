@@ -49,7 +49,8 @@ public:
    void addKitSound(KitSound&& kitSound) noexcept;
    template<typename T>
    void add(T&& kitSound) noexcept {m_sounds.emplace_back(std::forward<T>(kitSound));};
-   std::string name() const noexcept; 
+   std::string name() const noexcept;
+   void setName(const std::string& name) noexcept;
    std::vector<KitSound>& sounds() noexcept;
 
    friend auto meta::registerMembers<KitInstrument>();

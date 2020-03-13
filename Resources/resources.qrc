@@ -4,6 +4,7 @@
     <file>qmls/ControllerDeviceParameterScene.qml</file>
     <file>qmls/ControllerDeviceSelectionScene.qml</file>
     <file>qmls/FilterCurve.qml</file>
+    <file>qmls/InstrumentSetupScene.qml</file>
     <file>qmls/main.qml</file>
     <file>qmls/MidiPortMappingScene.qml</file>
     <file>qmls/MidiRouteSpecializingScene.qml</file>

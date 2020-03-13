@@ -10,7 +10,7 @@ Item {
 
     Component.onCompleted:{
         push2Device.onSetLedOfBtn("white", Button.E_BtnSetup)
-        push2Device.onSetLedOfBtn("black", Button.E_BtnAddDevice)
+        push2Device.onSetLedOfBtn("white", Button.E_BtnAddDevice)
         push2Device.onSetLedOfBtn("black", Button.E_BtnAddTrack)
         push2Device.onSetLedOfBtn("black", Button.E_BtnLayout)
         push2Device.onSetLedOfBtn("white", Button.E_BtnDevice)
@@ -44,6 +44,11 @@ Item {
                 case Button.E_BtnSetup:
                 {
                     pageLoader.source = "MidiPortMappingScene.qml"
+                    break
+                }
+                case Button.E_BtnAddDevice:
+                {
+                    pageLoader.source = "InstrumentSetupScene.qml"
                     break
                 }
                 case Button.E_BtnScale:

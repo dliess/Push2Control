@@ -85,3 +85,7 @@ std::string MelodicInstrument::name() const noexcept
    return m_name;
 }
 
+void MelodicInstrument::setName(const std::string& name) noexcept
+{
+   m_name = name;
+}

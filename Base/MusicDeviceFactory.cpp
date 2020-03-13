@@ -228,6 +228,7 @@ void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice>
         case SoundSection::DefaultInstrumentType::DrumKit:
         {
             KitInstrument kitInstrument;
+            kitInstrument.setName(pMusicDevice->pDescr->productName);
             for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
             {
                 KitSound kitSound;
@@ -245,6 +246,9 @@ void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice>
             for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
             {
                 MelodicInstrument melodicInstrument;
+                std::string name = pMusicDevice->pDescr->productName;
+                if(pMusicDevice->pDescr->soundSection->voices.size() > 1) name = name + " - " + std::to_string(i + 1);
+                melodicInstrument.setName(name);
                 melodicInstrument.addVoice(MelodicInstrumentVoice{pMusicDevice->deviceId(), pMusicDevice, i});
                 m_rInstruments.melodicInstruments.push_back(melodicInstrument);
             }
@@ -253,6 +257,7 @@ void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice>
         case SoundSection::DefaultInstrumentType::OnePolyphonicInstrument:
         {
             MelodicInstrument melodicInstrument;
+            melodicInstrument.setName(pMusicDevice->pDescr->productName);
             for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
             {
                 melodicInstrument.addVoice(MelodicInstrumentVoice{pMusicDevice->deviceId(), pMusicDevice, i});

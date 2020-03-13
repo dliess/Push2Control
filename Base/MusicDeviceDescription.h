@@ -329,6 +329,7 @@ template <>
 inline auto registerMembers<SoundSection>()
 {
    return members(
+      member("defaultInstrumentType", &SoundSection::defaultInstrumentType),
       member("voices", &SoundSection::voices),
       member("parameters", &SoundSection::parameters),
       member("parameter_categories", &SoundSection::parameter_categories),
