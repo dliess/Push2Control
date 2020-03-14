@@ -125,6 +125,37 @@ Item {
                 }
                 highlightFollowsCurrentItem: false
             }
+            ListView {
+                id: listView3
+                width: parent.width / 8
+                height: parent.height
+                Component {
+                    Text {
+                        id: kitSoundDelegate
+                        text: "name"
+                        color: ListView.isCurrentItem ? "black" : "white"
+                        font.pointSize: 10
+                    }
+                }
+                Component {
+                    id: melodicInstrumentVoiceDelegate
+                    Text {
+                        text: "name"
+                        color: ListView.isCurrentItem ? "black" : "white"
+                        font.pointSize: 10
+                    }
+                }
+                delegate: kitSoundDelegate
+                highlight: Rectangle {
+                    y: listView3.currentItem ? listView3.currentItem.y : 0
+                    width: listView3.width
+                    height: 20
+                    color: "lightsteelblue";
+                    //Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
+                    radius: 3
+                }
+                highlightFollowsCurrentItem: false
+            }
         }
     }
 }
