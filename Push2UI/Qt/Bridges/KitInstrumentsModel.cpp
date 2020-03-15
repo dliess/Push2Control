@@ -1,7 +1,8 @@
 #include "KitInstrumentsModel.h"
 
-KitInstrumentsModel::KitInstrumentsModel(std::vector<KitInstrument>& rKitInstruments) noexcept:
-   QAbstractListModel()
+KitInstrumentsModel::KitInstrumentsModel(std::vector<KitInstrument>& rKitInstruments,
+                                         QObject* pParent) noexcept:
+   QAbstractListModel(pParent)
 {
    for(auto& kitInstrument : rKitInstruments)
    {

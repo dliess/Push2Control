@@ -97,14 +97,26 @@ Item {
                 onCurrentIndexChanged: {
                     switch(currentIndex)
                     {
-                        case 0: { listView2.model = instruments.kitInstruments(); break; }
-                        case 1: { listView2.model = instruments.melodicInstruments(); break; }
+                        case 0: 
+                        { 
+                            listView2.model = instruments.kitInstruments()
+                            break
+                        }
+                        case 1: 
+                        {
+                            listView2.model = instruments.melodicInstruments()
+                            break
+                        }
                     }
+                }
+                /*
+                onCurrentItemChanged: {
+                    console.log("listView1: onCurrentItemChanged")
                 }
                 Component.onCompleted:{
                     currentIndex = 1
                 }
-
+                */
             }
             ListView {
                 id: listView2
@@ -124,15 +136,38 @@ Item {
                     radius: 3
                 }
                 highlightFollowsCurrentItem: false
+                onCurrentItemChanged: {
+                    //if(!currentItem) return
+                    if(model == instruments.kitInstruments())
+                    {
+                        listView3.model = instruments.kitInstruments().sounds(currentIndex)
+                    }
+                    else if(model == instruments.melodicInstruments())
+                    {
+                        listView3.model = instruments.melodicInstruments().voices(currentIndex)
+                    }
+                }
+                onModelChanged: {
+                    if(model == instruments.kitInstruments())
+                    {
+                        //listView3.width = parent.width / 8
+                        listView3.delegate = kitSoundDelegate
+                    }
+                    else if(model == instruments.melodicInstruments())
+                    {
+                        //listView3.width = (parent.width / 8) * 4
+                        listView3.delegate = melodicInstrumentVoiceDelegate
+                    }
+                }
             }
             ListView {
                 id: listView3
                 width: parent.width / 8
                 height: parent.height
                 Component {
+                    id: kitSoundDelegate
                     Text {
-                        id: kitSoundDelegate
-                        text: "name"
+                        text: name ? name : "unknown"
                         color: ListView.isCurrentItem ? "black" : "white"
                         font.pointSize: 10
                     }
@@ -140,12 +175,11 @@ Item {
                 Component {
                     id: melodicInstrumentVoiceDelegate
                     Text {
-                        text: "name"
+                        text: deviceName + "@" + devicePort + " Voice:" + voiceIndex
                         color: ListView.isCurrentItem ? "black" : "white"
                         font.pointSize: 10
                     }
                 }
-                delegate: kitSoundDelegate
                 highlight: Rectangle {
                     y: listView3.currentItem ? listView3.currentItem.y : 0
                     width: listView3.width

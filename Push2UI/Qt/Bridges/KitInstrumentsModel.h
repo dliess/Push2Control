@@ -17,7 +17,7 @@ public:
         NameRole = Qt::UserRole + 1,
         SoundsRole
     };
-    KitInstrumentsModel(std::vector<KitInstrument>& rKitInstruments) noexcept;
+    KitInstrumentsModel(std::vector<KitInstrument>& rKitInstruments, QObject* pParent) noexcept;
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex&) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

@@ -101,7 +101,6 @@ int main(int argc, char *argv[])
     push2Device.init(1000);
 #endif
 
-    InstrumentsBridge instrumentsBridge(base.instruments);
 
     util::ThreadedLoop midiOutThread([&base](){
         auto start = std::chrono::high_resolution_clock::now();
@@ -144,6 +143,7 @@ int main(int argc, char *argv[])
     const auto displayId = fp::Push2Topology::Display::Id::eDisplay;
     //SelectedSoundDevice               selectedSoundDevice;
     QuickViewOnFpRenderMedium         fboQuickView(push2Device.getRenderMedium(fp::Widget(displayId)));
+    InstrumentsBridge instrumentsBridge(base.instruments);
 
     fboQuickView.fboQuickView.rootContext()->setContextProperty("instruments", &instrumentsBridge);   
 

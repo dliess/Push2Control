@@ -1,7 +1,8 @@
 #include "MelodicInstrumentsModel.h"
 
-MelodicInstrumentsModel::MelodicInstrumentsModel(std::vector<MelodicInstrument>& rMelodicInstruments) noexcept:
-   QAbstractListModel()
+MelodicInstrumentsModel::MelodicInstrumentsModel(std::vector<MelodicInstrument>& rMelodicInstruments,
+                                                 QObject* pParent) noexcept:
+   QAbstractListModel(pParent)
 {
    for(auto& melodicInstrument : rMelodicInstruments)
    {
@@ -37,5 +38,5 @@ QVariant MelodicInstrumentsModel::data(const QModelIndex &index, int role) const
 QAbstractListModel* MelodicInstrumentsModel::voices(int melodicInstrIdx) noexcept
 {
    // TODO: check melodicInstrIdx
-   m_melodicInstrumentBridges[melodicInstrIdx].pMelodicInstrumentVoicesModel.get();
+   return m_melodicInstrumentBridges[melodicInstrIdx].pMelodicInstrumentVoicesModel.get();
 }

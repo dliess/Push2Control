@@ -15,7 +15,8 @@ public:
         VoicesRole
     };
 
-    MelodicInstrumentsModel(std::vector<MelodicInstrument>& rMelodicInstruments) noexcept;
+    MelodicInstrumentsModel(std::vector<MelodicInstrument>& rMelodicInstruments,
+                            QObject* pParent) noexcept;
 
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex&) const override;

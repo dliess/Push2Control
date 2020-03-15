@@ -232,6 +232,7 @@ void base::MusicDeviceFactory::createInstrumentFrom(std::shared_ptr<MusicDevice>
             for(int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size(); ++i)
             {
                 KitSound kitSound;
+                kitSound.name = pMusicDevice->pDescr->soundSection->voices[i].name;
                 kitSound.voices[0].soundDeviceId = pMusicDevice->deviceId();
                 kitSound.voices[0].pSoundDevice = pMusicDevice;
                 kitSound.voices[0].voiceIndex = i;

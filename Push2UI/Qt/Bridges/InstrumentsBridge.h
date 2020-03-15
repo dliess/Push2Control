@@ -17,8 +17,8 @@ public:
     Q_INVOKABLE QAbstractListModel* kitInstruments() noexcept;
     Q_INVOKABLE QAbstractListModel* melodicInstruments() noexcept;
 private:
-    KitInstrumentsModel     m_kitInstrumentsModel;
-    MelodicInstrumentsModel m_melodicInstrumentsModel;
+    KitInstrumentsModel*     m_pKitInstrumentsModel;
+    MelodicInstrumentsModel* m_pMelodicInstrumentsModel;
 };
 
 #endif

@@ -4,17 +4,17 @@
 
 InstrumentsBridge::InstrumentsBridge(Instruments& rInstruments) noexcept:
     QObject(),
-    m_kitInstrumentsModel(rInstruments.kitInstruments),
-    m_melodicInstrumentsModel(rInstruments.melodicInstruments)
+    m_pKitInstrumentsModel(new KitInstrumentsModel(rInstruments.kitInstruments, this)),
+    m_pMelodicInstrumentsModel(new MelodicInstrumentsModel(rInstruments.melodicInstruments, this))
 {
 }
 
 QAbstractListModel* InstrumentsBridge::kitInstruments() noexcept
 {
-    return &m_kitInstrumentsModel;
+    return m_pKitInstrumentsModel;
 }
 
 QAbstractListModel* InstrumentsBridge::melodicInstruments() noexcept
 {
-    return &m_melodicInstrumentsModel;
+    return m_pMelodicInstrumentsModel;
 }
