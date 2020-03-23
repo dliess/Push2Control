@@ -78,7 +78,7 @@ Item {
            {
                case Button.E_BtnB:
                {
-                    var _x = x + theOutputPortListView.indexAt(0,0)
+                    var _x = x + ListViewHelper.getListViewStartIndex(theOutputPortListView)
                     if(0 <= _x && _x < theOutputPortListView.count)
                     {
                         ObjectCreator.createSelfDestroyingObject("MidiRouteSpecializingScene.qml",
