@@ -15,6 +15,7 @@ add_library(Base STATIC
    "MusicDevice.cpp"
    "MusicDeviceFactory.cpp"
    "MusicDeviceHolder.cpp"
+   "NoteMapper.cpp"
    "ParameterMapper.cpp"
    "SoundPresets.cpp"
    "TapTempoHandler.cpp"

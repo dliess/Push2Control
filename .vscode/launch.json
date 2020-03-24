@@ -22,7 +22,8 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "visualizerFile": "/home/danita/.config/Code - OSS/User/workspaceStorage/264e3794667f98fdede0366753ee29d6/tonka3000.qtvsctools/qt.natvis.xml"
         },
         {
             "name": "(gdb) FrontPanelIO/FrontPanelBase/UnitTest/runTestsFpBase",
@@ -42,7 +43,8 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "visualizerFile": "/home/danita/.config/Code - OSS/User/workspaceStorage/264e3794667f98fdede0366753ee29d6/tonka3000.qtvsctools/qt.natvis.xml"
         },
         {
             "name": "(gdb) Util/UnitTest/runTestsUtil",
@@ -62,7 +64,8 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "visualizerFile": "/home/danita/.config/Code - OSS/User/workspaceStorage/264e3794667f98fdede0366753ee29d6/tonka3000.qtvsctools/qt.natvis.xml"
         }
     ]
 }

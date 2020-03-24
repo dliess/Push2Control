@@ -79,7 +79,11 @@
         "shared_mutex": "cpp",
         "bit": "cpp",
         "qqmlapplicationengine": "cpp",
-        "qvector": "cpp"
+        "qvector": "cpp",
+        "complex": "cpp",
+        "future": "cpp",
+        "cfenv": "cpp",
+        "typeindex": "cpp"
     },
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }

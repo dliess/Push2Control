@@ -2,6 +2,7 @@
 #define MUSIC_DEVICE_ID_H
 
 #include <string>
+#include <Meta.h>
 
 struct MusicDeviceId
 {
@@ -30,5 +31,19 @@ struct MusicDeviceId
     }
     std::string toStr() const noexcept { return deviceName + "@" + portName; }
 };
+
+namespace meta
+{
+
+template <>
+inline auto registerMembers<MusicDeviceId>()
+{
+   return members(
+      member("deviceName", &MusicDeviceId::deviceName),
+      member("portName",   &MusicDeviceId::portName)
+   );
+}
+
+}
 
 #endif

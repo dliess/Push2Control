@@ -78,6 +78,9 @@ public:
     size_t size() const noexcept {return m_vector.size();}
     std::pair<Key, Value> &atIdx(unsigned int idx) {return m_vector.at(idx);}
     const std::pair<Key, Value> &atIdx(unsigned int idx) const {return m_vector.at(idx);}
+    std::pair<Key, Value> &at(unsigned int idx) noexcept {return m_vector[idx];}
+    const std::pair<Key, Value> &at(unsigned int idx) const noexcept {return m_vector[idx];}
+
 
     std::pair<Key, Value> &back(){ return m_vector.back();}
     const std::pair<Key, Value> &back() const{ return m_vector.back();}
