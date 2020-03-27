@@ -42,9 +42,16 @@ struct SoundDeviceParameter
    static inline Type typeFromString(const std::string& str);
 };
 
-struct ControllerDeviceContinousControl
+struct ControllerDeviceParameter
 {
    std::string                name;
+   enum class Type
+   {
+      Button,
+      Absolute,
+      Relative
+   };
+   Type        type;
    std::optional<std::string> description;
    MusicDeviceParameterMidi   midi;
 };
@@ -109,7 +116,7 @@ struct SoundSection
 struct ControllerSection
 {
    unsigned                                      num_presets;
-   std::vector<ControllerDeviceContinousControl> parameters;
+   std::vector<ControllerDeviceParameter>        parameters;
    std::vector<MusicDeviceParameterCategory>     parameter_categories;
    int getParamIdByCatIdx(int catIdx, int paramInCatIdx) const{
       return parameter_categories[catIdx].parameter_ids[paramInCatIdx];
@@ -289,12 +296,12 @@ inline auto registerMembers<SoundDeviceParameter>()
 }
 
 template <>
-inline auto registerMembers<ControllerDeviceContinousControl>()
+inline auto registerMembers<ControllerDeviceParameter>()
 {
    return members(
-      member("name", &ControllerDeviceContinousControl::name),
-      member("description", &ControllerDeviceContinousControl::description),
-      member("midi", &ControllerDeviceContinousControl::midi)
+      member("name", &ControllerDeviceParameter::name),
+      member("description", &ControllerDeviceParameter::description),
+      member("midi", &ControllerDeviceParameter::midi)
    );
 }
 

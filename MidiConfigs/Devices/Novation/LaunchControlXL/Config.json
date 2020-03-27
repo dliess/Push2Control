@@ -7,8 +7,7 @@
         "num_presets" : 1,
         "parameters": [
             {
-                "name" : "Fader 1",
-                
+                "name" : "Fader 1",              
                 "type" : "continous",
                 "midi" : {
                     "cc" : [77]
@@ -16,7 +15,6 @@
             },
             {
                 "name" : "Fader 2",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [78]
@@ -24,7 +22,6 @@
             },
             {
                 "name" : "Fader 3",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [79]
@@ -32,7 +29,6 @@
             },
             {
                 "name" : "Fader 4",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [80]
@@ -40,7 +36,6 @@
             },
             {
                 "name" : "Fader 5",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [81]
@@ -48,7 +43,6 @@
             },
             {
                 "name" : "Fader 6",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [82]
@@ -56,7 +50,6 @@
             },
             {
                 "name" : "Fader 7",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [83]
@@ -64,7 +57,6 @@
             },
             {
                 "name" : "Fader 8",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [84]
@@ -72,7 +64,6 @@
             },
             {
                 "name" : "Rotary 1 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [13]
@@ -80,7 +71,6 @@
             },
             {
                 "name" : "Rotary 2 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [14]
@@ -88,7 +78,6 @@
             },
             {
                 "name" : "Rotary 3 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [15]
@@ -96,7 +85,6 @@
             },
             {
                 "name" : "Rotary 4 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [16]
@@ -104,7 +92,6 @@
             },
             {
                 "name" : "Rotary 5 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [17]
@@ -112,7 +99,6 @@
             },
             {
                 "name" : "Rotary 6 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [18]
@@ -120,7 +106,6 @@
             },
             {
                 "name" : "Rotary 7 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [19]
@@ -128,7 +113,6 @@
             },
             {
                 "name" : "Rotary 8 Top",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [20]
@@ -136,7 +120,6 @@
             },
             {
                 "name" : "Rotary 1 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [29]
@@ -144,7 +127,6 @@
             },
             {
                 "name" : "Rotary 2 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [30]
@@ -152,7 +134,6 @@
             },
             {
                 "name" : "Rotary 3 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [31]
@@ -160,7 +141,6 @@
             },
             {
                 "name" : "Rotary 4 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [32]
@@ -168,7 +148,6 @@
             },
             {
                 "name" : "Rotary 5 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [33]
@@ -176,7 +155,6 @@
             },
             {
                 "name" : "Rotary 6 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [34]
@@ -184,7 +162,6 @@
             },
             {
                 "name" : "Rotary 7 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [35]
@@ -192,7 +169,6 @@
             },
             {
                 "name" : "Rotary 8 Mid",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [36]
@@ -200,7 +176,6 @@
             },
             {
                 "name" : "Rotary 1 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [49]
@@ -208,7 +183,6 @@
             },
             {
                 "name" : "Rotary 2 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [50]
@@ -216,7 +190,6 @@
             },
             {
                 "name" : "Rotary 3 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [51]
@@ -224,7 +197,6 @@
             },
             {
                 "name" : "Rotary 4 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [52]
@@ -232,7 +204,6 @@
             },
             {
                 "name" : "Rotary 5 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [53]
@@ -240,7 +211,6 @@
             },
             {
                 "name" : "Rotary 6 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [54]
@@ -248,7 +218,6 @@
             },
             {
                 "name" : "Rotary 7 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [55]
@@ -256,7 +225,6 @@
             },
             {
                 "name" : "Rotary 8 Bot",
-                
                 "type" : "continous",
                 "midi" : {
                     "cc" : [56]

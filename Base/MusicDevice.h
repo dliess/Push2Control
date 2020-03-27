@@ -71,8 +71,12 @@ struct MusicDevice : public utils::Settings<MusicDevice>
     void pitchBend(int voiceIndex, float value) noexcept;
 
 
-    using ParameterChangeCb = std::function<void(uint32_t voiceId, uint32_t parameterId, float value)>;
+    using ParameterChangeCb = std::function<void(uint32_t presetId, uint32_t parameterId, float value)>;
     void registerForControllerParameterChange(ParameterChangeCb cb) noexcept;
+    using NoteChangeCb = std::function<void(int presetId, bool on, int note, float velocity)>;
+    void registerForNoteChange(NoteChangeCb cb) noexcept;
+    using PitchBendChangeCb = std::function<void(int presetId, int note, float pitchBend)>;
+    void registerForPitchBendChange(PitchBendChangeCb cb) noexcept;
 
     void processMidiOutBuffers() noexcept;
 
@@ -96,7 +100,9 @@ private:
     SoundParams                             m_soundParams;
     std::vector<std::vector<float>>         m_controlParams;
 
-    std::vector<ParameterChangeCb> m_controllerParameterChangeCbsAll;
+    std::vector<ParameterChangeCb> m_controllerParameterChangeCbs;
+    std::vector<NoteChangeCb>      m_noteChangeCbs;
+    std::vector<PitchBendChangeCb> m_pitchBendChangeCbs;
 
     float getInitalParameterValue(uint32_t parameterId) const noexcept;
 };

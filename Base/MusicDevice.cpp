@@ -66,7 +66,7 @@ void MusicDevice::addMidiIn(std::unique_ptr<midi::IMidiInMedium> pMedium) noexce
         });
         m_midiInMsgHandler->registerForControlParameter([this](uint32_t presetId, uint32_t parameterId, float value){
             m_controlParams[presetId][parameterId] = value;
-            for(auto& cb : m_controllerParameterChangeCbsAll)
+            for(auto& cb : m_controllerParameterChangeCbs)
             {
                 cb(presetId, parameterId, value);
             }
@@ -273,14 +273,23 @@ void MusicDevice::pitchBend(int voiceIndex, float value) noexcept
 
 void MusicDevice::registerForControllerParameterChange(ParameterChangeCb cb) noexcept
 {
-    m_controllerParameterChangeCbsAll.push_back(cb);
+    m_controllerParameterChangeCbs.emplace_back(std::move(cb));
+}
+
+void MusicDevice::registerForNoteChange(NoteChangeCb cb) noexcept
+{
+    m_noteChangeCbs.emplace_back(std::move(cb));
+}
+
+void MusicDevice::registerForPitchBendChange(PitchBendChangeCb cb) noexcept
+{
+    m_pitchBendChangeCbs.emplace_back(std::move(cb));
 }
 
 void MusicDevice::processMidiOutBuffers() noexcept
 {
     if(m_midiOutHandler) m_midiOutHandler->processMidiOutBuffers();
 }
-
 
 float MusicDevice::getInitalParameterValue(uint32_t parameterId) const noexcept
 {

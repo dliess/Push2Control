@@ -44,6 +44,20 @@ inline auto registerMembers<MusicDeviceId>()
    );
 }
 
+
 }
+
+namespace std
+{
+  template <>
+  struct hash<MusicDeviceId>
+  {
+    size_t operator()(const MusicDeviceId& rMusicDevice) const noexcept
+    {
+        hash<string> hasher;
+        return hasher(rMusicDevice.deviceName) ^ hasher(rMusicDevice.portName);
+    }
+  };
+} // namespace std
 
 #endif

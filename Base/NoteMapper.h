@@ -31,27 +31,23 @@ private:
    };
 
    using MappingDestination = mpark::variant<KitSoundId, MelodicInstrumentId>;
-
-   struct ControllerDeviceId
-   {
-      int                deviceIndex{INVALID_IDX};
-      std::optional<int> presetIndex;
-      bool operator==(const ControllerDeviceId& rhs) const noexcept
-      {
-         return deviceIndex == rhs.deviceIndex && presetIndex == rhs.presetIndex;
-      }
-      struct HashFn
-      { 
-         size_t operator()(const ControllerDeviceId& controllerDeviceId) const noexcept
-         { 
-            return (controllerDeviceId.deviceIndex << 8) ^
-                   (controllerDeviceId.presetIndex ? *controllerDeviceId.presetIndex : 0); 
-         } 
-      };
-   };
-   std::unordered_map<ControllerDeviceId, MappingDestination, ControllerDeviceId::HashFn> m_mapping;
+   using MapType = std::unordered_map<ControllerDeviceId, MappingDestination, ControllerDeviceId::HashFn>;
+   MapType                          m_mapping;
    MusicDeviceHolder::MusicDevices& m_rControllerDevices;
    Instruments&                     m_rInstruments;
+
+   template <typename T>
+   static std::optional<int> findIndexOfElementByName(const T& container, const std::string& name) noexcept
+   {
+      for(int i = 0; i < container.size(); ++i)
+      {
+         if(container[i].name() == name) return i;
+      }
+      return std::nullopt;
+   }
+
+   void onNoteChange(int presetId, bool on, int note, float velocity) noexcept;
+   void onPitchBendChange(int presetId, int note, float pitchBend) noexcept;
 };
 
 

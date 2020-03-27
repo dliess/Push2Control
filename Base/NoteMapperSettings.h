@@ -20,15 +20,28 @@ struct MelodicInstrumentIdSettings
    std::string melodicInstrumentId;
 };
 
-struct ControllerDeviceIdSettings
+struct ControllerDeviceId
 {
    MusicDeviceId controllerDeviceId;
    std::optional<int> presetIndex;
+   bool operator==(const ControllerDeviceId& rhs) const noexcept
+   {
+      return controllerDeviceId == rhs.controllerDeviceId && 
+               presetIndex == rhs.presetIndex;
+   }
+   struct HashFn
+   { 
+      size_t operator()(const ControllerDeviceId& controllerDeviceId) const noexcept
+      {
+         return (std::hash<MusicDeviceId>()(controllerDeviceId.controllerDeviceId) << 4) ^
+                  (controllerDeviceId.presetIndex ? *controllerDeviceId.presetIndex : 0); 
+      } 
+   };
 };
 
 struct NoteMapperDescription
 {
-   ControllerDeviceIdSettings                                      source;
+   ControllerDeviceId                                      source;
    mpark::variant<KitSoundIdSettings, MelodicInstrumentIdSettings> destination;
 };
 
@@ -53,11 +66,11 @@ inline auto registerMembers<MelodicInstrumentIdSettings>()
 }
 
 template <>
-inline auto registerMembers<ControllerDeviceIdSettings>()
+inline auto registerMembers<ControllerDeviceId>()
 {
    return members(
-      member("controllerDeviceId", &ControllerDeviceIdSettings::controllerDeviceId),
-      member("presetIndex",        &ControllerDeviceIdSettings::presetIndex)
+      member("controllerDeviceId", &ControllerDeviceId::controllerDeviceId),
+      member("presetIndex",        &ControllerDeviceId::presetIndex)
    );
 }
 
