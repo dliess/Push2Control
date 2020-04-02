@@ -5,6 +5,21 @@ MidiInMsgHandler::MidiInMsgHandler(std::unique_ptr<midi::IMidiInMedium>    pMedi
     m_midiIn(std::move(pMedium)),
     m_pDescr(pDescr)
 {
+    initMappingCaches();
+
+    m_midiIn.registerMidiInCb([this](const midi::MidiMessage& midiMsg){
+        mpark::visit(midi::overload{
+            [this](const midi::Message<midi::ControlChange>& ccMsg) { handleIncomingCcMsg(ccMsg); },
+            [this](const midi::Message<midi::NRPN>& nrpnMsg) { handleIncomingNRPNMsg(nrpnMsg); },
+            [this](const midi::Message<midi::NoteOn>& noteOnMsg) { handleIncomingNoteOnMsg(noteOnMsg); },
+            [this](const midi::Message<midi::NoteOff>& noteOffMsg) { handleIncomingNoteOffMsg(noteOffMsg); },
+            [](auto&& other) { /* Ignore them */ }
+        }, midiMsg);
+    });
+}
+
+void MidiInMsgHandler::initMappingCaches() noexcept
+{
     for(unsigned ccIdx = 0; ccIdx < m_cc2IdCache.size(); ++ccIdx)
     {
         const unsigned numSoundDevParams = m_pDescr->soundSection ? m_pDescr->soundSection->parameters.size() : 0;
@@ -42,68 +57,86 @@ MidiInMsgHandler::MidiInMsgHandler(std::unique_ptr<midi::IMidiInMedium>    pMedi
             }
         }
     }
+}
 
-    m_midiIn.registerMidiInCb([this](const midi::MidiMessage& midiMsg){
-        mpark::visit(midi::overload{
-            [this](const midi::Message<midi::ControlChange>& ccMsg) {
-                auto& entry = m_cc2IdCache[ccMsg.controllerNumber()];
-                if(entry.otherCCIdx == CC2ParamIdMappingEntry::NONE)
+void MidiInMsgHandler::handleIncomingCcMsg(const midi::Message<midi::ControlChange>& ccMsg) noexcept
+{
+    const auto& entry = m_cc2IdCache[ccMsg.controllerNumber()];
+    if(!entry) return;
+
+    if()
+
+    mpark::visit(midi::overload{
+        [this, &ccMsg](const CC2ParamIdMappingEntry& mappingEntry){
+            if(mappingEntry.otherCCIdx == CC2ParamIdMappingEntry::NONE)
+            {
+                if(m_lastReceivedCcMsb)
                 {
-                    if(m_lastReceivedCcMsb)
-                    {
-                        m_lastReceivedCcMsb.reset();
-                    }
-                    recvParameter(ccMsg);
+                    m_lastReceivedCcMsb.reset();
+                }
+                recvParameter(ccMsg);
+            }
+            else
+            {
+                if(isCcMsb(ccMsg))
+                {
+                    m_lastReceivedCcMsb.emplace(ccMsg);
                 }
                 else
                 {
-                    if(isCcMsb(ccMsg))
+                    if(m_lastReceivedCcMsb)
                     {
-                        m_lastReceivedCcMsb.emplace(ccMsg);
-                    }
-                    else
-                    {
-                        if(m_lastReceivedCcMsb)
-                        {
-                            recvParameter(*m_lastReceivedCcMsb, ccMsg);
-                        }
+                        recvParameter(*m_lastReceivedCcMsb, ccMsg);
                     }
                 }
-            },
-            [this](const midi::Message<midi::NRPN>& nrpnMsg) {
-                const float value = ((nrpnMsg.valueMsb << 7) + nrpnMsg.valueLsb)  / float(128 * 128);
-                if(m_pDescr->soundSection)
-                {
-                    for(int paramIdx = 0; paramIdx < m_pDescr->soundSection->parameters.size(); ++paramIdx){
-                        const auto& nrpn = m_pDescr->soundSection->parameters[paramIdx].midi.nrpn;
-                        if(nrpn &&
-                        nrpn->operator[](0) == nrpnMsg.idMsb &&
-                        nrpn->operator[](1) == nrpnMsg.idLsb)
-                        {
-                            for(auto& cb : m_soundParameterCbs) cb(nrpnMsg.channelNr - 1, paramIdx, value);
-                            return;
-                        }
-                    }
-                }
-                if(m_pDescr->controllerSection)
-                {
-                    for(int paramIdx = 0; paramIdx < m_pDescr->controllerSection->parameters.size(); ++paramIdx){
-                        const auto& nrpn = m_pDescr->controllerSection->parameters[paramIdx].midi.nrpn;
-                        if(nrpn &&
-                        nrpn->operator[](0) == nrpnMsg.idMsb &&
-                        nrpn->operator[](1) == nrpnMsg.idLsb)
-                        {
-                            for(auto& cb : m_controlParameterCbs) cb(nrpnMsg.channelNr - 1, paramIdx, value);
-                            return;
-                        }
-                    }
-                }
-            },
-            [](auto&& other) {
-                // Ignore them
             }
-        }, midiMsg);
-    });
+        },
+        [this](const ControllerEventId& destEventId){
+
+        }
+    }, *entry);
+
+}
+
+void MidiInMsgHandler::handleIncomingNRPNMsg(const midi::Message<midi::NRPN>& nrpnMsg) noexcept
+{
+    const float value = ((nrpnMsg.valueMsb << 7) + nrpnMsg.valueLsb)  / float(128 * 128);
+    if(m_pDescr->soundSection)
+    {
+        for(int paramIdx = 0; paramIdx < m_pDescr->soundSection->parameters.size(); ++paramIdx){
+            const auto& nrpn = m_pDescr->soundSection->parameters[paramIdx].midi.nrpn;
+            if(nrpn &&
+            nrpn->operator[](0) == nrpnMsg.idMsb &&
+            nrpn->operator[](1) == nrpnMsg.idLsb)
+            {
+                for(auto& cb : m_soundParameterCbs) cb(nrpnMsg.channelNr - 1, paramIdx, value);
+                return;
+            }
+        }
+    }
+    if(m_pDescr->controllerSection)
+    {
+        for(int paramIdx = 0; paramIdx < m_pDescr->controllerSection->parameters.size(); ++paramIdx){
+            const auto& nrpn = m_pDescr->controllerSection->parameters[paramIdx].midi.nrpn;
+            if(nrpn &&
+            nrpn->operator[](0) == nrpnMsg.idMsb &&
+            nrpn->operator[](1) == nrpnMsg.idLsb)
+            {
+                for(auto& cb : m_controlParameterCbs) cb(nrpnMsg.channelNr - 1, paramIdx, value);
+                return;
+            }
+        }
+    }
+}
+
+void MidiInMsgHandler::handleIncomingNoteOnMsg(const midi::Message<midi::NoteOn>& noteOnMsg) noexcept
+{
+
+}
+
+void MidiInMsgHandler::handleIncomingNoteOffMsg(const midi::Message<midi::NoteOff>& noteOffMsg) noexcept
+{
+
 }
 
 void MidiInMsgHandler::registerForSoundParameter(Cb cb) noexcept

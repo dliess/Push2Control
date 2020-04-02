@@ -1,70 +1,51 @@
 #ifndef CONTROLLER_DEVICE_EVENTS_H
 #define CONTROLLER_DEVICE_EVENTS_H
 
-#include <optional>
+#include <mpark/variant.hpp>
 
 namespace base::ctrldev
 {
 
+struct WidgetCoord
+{
+    int row;
+    int col;
+};
+
 struct WidgetId
 {
-    int id;
-    int x;
-    int y;
+    int         id;
+    WidgetCoord coord;
 };
 
-struct EncoderEvent
+using PressReleaseType = float; // -1.0 to 1.0
+using ContinousValueType = float; // 0.0 to 1.0
+using IncrementType = int;
+
+struct PressReleaseEvent
 {
-    WidgetId id;
-    int      increment;
+    WidgetId         wId;
+    PressReleaseType value;
 };
 
-struct ButtonEvent
+struct ContinousValueEvent
 {
-    WidgetId id;
-    bool     on;
-    std::optional<float> velocity;
-    std::optional<float> xPos;
-    std::optional<float> yPos;
+    WidgetId      wId;
+    IncrementType value;
 };
 
-struct ButtonEvent
+struct IncrementEvent
 {
-    WidgetId id;
-    bool     on;
-    std::optional<float> velocity;
-    std::optional<float> xPos;
-    std::optional<float> yPos;
+    WidgetId           wId;
+    ContinousValueType value;
 };
 
-struct ButtonEvent
-{
-    WidgetId id;
-    bool     on;
-    std::optional<float> velocity;
-    std::optional<float> xPos;
-    std::optional<float> yPos;
-};
+using EventType = mpark::variant<
+    PressReleaseEvent,
+    ContinousValueEvent,
+    IncrementEvent
+>;
 
-struct ButtonAftertouch
-{
-    WidgetId id;
-    float    value;
-};
-
-struct SurfaceDrag1D
-{
-    WidgetId id;
-    float    pos;
-};
-
-struct SurfaceDrag2D
-{
-    WidgetId id;
-    float    xPos;
-    float    yPos;
-};
-
-} // namespace base
+} // namespace base::ctrldev
 
 #endif

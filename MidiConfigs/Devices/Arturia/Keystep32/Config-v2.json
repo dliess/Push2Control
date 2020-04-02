@@ -11,14 +11,16 @@
                 "dimension" : { "rows": 1, "columns": 32 },
                 "events" : [
                     {
-                        "type" : "Button",
-                        "name" : "key",
-                        "midi-note" : [[41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69]]
+                        "type" :  "ButtonPress",
+                        "midi-note" : [[54, 55, 56, 57, 58, 59, 60]]
                     },
                     {
-                        "type" : "ContinousValue",
-                        "name" : "global aftertouch",
-                        "source" : "midi-global-aftertouch" 
+                        "type" :  "Velocity",
+                        "midi-velocity-of-note" : [[54, 55, 56, 57, 58, 59, 60]]
+                    },
+                    {
+                        "type" :  "GlobalAftertouch",
+                        "midi-cc" : [1]
                     }
                 ]
             },
@@ -26,9 +28,8 @@
                 "name" : "ModWheel",
                 "events" : [
                     {
-                        "type" : "ContinousValue",
-                        "name" : "ModWheel",
-                        "midi-cc" : [[1]]
+                        "type" :  "PosXEvent",
+                        "midi-cc" : [1]
                     }
                 ]
             }
