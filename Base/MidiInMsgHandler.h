@@ -36,19 +36,17 @@ private:
     midi::Midi1Input m_midiIn;
     std::shared_ptr<MusicDeviceDescription> m_pDescr;
 
-    struct CC2ParamIdMappingEntry
+    static constexpr int INVALID_IDX = -1;
+    struct SoundDevParameterId
     {
-        static constexpr int NONE = -1;
-        MusicDeviceDescription::Type deviceType{MusicDeviceDescription::Type::Unknown};
-        int      parameterId{NONE};
-        int      otherCCIdx{NONE};
+        int parameterId{INVALID_IDX};
     };
     struct ControllerEventId
     {
         base::ctrldev::WidgetId widgetId;
-        int                     eventId;
+        int                     eventId{INVALID_IDX};
     };
-    using CcMapDest = mpark::variant<CC2ParamIdMappingEntry, ControllerEventId>;
+    using CcMapDest = mpark::variant<SoundDevParameterId, ControllerEventId>;
     std::array<std::optional<CcMapDest>, 128>         m_cc2IdCache;
     std::array<std::optional<ControllerEventId>, 128> m_note2IdCache;
     std::optional<midi::Message<midi::ControlChange>> m_lastReceivedCcMsb;

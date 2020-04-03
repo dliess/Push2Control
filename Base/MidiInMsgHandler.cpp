@@ -64,38 +64,15 @@ void MidiInMsgHandler::handleIncomingCcMsg(const midi::Message<midi::ControlChan
     const auto& entry = m_cc2IdCache[ccMsg.controllerNumber()];
     if(!entry) return;
 
-    if()
-
     mpark::visit(midi::overload{
-        [this, &ccMsg](const CC2ParamIdMappingEntry& mappingEntry){
-            if(mappingEntry.otherCCIdx == CC2ParamIdMappingEntry::NONE)
-            {
-                if(m_lastReceivedCcMsb)
-                {
-                    m_lastReceivedCcMsb.reset();
-                }
-                recvParameter(ccMsg);
-            }
-            else
-            {
-                if(isCcMsb(ccMsg))
-                {
-                    m_lastReceivedCcMsb.emplace(ccMsg);
-                }
-                else
-                {
-                    if(m_lastReceivedCcMsb)
-                    {
-                        recvParameter(*m_lastReceivedCcMsb, ccMsg);
-                    }
-                }
-            }
+        [this, &ccMsg](const SoundDevParameterId& id){
+            for(auto& cb : m_soundParameterCbs)
+                cb(ccMsg.channel() - 1, id.parameterId, ccMsg.getRelativeValue());
         },
-        [this](const ControllerEventId& destEventId){
-
+        [this](const ControllerEventId& id){
+            
         }
     }, *entry);
-
 }
 
 void MidiInMsgHandler::handleIncomingNRPNMsg(const midi::Message<midi::NRPN>& nrpnMsg) noexcept
@@ -154,7 +131,7 @@ void MidiInMsgHandler::recvParameter(midi::Message<midi::ControlChange> ccMsg) n
     const auto channelId = ccMsg.channel() - 1;
     const auto parameterId = m_cc2IdCache[ccMsg.controllerNumber()].parameterId;
     const auto type = m_cc2IdCache[ccMsg.controllerNumber()].deviceType;
-    if(CC2ParamIdMappingEntry::NONE == parameterId)
+    if(SoundDevParameterId::NONE == parameterId)
     {
         return;
     }
