@@ -12,38 +12,26 @@ struct WidgetCoord
    int row{INVALID_IDX};
    int col{INVALID_IDX};
 };
-
-struct WidgetId
+struct EventId
 {
-   int id{INVALID_IDX};
-   WidgetCoord coord;
+   int         widgetId;
+   WidgetCoord widgetCoord;
+   int         eventId;
 };
 
 using PressReleaseType   = float;   // -1.0 to 1.0
 using ContinousValueType = float;   // 0.0 to 1.0
 using IncrementType      = int;
+using EventValue = mpark::variant<PressReleaseType, 
+                                  ContinousValueType,
+                                  IncrementType>;
 
-struct PressReleaseEvent
+struct Event
 {
-   WidgetId wId;
-   PressReleaseType value;
+   EventId    id;
+   EventValue value;
 };
 
-struct ContinousValueEvent
-{
-   WidgetId wId;
-   IncrementType value;
-};
-
-struct IncrementEvent
-{
-   WidgetId wId;
-   ContinousValueType value;
-};
-
-using EventType =
-    mpark::variant<PressReleaseEvent, ContinousValueEvent, IncrementEvent>;
-
-}   // namespace base::ctrldev
+} // namespace base::ctrldev
 
 #endif

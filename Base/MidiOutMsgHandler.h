@@ -29,7 +29,6 @@ public:
 private:
     midi::Midi1OutputManager                          m_midiOut;
     std::shared_ptr<MusicDeviceDescription>           m_pDescr;
-    std::optional<midi::Message<midi::ControlChange>> m_lastSentCcMsb;
     float m_pitchBendFactor{1.0};
 };
 
