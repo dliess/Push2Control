@@ -18,14 +18,16 @@ MusicDevice::MusicDevice(MusicDeviceId                           deviceId,
             voiceData.parameters.resize(pDescr->soundSection->parameters.size());
         }
     }
+    /* BIG TODO
     if(pDescr->controllerSection)
     {
-        m_controlParams.resize(pDescr->controllerSection->num_presets);
+        m_controlParams.resize(pDescr->controllerSection->numPresets);
         for(auto& presets : m_controlParams)
         {
             presets.resize(pDescr->controllerSection->parameters.size());
         }
     }
+    */
 
     if(pDescr->soundSection)
     {

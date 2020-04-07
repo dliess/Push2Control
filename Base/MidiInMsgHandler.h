@@ -41,28 +41,6 @@ public:
    friend midi::Dumper;
 
 private:
-   void initMappingCaches() noexcept;
-
-   void handleSoundDevParameterRouting(const SoundDevParameterId& id, 
-                                       const midi::MidiMessage& midiMsg) const noexcept;
-   void handleControllerParameterRouting(ctrldev::EventId id, 
-                                         const midi::MidiMessage& midiMsg) const noexcept;
-
-
-   void handleIncomingCcMsg(
-      const midi::Message<midi::ControlChange>& msg) noexcept;
-   void handleIncomingCcHighResMsg(
-      const midi::Message<midi::ControlChangeHighRes>& msg) noexcept;
-   void handleIncomingNRPNMsg(const midi::Message<midi::NRPN>& msg) noexcept;
-   void handleIncomingNoteOnMsg(
-      const midi::Message<midi::NoteOn>& msg) noexcept;
-   void handleIncomingNoteOffMsg(
-      const midi::Message<midi::NoteOff>& msg) noexcept;
-   void handleIncomingAfterTouchChannelMsg(
-      const midi::Message<midi::AfterTouchChannel>& msg) noexcept;
-   void handleIncomingAfterTouchPolyMsg(
-      const midi::Message<midi::AfterTouchPoly>& msg) noexcept;
-
    midi::Midi1Input m_midiIn;
    std::shared_ptr<MusicDeviceDescription> m_pDescr;
 
@@ -73,48 +51,14 @@ private:
    // Map keys
    struct MapKey
    {
-      MapKey(const midi::MidiMessage& midiMsg)
-      {
-         mpark::visit(
-            midi::overload{
-               [this](const midi::Message<midi::ControlChange>& msg) {
-                  midiMsgType = midi::ControlChange;
-                  id = msg.controllerNumber();
-               },
-               [this](const midi::Message<midi::ControlChangeHighRes>& msg) {
-                  midiMsgType = midi::ControlChangeHighRes;
-                  id = msg.controllerNumber();
-               },
-               [this](const midi::Message<midi::NRPN>& msg) {
-                  midiMsgType = midi::NRPN;
-                  id = (msg.idMsb << 7) ^ msg.idLsb;
-               },
-               [this](const midi::Message<midi::RPN>& msg) {
-                  midiMsgType = midi::RPN;
-                  id = (msg.idMsb << 7) ^ msg.idLsb;
-               },
-               [this](const midi::Message<midi::NoteOn>& msg) {
-                  midiMsgType = midi::NoteOn;
-                  id = msg.noteNumber();
-               },
-               [this](const midi::Message<midi::NoteOff>& msg) {
-                  midiMsgType = midi::NoteOff;
-                  id = msg.noteNumber();
-               },
-               [this](const midi::Message<midi::AfterTouchChannel>& msg) {
-                  midiMsgType = midi::AfterTouchChannel;
-                  id = msg.value();
-               },
-               [this](const midi::Message<midi::AfterTouchPoly>& msg) {
-                  midiMsgType = midi::AfterTouchPoly;
-                  id = msg.noteNumber();
-               },
-               [](auto&& other) { /* Ignore them */ }},
-            midiMsg);
-      }
-
+      MapKey(const midi::MidiMessage& midiMsg) noexcept;
       midi::MsgType midiMsgType{midi::NoValidMsg};
       uint16_t id{0};
+
+      constexpr bool operator==(const MapKey& rhs) const noexcept
+      {
+         return id == rhs.id && midiMsgType == rhs.midiMsgType;
+      }
       struct HashFn
       {
          size_t operator()(const MapKey& mapKey) const noexcept
@@ -140,16 +84,20 @@ private:
    // -------------------------
    // MPE Map
    // -------------------------
-   mutable std::array<std::optional<ctrldev::WidgetCoord>, midi::NUM_CHANNLES> m_mpeMap;
+   mutable std::array<std::optional<ctrldev::WidgetCoord>, midi::NUM_CHANNELS> m_mpeMap;
 
-   void recvParameter(midi::Message<midi::ControlChange> msg) noexcept;
-   void recvParameter(
-      const midi::Message<midi::ControlChange>& ccMsgMsb,
-      const midi::Message<midi::ControlChange>& ccMsgLsb) noexcept;
-   bool isCcMsb(midi::Message<midi::ControlChange> ccMsg) const noexcept;
 
+   // -------------------------
+   // Callback containers
+   // -------------------------
    std::vector<Cb> m_soundParameterCbs;
-   std::vector<Cb> m_controlParameterCbs;
+   std::vector<Cb> m_controlParameterCbs; // TODO : useless
+
+   void initMappingCaches() noexcept;
+   void handleSoundDevParameterRouting(const SoundDevParameterId& id, 
+                                       const midi::MidiMessage& midiMsg) const noexcept;
+   void handleControllerParameterRouting(ctrldev::EventId id, 
+                                         const midi::MidiMessage& midiMsg) const noexcept;
 };
 
 } // namespace base

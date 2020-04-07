@@ -95,7 +95,7 @@ struct MusicDevice : public utils::Settings<MusicDevice>
 
 private:
     MusicDeviceId                           m_deviceId;
-    std::optional<MidiInMsgHandler>         m_midiInMsgHandler;
+    std::optional<base::MidiInMsgHandler>   m_midiInMsgHandler;
     std::optional<MidiOutMsgHandler>        m_midiOutHandler;
     SoundParams                             m_soundParams;
     std::vector<std::vector<float>>         m_controlParams;

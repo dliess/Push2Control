@@ -39,7 +39,8 @@ void MidiOutMsgHandler::sendSoundParameter(uint32_t voiceId,
          }
          case 2:
          {
-            WARNING
+            m_midiOut.send(
+               midi::Message<midi::ControlChangeHighRes>(voiceId + 1, cc[0], cc[1], value));
             break;
          }
          default:
