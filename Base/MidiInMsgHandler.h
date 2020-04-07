@@ -23,6 +23,9 @@ namespace midi
 class Dumper;
 }
 
+namespace base
+{
+
 class MidiInMsgHandler
 {
 public:
@@ -42,7 +45,7 @@ private:
 
    void handleSoundDevParameterRouting(const SoundDevParameterId& id, 
                                        const midi::MidiMessage& midiMsg) const noexcept;
-   void handleControllerParameterRouting(const SoundDevParameterId& id, 
+   void handleControllerParameterRouting(ctrldev::EventId id, 
                                          const midi::MidiMessage& midiMsg) const noexcept;
 
 
@@ -129,20 +132,15 @@ private:
    {
       int parameterId{INVALID_IDX};
    };
-   struct ControllerEventId
-   {
-      base::ctrldev::WidgetId widgetId;
-      int eventId{INVALID_IDX};
-   };
 
-   using MapDest = mpark::variant<SoundDevParameterId, ControllerEventId>;
+   using MapDest = mpark::variant<SoundDevParameterId, ctrldev::EventId>;
 
    std::unordered_map<MapKey, MapDest, MapKey::HashFn> m_map;
 
    // -------------------------
    // MPE Map
    // -------------------------
-   std::array<base::ctrldev::WidgetCoord, midi::NUM_CHANNLES> m_mpeMap;
+   mutable std::array<std::optional<ctrldev::WidgetCoord>, midi::NUM_CHANNLES> m_mpeMap;
 
    void recvParameter(midi::Message<midi::ControlChange> msg) noexcept;
    void recvParameter(
@@ -153,5 +151,7 @@ private:
    std::vector<Cb> m_soundParameterCbs;
    std::vector<Cb> m_controlParameterCbs;
 };
+
+} // namespace base
 
 #endif

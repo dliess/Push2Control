@@ -1,6 +1,6 @@
 #include "MidiInMsgHandler.h"
 
-MidiInMsgHandler::MidiInMsgHandler(
+base::MidiInMsgHandler::MidiInMsgHandler(
    std::unique_ptr<midi::IMidiInMedium> pMedium,
    std::shared_ptr<MusicDeviceDescription> pDescr) :
    m_midiIn(std::move(pMedium)),
@@ -16,7 +16,7 @@ MidiInMsgHandler::MidiInMsgHandler(
          [this, &midiMsg](const SoundDevParameterId& id){
             handleSoundDevParameterRouting(id, midiMsg);
          },
-         [this, &midiMsg](const ControllerEventId& id){
+         [this, &midiMsg](const ctrldev::EventId& id){
             handleControllerParameterRouting(id, midiMsg);
          },
          [](auto&& other) { /* Ignore them */ }
@@ -24,8 +24,8 @@ MidiInMsgHandler::MidiInMsgHandler(
    });
 }
 
-void MidiInMsgHandler::handleSoundDevParameterRouting(const SoundDevParameterId& id, 
-                                                      const midi::MidiMessage& midiMsg) const noexcept
+void base::MidiInMsgHandler::handleSoundDevParameterRouting(const SoundDevParameterId& id, 
+                                                            const midi::MidiMessage& midiMsg) const noexcept
 {
    mpark::visit( midi::overload{
       [this, &id](const midi::Message<midi::ControlChange>& msg) {
@@ -44,117 +44,128 @@ void MidiInMsgHandler::handleSoundDevParameterRouting(const SoundDevParameterId&
    }, midiMsg);
 }
 
-void MidiInMsgHandler::handleControllerParameterRouting(const SoundDevParameterId& id, 
-                                                        const midi::MidiMessage& midiMsg) const noexcept
+void base::MidiInMsgHandler::handleControllerParameterRouting(ctrldev::EventId id, 
+                                                              const midi::MidiMessage& midiMsg) const noexcept
 {
    if(!m_pDescr->controllerSection) return;
-   const auto& eventDescr = m_pDescr->controllerSection->widgets[id.widgetId.id].events[id.eventId];
-   const EventType::Value value = 
-   mpark::visit( midi::overload{
-      [this, &id, &eventDescr](const midi::Message<midi::ControlChange>& msg) -> EventType
+   const auto& eventDescr = m_pDescr->controllerSection->widgets[id.widgetId].events[id.eventId];
+
+   const bool mpeMode = (0 == m_pDescr->controllerSection->numPresets);
+   
+   const auto value = mpark::visit( midi::overload{
+      [this, &id, &eventDescr](const midi::Message<midi::ControlChange>& msg) -> ctrldev::EventValue
       {
+         if(!id.widgetCoord) id.widgetCoord = m_mpeMap[msg.channel() - 1];
          return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
+            [this, &msg](const ControllerDeviceEventPressRelease& evt) -> ctrldev::EventValue{
+               return ctrldev::PressReleaseType{ msg.controllerValue() ? 1.0 : -1.0 };
             },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{ msg.getRelativeValue() };
             },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
+            [this, &msg](const ControllerDeviceEventIncremental& evt) -> ctrldev::EventValue{
+               return ctrldev::IncrementType{ msg.controllerValue() };
             }
          }, eventDescr);
       },
-      [this, &id, &eventDescr](const midi::Message<midi::ControlChangeHighRes>& msg) 
+      [this, &id, &eventDescr](const midi::Message<midi::ControlChangeHighRes>& msg) -> ctrldev::EventValue
       {
+         if(!id.widgetCoord) id.widgetCoord = m_mpeMap[msg.channel() - 1];
          return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
+            [this, &msg](const ControllerDeviceEventPressRelease& evt) -> ctrldev::EventValue{
+               return ctrldev::PressReleaseType{ msg.controllerValue() ? 1.0 : -1.0 };
             },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{msg.getRelativeValue()};
             },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
+            [this, &msg](const ControllerDeviceEventIncremental& evt) -> ctrldev::EventValue{
+               return ctrldev::IncrementType{ msg.controllerValue() };
             }
          }, eventDescr);
       },
-      [this, &id, &eventDescr](const midi::Message<midi::NRPN>& msg) 
+      [this, &id, &eventDescr](const midi::Message<midi::NRPN>& msg) -> ctrldev::EventValue
       {
+         if(!id.widgetCoord) id.widgetCoord = m_mpeMap[msg.channel() - 1];
          return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
+            [this, &msg](const ControllerDeviceEventPressRelease& evt) -> ctrldev::EventValue{
+               return ctrldev::PressReleaseType{bool(msg.controllerValue())};
             },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{msg.getRelativeValue()};
             },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
+            [this, &msg](const ControllerDeviceEventIncremental& evt) -> ctrldev::EventValue{
+               return ctrldev::IncrementType{ msg.controllerValue()};
             }
          }, eventDescr);
       },
-      [this, &id, &eventDescr](const midi::Message<midi::NoteOn>& msg) 
+      [this, &id, &eventDescr, mpeMode](const midi::Message<midi::NoteOn>& msg) -> ctrldev::EventValue
       {
-         return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
-            },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
-            },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
+         if(mpeMode)
+         {
+            if(!id.widgetCoord)
+            {
+               LOG_F(ERROR, "MPE mode note-on without widget coordinate");
+               return mpark::monostate;
             }
+            m_mpeMap[msg.channel() - 1] = id.widgetCoord;
+         }
+         return mpark::visit( midi::overload{
+            [this, &msg](const ControllerDeviceEventPressRelease& evt) -> ctrldev::EventValue{
+               return ctrldev::PressReleaseType{ msg.relativeVelocity() };
+            },
+            [](auto&&) -> ctrldev::EventValue { return mpark::monostate; }
          }, eventDescr);
       },
-      [this, &id, &eventDescr](const midi::Message<midi::NoteOff>& msg) 
+      [this, &eventDescr](const midi::Message<midi::NoteOff>& msg) -> ctrldev::EventValue
       {
          return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{ -1.0 * msg.relativeVelocity()};
             },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
-            },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
-            }
+            [](auto&&) -> ctrldev::EventValue { return mpark::monostate; }
          }, eventDescr);
       },
-      [this, &id, &eventDescr](const midi::Message<midi::AfterTouchChannel>& msg) 
+      [this, &id, &eventDescr](const midi::Message<midi::AfterTouchChannel>& msg) -> ctrldev::EventValue
+      {
+         if(!id.widgetCoord) id.widgetCoord = m_mpeMap[msg.channel() - 1];
+         return mpark::visit( midi::overload{
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{ msg.relativeValue() };
+            },
+            [](auto&&) -> ctrldev::EventValue { return mpark::monostate; }
+         }, eventDescr);
+      },
+      [this, &eventDescr](const midi::Message<midi::AfterTouchPoly>& msg) -> ctrldev::EventValue
       {
          return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{msg.relativeValue()};
             },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
-            },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
-            }
+            [](auto&&) -> ctrldev::EventValue { return mpark::monostate; }
          }, eventDescr);
       },
-      [this, &id, &eventDescr](const midi::Message<midi::AfterTouchPoly>& msg) 
+      [this, &id, &eventDescr](const midi::Message<midi::PitchBend>& msg) -> ctrldev::EventValue
       {
+         if(!id.widgetCoord) id.widgetCoord = m_mpeMap[msg.channel() - 1];
          return mpark::visit( midi::overload{
-            [this, id, &msg](const WidgetParamType::Button& evt) -> EventType{
-               return PressReleaseEvent{id, bool(msg.controllerValue())};
+            [this, &msg](const ControllerDeviceEventContinousValue& evt) -> ctrldev::EventValue{
+               return ctrldev::ContinousValueType{msg.value()}; // TODO: is value() correct?
             },
-            [this, id, &msg](const WidgetParamType::Continous& evt) -> EventType{
-               return ContinousValueEvent{id, msg.getRelativeValue()};
-            },
-            [this, id, &msg](const WidgetParamType::Incremental& evt) -> EventType{
-               return IncrementEvent{id, msg.controllerValue()};
-            }
+            [](auto&&) -> ctrldev::EventValue { return mpark::monostate; }
          }, eventDescr);
       },
-      [](auto&& other) { /* Ignore them */ }
+      [](auto&& other) -> ctrldev::EventValue
+      {
+         return mpark::monostate;
+      }
    }, midiMsg);
-   m_contrEvtConsumer.fireCtrlEvent(EventType{ value});
+   if(value != mpark::monostate)
+   {
+      m_contrEvtConsumer.fireCtrlEvent(EventType{id, value});
+   }
 }
 
-void MidiInMsgHandler::initMappingCaches() noexcept
+void base::MidiInMsgHandler::initMappingCaches() noexcept
 {
    if(m_pDescr->soundSection)
    {
@@ -173,7 +184,7 @@ void MidiInMsgHandler::initMappingCaches() noexcept
    }
 }
 
-void MidiInMsgHandler::handleIncomingCcMsg(
+void base::MidiInMsgHandler::handleIncomingCcMsg(
    const midi::Message<midi::ControlChange>& ccMsg) noexcept
 {
    const auto& entry = m_cc2IdCache[ccMsg.controllerNumber()];
@@ -191,12 +202,12 @@ void MidiInMsgHandler::handleIncomingCcMsg(
                 *entry);
 }
 
-void MidiInMsgHandler::handleIncomingCcHighResMsg(
+void base::MidiInMsgHandler::handleIncomingCcHighResMsg(
    const midi::Message<midi::ControlChangeHighRes>& ccHrMsg) noexcept
 {
 }
 
-void MidiInMsgHandler::handleIncomingNRPNMsg(
+void base::MidiInMsgHandler::handleIncomingNRPNMsg(
    const midi::Message<midi::NRPN>& nrpnMsg) noexcept
 {
    const float value = nrpnMsg.getRelativeValue();
@@ -235,37 +246,37 @@ void MidiInMsgHandler::handleIncomingNRPNMsg(
    }
 }
 
-void MidiInMsgHandler::handleIncomingNoteOnMsg(
+void base::MidiInMsgHandler::handleIncomingNoteOnMsg(
    const midi::Message<midi::NoteOn>& noteOnMsg) noexcept
 {
 }
 
-void MidiInMsgHandler::handleIncomingNoteOffMsg(
+void base::MidiInMsgHandler::handleIncomingNoteOffMsg(
    const midi::Message<midi::NoteOff>& noteOffMsg) noexcept
 {
 }
 
-void MidiInMsgHandler::handleIncomingAfterTouchChannelMsg(
+void base::MidiInMsgHandler::handleIncomingAfterTouchChannelMsg(
    const midi::Message<midi::AfterTouchChannel>& msg) noexcept
 {
 }
 
-void MidiInMsgHandler::handleIncomingAfterTouchPolyMsg(
+void base::MidiInMsgHandler::handleIncomingAfterTouchPolyMsg(
    const midi::Message<midi::AfterTouchPoly>& msg) noexcept
 {
 }
 
-void MidiInMsgHandler::registerForSoundParameter(Cb cb) noexcept
+void base::MidiInMsgHandler::registerForSoundParameter(Cb cb) noexcept
 {
    m_soundParameterCbs.push_back(cb);
 }
 
-void MidiInMsgHandler::registerForControlParameter(Cb cb) noexcept
+void base::MidiInMsgHandler::registerForControlParameter(Cb cb) noexcept
 {
    m_controlParameterCbs.push_back(cb);
 }
 
-void MidiInMsgHandler::recvParameter(
+void base::MidiInMsgHandler::recvParameter(
    midi::Message<midi::ControlChange> ccMsg) noexcept
 {
    const auto channelId   = ccMsg.channel() - 1;
@@ -293,7 +304,7 @@ void MidiInMsgHandler::recvParameter(
    }
 }
 
-void MidiInMsgHandler::recvParameter(
+void base::MidiInMsgHandler::recvParameter(
    const midi::Message<midi::ControlChange>& ccMsgMsb,
    const midi::Message<midi::ControlChange>& ccMsgLsb) noexcept
 {
@@ -321,7 +332,7 @@ void MidiInMsgHandler::recvParameter(
    }
 }
 
-bool MidiInMsgHandler::isCcMsb(midi::Message<midi::ControlChange> ccMsg) const
+bool base::MidiInMsgHandler::isCcMsb(midi::Message<midi::ControlChange> ccMsg) const
    noexcept
 {
    const auto parameterId = m_cc2IdCache[ccMsg.controllerNumber()].parameterId;

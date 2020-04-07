@@ -3,6 +3,7 @@
 
 #include "Meta.h"
 #include "JsonCast.h"
+#include <mpark/variant.hpp>
 #include <string>
 #include <vector>
 #include <optional>
@@ -42,37 +43,38 @@ struct SoundDeviceParameter
    static inline Type typeFromString(const std::string& str);
 };
 
-struct ControllerDeviceParameter
+struct ControllerDeviceWidgetDimension
 {
-   std::string                name;
-   enum class Type
-   {
-      Button,
-      Absolute,
-      Relative
-   };
-   Type        type;
-   std::optional<std::string> description;
-   MusicDeviceParameterMidi   midi;
+   int numRows;
+   int numColumns;
 };
 
-struct ControllerDeviceEncoder
+struct ControllerDeviceEventIncremental
 {
-
+   std::string name;
 };
 
-struct ControllerDeviceButton
+struct ControllerDeviceEventPressRelease
 {
-
+   std::string name;
 };
 
-struct MpeDescription
+struct ControllerDeviceEventContinousValue
 {
+   std::string name;
 };
-struct ControllerDeviceKeyboard
+
+using ControllerDeviceEvent = mpark::variant<
+   ControllerDeviceEventIncremental,
+   ControllerDeviceEventPressRelease,
+   ControllerDeviceEventContinousValue
+>;
+
+struct ControllerDeviceWidget
 {
-   bool hasAftertouch;
-   std::optional<MpeDescription> mpeDescription;
+   std::string                        name;
+   ControllerDeviceWidgetDimension    dimension;
+   std::vector<ControllerDeviceEvent> events;
 };
 
 struct MusicDeviceParameterCategory
@@ -115,12 +117,8 @@ struct SoundSection
 
 struct ControllerSection
 {
-   unsigned                                      num_presets;
-   std::vector<ControllerDeviceParameter>        parameters;
-   std::vector<MusicDeviceParameterCategory>     parameter_categories;
-   int getParamIdByCatIdx(int catIdx, int paramInCatIdx) const{
-      return parameter_categories[catIdx].parameter_ids[paramInCatIdx];
-   }
+   int                                 numPresets;
+   std::vector<ControllerDeviceWidget> widgets;
 };
 
 struct MusicDeviceDescription
@@ -296,12 +294,63 @@ inline auto registerMembers<SoundDeviceParameter>()
 }
 
 template <>
-inline auto registerMembers<ControllerDeviceParameter>()
+inline auto registerMembers<ControllerDeviceWidgetDimension>()
 {
    return members(
-      member("name", &ControllerDeviceParameter::name),
-      member("description", &ControllerDeviceParameter::description),
-      member("midi", &ControllerDeviceParameter::midi)
+      member("numRows", &ControllerDeviceWidgetDimension::numRows),
+      member("numColumns", &ControllerDeviceWidgetDimension::numColumns)
+   );
+}
+
+template <>
+auto getClassNameOrIndex<ControllerDeviceEventIncremental>(int i) noexcept
+{
+   return "Incremental";
+}
+
+template <>
+inline auto registerMembers<ControllerDeviceEventIncremental>()
+{
+   return members(
+      member("name", &ControllerDeviceEventIncremental::name)
+   );
+}
+
+template <>
+auto getClassNameOrIndex<ControllerDeviceEventPressRelease>(int i) noexcept
+{
+   return "PressRelease";
+}
+
+template <>
+inline auto registerMembers<ControllerDeviceEventPressRelease>()
+{
+   return members(
+      member("name", &ControllerDeviceEventPressRelease::name)
+   );
+}
+
+template <>
+auto getClassNameOrIndex<ControllerDeviceEventContinousValue>(int i) noexcept
+{
+   return "ContinousValue";
+}
+
+template <>
+inline auto registerMembers<ControllerDeviceEventContinousValue>()
+{
+   return members(
+      member("name", &ControllerDeviceEventContinousValue::name)
+   );
+}
+
+template <>
+inline auto registerMembers<ControllerDeviceWidget>()
+{
+   return members(
+      member("name", &ControllerDeviceWidget::name),
+      member("dimension", &ControllerDeviceWidget::dimension),
+      member("events", &ControllerDeviceWidget::events)
    );
 }
 
@@ -348,9 +397,8 @@ template <>
 inline auto registerMembers<ControllerSection>()
 {
    return members(
-      member("num_presets", &ControllerSection::num_presets),
-      member("parameters", &ControllerSection::parameters),
-      member("parameter_categories", &ControllerSection::parameter_categories)
+      member("numPresets", &ControllerSection::numPresets),
+      member("widgets", &ControllerSection::widgets)
    );
 }
 
