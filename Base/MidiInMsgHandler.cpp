@@ -209,7 +209,7 @@ void base::MidiInMsgHandler::initMappingCaches() noexcept
 {
    if(m_pDescr->soundSection)
    {
-      for(auto& param : m_pDescr->soundSection->parameters)
+      for(const auto& param : m_pDescr->soundSection->parameters)
       {
          if(param.midi.cc.size() == 2)
          {
@@ -217,10 +217,25 @@ void base::MidiInMsgHandler::initMappingCaches() noexcept
          }
       }
    }
-
    if(m_pDescr->controllerSection)
    {
-      // TODO
+      for(const auto& widget : m_pDescr->controllerSection->widgets)
+      {
+         for(const auto& eventDescr : widget.events)
+         {
+            mpark::visit( midi::overload{
+               [this](const ControllerDeviceEventPressRelease& evt){
+                  
+               },
+               [this](const ControllerDeviceEventContinousValue& evt){
+                  
+               },
+               [this](const ControllerDeviceEventIncremental& evt){
+                  
+               }
+            }, eventDescr);
+         }
+      }
    }
 }
 
