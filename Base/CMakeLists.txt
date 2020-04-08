@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8.12)
 
 set (CMAKE_CXX_STANDARD 17)
 
+add_subdirectory(MusicDeviceDescription)
+
 add_library(Base STATIC
    "DeviceDescriptionLoader.cpp"
    "Instruments.cpp"
@@ -31,6 +33,7 @@ target_include_directories(Base
 target_link_libraries(Base
    PUBLIC  Util
    PUBLIC  midi
+   PUBLIC  MusicDeviceDescription
    PRIVATE usbmidi
    PRIVATE Loguru
 )
