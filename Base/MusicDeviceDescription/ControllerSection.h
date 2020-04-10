@@ -3,6 +3,9 @@
 
 #include <string>
 #include <mpark/variant.hpp>
+#include "MidiMessageIds.h"
+#include "Meta.h"
+#include "JsonCast.h"
 
 struct ControllerDeviceWidgetDimension
 {
@@ -13,16 +16,20 @@ struct ControllerDeviceWidgetDimension
 struct ControllerDeviceEventIncremental
 {
    std::string name;
+   std::vector<std::vector<MidiMessageId>> source;
 };
 
 struct ControllerDeviceEventPressRelease
 {
    std::string name;
+   std::vector<std::vector<MidiMessageId>> presssSource;
+   std::vector<std::vector<MidiMessageId>> releaseSource;
 };
 
 struct ControllerDeviceEventContinousValue
 {
    std::string name;
+   std::vector<std::vector<MidiMessageId>> source;
 };
 
 using ControllerDeviceEvent = mpark::variant<
@@ -57,7 +64,7 @@ inline auto registerMembers<ControllerDeviceWidgetDimension>()
 }
 
 template <>
-auto getClassNameOrIndex<ControllerDeviceEventIncremental>(int i) noexcept
+inline auto getClassNameOrIndex<ControllerDeviceEventIncremental>(int i) noexcept
 {
    return "Incremental";
 }
@@ -71,7 +78,7 @@ inline auto registerMembers<ControllerDeviceEventIncremental>()
 }
 
 template <>
-auto getClassNameOrIndex<ControllerDeviceEventPressRelease>(int i) noexcept
+inline auto getClassNameOrIndex<ControllerDeviceEventPressRelease>(int i) noexcept
 {
    return "PressRelease";
 }
@@ -85,7 +92,7 @@ inline auto registerMembers<ControllerDeviceEventPressRelease>()
 }
 
 template <>
-auto getClassNameOrIndex<ControllerDeviceEventContinousValue>(int i) noexcept
+inline auto getClassNameOrIndex<ControllerDeviceEventContinousValue>(int i) noexcept
 {
    return "ContinousValue";
 }

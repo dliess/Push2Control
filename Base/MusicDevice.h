@@ -78,6 +78,7 @@ struct MusicDevice : public utils::Settings<MusicDevice>
     using PitchBendChangeCb = std::function<void(int presetId, int note, float pitchBend)>;
     void registerForPitchBendChange(PitchBendChangeCb cb) noexcept;
 
+    void processMidiInBuffers() noexcept;
     void processMidiOutBuffers() noexcept;
 
     std::shared_ptr<MusicDeviceDescription> pDescr;

@@ -248,3 +248,8 @@ void base::MidiInMsgHandler::registerForControlParameter(Cb cb) noexcept
 {
    m_controlParameterCbs.push_back(cb);
 }
+
+void base::MidiInMsgHandler::processMidiInBuffers()
+{
+   m_midiIn.update();
+}

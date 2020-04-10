@@ -5,21 +5,90 @@
     "productName" : "Keystep32",
     "controllerSection":{
         "numPresets" : 16,
-        "widgets": [
+        "widgets": 
+        [
             {
                 "name" : "Keypad",
                 "dimension" : { "numRows": 1, "numColumns": 32 },
-                "events" : [
+                "events" : 
+                [
                     {
                         ".type" : "PressRelease",
                         "name" : "key",
-                        "midi-note" : [[41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69]]
+                        "pressSource" : [[ 
+                            { ".type" : "MidiNoteOn", "note" : 41 },
+                            { ".type" : "MidiNoteOn", "note" : 42 },
+                            { ".type" : "MidiNoteOn", "note" : 43 },
+                            { ".type" : "MidiNoteOn", "note" : 44 },
+                            { ".type" : "MidiNoteOn", "note" : 45 },
+                            { ".type" : "MidiNoteOn", "note" : 46 },
+                            { ".type" : "MidiNoteOn", "note" : 47 },
+                            { ".type" : "MidiNoteOn", "note" : 48 },
+                            { ".type" : "MidiNoteOn", "note" : 49 },
+                            { ".type" : "MidiNoteOn", "note" : 50 },
+                            { ".type" : "MidiNoteOn", "note" : 51 },
+                            { ".type" : "MidiNoteOn", "note" : 52 },
+                            { ".type" : "MidiNoteOn", "note" : 53 },
+                            { ".type" : "MidiNoteOn", "note" : 54 },
+                            { ".type" : "MidiNoteOn", "note" : 55 },
+                            { ".type" : "MidiNoteOn", "note" : 56 },
+                            { ".type" : "MidiNoteOn", "note" : 57 },
+                            { ".type" : "MidiNoteOn", "note" : 58 },
+                            { ".type" : "MidiNoteOn", "note" : 59 },
+                            { ".type" : "MidiNoteOn", "note" : 60 },
+                            { ".type" : "MidiNoteOn", "note" : 61 },
+                            { ".type" : "MidiNoteOn", "note" : 62 },
+                            { ".type" : "MidiNoteOn", "note" : 63 },
+                            { ".type" : "MidiNoteOn", "note" : 64 },
+                            { ".type" : "MidiNoteOn", "note" : 65 },
+                            { ".type" : "MidiNoteOn", "note" : 66 },
+                            { ".type" : "MidiNoteOn", "note" : 67 },
+                            { ".type" : "MidiNoteOn", "note" : 68 },
+                            { ".type" : "MidiNoteOn", "note" : 69 },
+                            { ".type" : "MidiNoteOn", "note" : 70 },
+                            { ".type" : "MidiNoteOn", "note" : 71 },
+                            { ".type" : "MidiNoteOn", "note" : 72 }
+                            ]],
+                        "releaseSource" : [[ 
+                            { ".type" : "MidiNoteOff", "note" : 41 },
+                            { ".type" : "MidiNoteOff", "note" : 42 },
+                            { ".type" : "MidiNoteOff", "note" : 43 },
+                            { ".type" : "MidiNoteOff", "note" : 44 },
+                            { ".type" : "MidiNoteOff", "note" : 45 },
+                            { ".type" : "MidiNoteOff", "note" : 46 },
+                            { ".type" : "MidiNoteOff", "note" : 47 },
+                            { ".type" : "MidiNoteOff", "note" : 48 },
+                            { ".type" : "MidiNoteOff", "note" : 49 },
+                            { ".type" : "MidiNoteOff", "note" : 50 },
+                            { ".type" : "MidiNoteOff", "note" : 51 },
+                            { ".type" : "MidiNoteOff", "note" : 52 },
+                            { ".type" : "MidiNoteOff", "note" : 53 },
+                            { ".type" : "MidiNoteOff", "note" : 54 },
+                            { ".type" : "MidiNoteOff", "note" : 55 },
+                            { ".type" : "MidiNoteOff", "note" : 56 },
+                            { ".type" : "MidiNoteOff", "note" : 57 },
+                            { ".type" : "MidiNoteOff", "note" : 58 },
+                            { ".type" : "MidiNoteOff", "note" : 59 },
+                            { ".type" : "MidiNoteOff", "note" : 60 },
+                            { ".type" : "MidiNoteOff", "note" : 61 },
+                            { ".type" : "MidiNoteOff", "note" : 62 },
+                            { ".type" : "MidiNoteOff", "note" : 63 },
+                            { ".type" : "MidiNoteOff", "note" : 64 },
+                            { ".type" : "MidiNoteOff", "note" : 65 },
+                            { ".type" : "MidiNoteOff", "note" : 66 },
+                            { ".type" : "MidiNoteOff", "note" : 67 },
+                            { ".type" : "MidiNoteOff", "note" : 68 },
+                            { ".type" : "MidiNoteOff", "note" : 69 },
+                            { ".type" : "MidiNoteOff", "note" : 70 },
+                            { ".type" : "MidiNoteOff", "note" : 71 },
+                            { ".type" : "MidiNoteOff", "note" : 72 }
+                            ]]
                     },
                     {
                         ".type" : "ContinousValue",
                         "name" : "global aftertouch",
-                        "source" : "midi-global-aftertouch" 
-                    }
+                        "source" : [[{ ".type" : "MidiAfterTouchChannel" }]]
+                    }       
                 ]
             },
             {
@@ -29,7 +98,18 @@
                     {
                         ".type" : "ContinousValue",
                         "name" : "ModWheel",
-                        "midiCc" : [[1]]
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 1 }]]
+                    }
+                ]
+            },
+            {
+                "name" : "PitchBend",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : [
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "PitchBend",
+                        "source" : [[{ ".type" : "MidiPitchBend" }]]
                     }
                 ]
             }

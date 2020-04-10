@@ -288,6 +288,11 @@ void MusicDevice::registerForPitchBendChange(PitchBendChangeCb cb) noexcept
     m_pitchBendChangeCbs.emplace_back(std::move(cb));
 }
 
+void MusicDevice::processMidiInBuffers() noexcept
+{
+    if(m_midiInMsgHandler) m_midiInMsgHandler->processMidiInBuffers();
+}
+
 void MusicDevice::processMidiOutBuffers() noexcept
 {
     if(m_midiOutHandler) m_midiOutHandler->processMidiOutBuffers();

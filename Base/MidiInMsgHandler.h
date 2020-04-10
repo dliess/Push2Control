@@ -12,6 +12,7 @@
 #include "ControllerDeviceEvents.h"
 #include "Midi.h"
 #include "Midi1Input.h"
+#include "DoubleBufferedMessageDrain.h"
 #include "MusicDeviceDescription.h"
 
 namespace midi
@@ -36,12 +37,13 @@ public:
       std::function<void(uint32_t voiceId, uint32_t parameterId, float value)>;
    void registerForSoundParameter(Cb cb) noexcept;
    void registerForControlParameter(Cb cb) noexcept;
+   void processMidiInBuffers();
 
    friend midi::Router;
    friend midi::Dumper;
 
 private:
-   midi::Midi1Input m_midiIn;
+   midi::Midi1Input<midi::DoubleBufferedMessageDrain> m_midiIn;
    std::shared_ptr<MusicDeviceDescription> m_pDescr;
 
    // -------------------------

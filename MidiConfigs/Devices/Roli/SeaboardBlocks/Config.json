@@ -4,8 +4,41 @@
     "manufacturer" : "Roli",
     "productName" : "Seaboard Blocks",
     "controllerSection":{
-        "num_presets" : 3,
-        "parameters": [ ],
-        "parameter_categories": [  ]
+        "numPresets" : 0,
+        "widgets": 
+        [
+            {
+                "name" : "Keypad",
+                "dimension" : { "numRows": 1, "numColumns": 32 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "key",
+                        "pressSource" : [[ 
+                            { ".type" : "MidiNoteOn", "note" : 41 }
+                        ]],
+                        "releaseSource" : [[ 
+                            { ".type" : "MidiNoteOff", "note" : 41 }
+                        ]]
+                    },
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "MPE Aftertouch",
+                        "source" : [[{ ".type" : "MidiAfterTouchChannel" }]]    
+                    },
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "MPE PitchBend",
+                        "source" : [[{ ".type" : "MidiPitchBend" }]]    
+                    },
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "MPE PosY",
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 17 }]]    
+                    }
+                ]
+            }
+        ]
     }
 }
