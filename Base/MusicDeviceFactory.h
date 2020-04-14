@@ -1,8 +1,9 @@
 #ifndef MUSIC_DEVICE_FACTORY_H
 #define MUSIC_DEVICE_FACTORY_H
 
-#include "DeviceDescriptionLoader.h"
 #include <memory>
+
+#include "DeviceDescriptionLoader.h"
 
 struct MusicDeviceHolder;
 struct MusicDeviceId;
@@ -12,33 +13,33 @@ struct Instruments;
 namespace midi
 {
 class IMidiInMedium;
-class IMidiOutMedium; 
+class IMidiOutMedium;
 } // namespace midi
 
 namespace base
 {
-
-
 class MusicDeviceFactory
 {
 public:
-    MusicDeviceFactory(MusicDeviceHolder& rMusicDeviceHolder,
-                       Instruments&       rInstruments) noexcept;
+   MusicDeviceFactory(MusicDeviceHolder& rMusicDeviceHolder,
+                      Instruments& rInstruments);
 
-    void addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium);
-    void addMidiOutputMedium(std::unique_ptr<midi::IMidiOutMedium> pMedium);
+   void addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium);
+   void addMidiOutputMedium(std::unique_ptr<midi::IMidiOutMedium> pMedium);
 #ifdef __INSERT_DUMMY_MIDI_DEVICES__
-    void insertMusicDeviceDummies();
+   void insertMusicDeviceDummies();
 #endif
 
 private:
-    MusicDeviceHolder& m_rMusicDeviceHolder;
-    Instruments&       m_rInstruments;
-    DeviceDescriptionLoader  deviceLoader;
-    std::shared_ptr<MusicDevice> findMusicDevice(const MusicDeviceId& deviceId) const noexcept;
-    std::shared_ptr<MusicDevice> createAndInsertMusicDevice(const MusicDeviceId&  deviceId,
-                                                            const std::string&    deviceName);
-    void createInstrumentFrom(std::shared_ptr<MusicDevice> pMusicDevice) noexcept;
+   MusicDeviceHolder& m_rMusicDeviceHolder;
+   Instruments& m_rInstruments;
+   DeviceDescriptionLoader deviceLoader;
+   std::shared_ptr<MusicDevice> findMusicDevice(
+      const MusicDeviceId& deviceId) const noexcept;
+   std::shared_ptr<MusicDevice> createAndInsertMusicDevice(
+      const MusicDeviceId& deviceId, const std::string& deviceName) noexcept;
+   void createInstrumentFrom(
+      std::shared_ptr<MusicDevice> pMusicDevice) noexcept;
 };
 
 } // namespace base

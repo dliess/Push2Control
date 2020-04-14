@@ -1,38 +1,54 @@
 #include "Base.h"
-#include "ThreadedLoop.h"
+
+#include <cassert>
+#include <exception>
 #include <loguru.hpp>
 
-base::Base::Base() noexcept :
-    instruments(),
-    musicDeviceHolder(),
-    musicDeviceFactory(musicDeviceHolder, instruments),
-    tempoHandler(musicDeviceHolder.musicDevices),
-    m_midiOutThreadLoop([this](){threadLoop();})
+#include "ThreadedLoop.h"
+#include "UsbMidiPortNotifier.h"
+
+base::Base::Base() :
+   instruments(), musicDeviceHolder(),
+   musicDeviceFactory(musicDeviceHolder, instruments),
+   tempoHandler(musicDeviceHolder.musicDevices)
 {
-    // TODO: Remove Dummy
-    instruments.load("relDir", "filename", "section");
+   // TODO: Remove Dummy
+   instruments.load("relDir", "filename", "section");
 }
 
-void base::Base::threadLoop() // TODO: refactor to
+void base::Base::start()
 {
-    auto start = std::chrono::high_resolution_clock::now();
-    threadFunction();
-    auto end = std::chrono::high_resolution_clock::now();
-    const std::chrono::nanoseconds diff = end - start;
-    const std::chrono::nanoseconds PERIOD(1000000);
-    if(diff < PERIOD)
-    {
-        std::this_thread::sleep_for(PERIOD - diff);
-    }
+   if (!midi::PortNotifiers::instance().init())
+   {
+      // TODO: put this code to Midi lib
+      throw std::runtime_error("midi::PortNotifiers::instance().init() failed");
+   }
+   m_pMidiOutThreadLoop = std::make_unique<util::ThreadedLoop>(
+      std::chrono::milliseconds(500), [this]() { threadFunction(); });
+}
+
+void base::Base::waitForEnd()
+{
+   assert(m_pMidiOutThreadLoop);
+   m_pMidiOutThreadLoop->join();
 }
 
 void base::Base::threadFunction()
 {
-    for(auto& musicDevice : musicDeviceHolder.musicDevices){
-        musicDevice.second->processMidiInBuffers();
-    }
-    tempoHandler.nextTimeSlot();
-    for(auto& musicDevice : musicDeviceHolder.musicDevices){
-        musicDevice.second->processMidiOutBuffers();
-    }
+   LOG_SCOPE_FUNCTION(INFO);
+
+   VLOG_SCOPE_F(0, "Base::threadFunction()");
+   {
+      VLOG_SCOPE_F(1, "PortNotifier update");
+      midi::PortNotifiers::instance().update();
+   }
+   for (auto& musicDevice : musicDeviceHolder.musicDevices)
+   {
+      musicDevice.second->processMidiInBuffers();
+   }
+   tempoHandler.nextTimeSlot();
+   for (auto& musicDevice : musicDeviceHolder.musicDevices)
+   {
+      musicDevice.second->processMidiOutBuffers();
+   }
 }

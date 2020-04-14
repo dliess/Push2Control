@@ -1,8 +1,9 @@
 #ifndef DEVICE_DESCRIPTION_LOADER_H
 #define DEVICE_DESCRIPTION_LOADER_H
 
-#include "json.hpp"
 #include <string>
+
+#include "json.hpp"
 
 class MusicDeviceDescription;
 struct MusicDeviceId;
@@ -10,16 +11,16 @@ struct MusicDeviceId;
 class DeviceDescriptionLoader
 {
 public:
-    DeviceDescriptionLoader();
-    void load(const MusicDeviceId& musicDeviceId, MusicDeviceDescription& rDescr) const;
-private:
-    using json = nlohmann::json;
-    json m_jUsbMidiName2deviceMap;
-    json m_jUsbMidiHubName2deviceMap;
+   DeviceDescriptionLoader();
+   MusicDeviceDescription load(const MusicDeviceId& musicDeviceId) const;
 
-    static bool loadByMap(const nlohmann::json& rMap,
-                         const std::string&    key,
-                         nlohmann::json&       jDevDescr) noexcept;
+private:
+   using json = nlohmann::json;
+   json m_jUsbMidiName2deviceMap;
+   json m_jUsbMidiHubName2deviceMap;
+
+   std::optional<std::string> getConfigPath(
+      const MusicDeviceId& musicDeviceId) const noexcept;
 };
 
 #endif

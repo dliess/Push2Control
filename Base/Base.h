@@ -1,29 +1,33 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include "KitInstrument.h"
-#include "MusicDeviceHolder.h"
-#include "MusicDeviceFactory.h"
+#include <vector>
+#include <memory>
+
 #include "Instruments.h"
+#include "KitInstrument.h"
+#include "MusicDeviceFactory.h"
+#include "MusicDeviceHolder.h"
 #include "TempoHandler.h"
 #include "ThreadedLoop.h"
-#include <vector>
 
 namespace base
 {
-
 struct Base
 {
-    Base() noexcept;
-    Instruments        instruments;
-    MusicDeviceHolder  musicDeviceHolder;
-    MusicDeviceFactory musicDeviceFactory;
-    TempoHandler       tempoHandler;
+public:
+   Base();
+   Instruments instruments;
+   MusicDeviceHolder musicDeviceHolder;
+   MusicDeviceFactory musicDeviceFactory;
+   TempoHandler tempoHandler;
+
+   void start();
+   void waitForEnd();
 
 private:
-    util::ThreadedLoop m_midiOutThreadLoop;
-    void threadLoop();
-    void threadFunction();
+   std::unique_ptr<util::ThreadedLoop> m_pMidiOutThreadLoop;
+   void threadFunction();
 };
 
 } // namespace base
