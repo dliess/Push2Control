@@ -67,7 +67,7 @@ struct MidiMsgId<midi::PitchBend>
 {
 };
 
-using MidiMessageId = mpark::variant<
+using MidiMessageId = mpark::variant< mpark::monostate,
    MidiMsgId<midi::NoteOff>, MidiMsgId<midi::NoteOn>,
    MidiMsgId<midi::ControlChange>, MidiMsgId<midi::ControlChangeHighRes>,
    MidiMsgId<midi::NRPN>, MidiMsgId<midi::RPN>, MidiMsgId<midi::AfterTouchPoly>,
@@ -181,53 +181,5 @@ inline auto registerMembers<MidiMsgId<midi::PitchBend>>()
 }
 
 } // namespace meta
-
-namespace std
-{
-template<>
-struct hash<MidiMessageId>
-{
-   size_t operator()(const MidiMessageId& midiMessageId) const noexcept
-   {
-      hash<int> hasher;
-      const int index = midiMessageId.index;
-      return mpark::visit(
-         midi::overload{
-            [index](const MidiMessageId<midi::ControlChange>& msg) -> size_t {
-               return (index << 16) ^ msg.controllerNumber();
-            },
-            [index](const MidiMessageId<midi::ControlChangeHighRes>& msg) -> size_t {
-               midiMsgType = midi::ControlChangeHighRes;
-               id          = msg.controllerNumber();
-            },
-            [index](const MidiMessageId<midi::NRPN>& msg) -> size_t {
-               midiMsgType = midi::NRPN;
-               id          = (msg.idMsb << 7) ^ msg.idLsb;
-            },
-            [index](const MidiMessageId<midi::RPN>& msg) -> size_t {
-               midiMsgType = midi::RPN;
-               id          = (msg.idMsb << 7) ^ msg.idLsb;
-            },
-            [index](const MidiMessageId<midi::NoteOn>& msg) -> size_t {
-               midiMsgType = midi::NoteOn;
-               id          = msg.noteNumber();
-            },
-            [index](const MidiMessageId<midi::NoteOff>& msg) -> size_t {
-               midiMsgType = midi::NoteOff;
-               id          = msg.noteNumber();
-            },
-            [index](const MidiMessageId<midi::AfterTouchChannel>& msg) -> size_t {
-               midiMsgType = midi::AfterTouchChannel;
-               id          = msg.value();
-            },
-            [index](const MidiMessageId<midi::AfterTouchPoly>& msg) -> size_t {
-               midiMsgType = midi::AfterTouchPoly;
-               id          = msg.noteNumber();
-            },
-            [](auto&& other) -> size_t { return 0; }},
-         midiMessageId);
-   }
-};
-} // namespace std
 
 #endif

@@ -22,7 +22,7 @@ struct ControllerDeviceEventIncremental
 struct ControllerDeviceEventPressRelease
 {
    std::string name;
-   std::vector<std::vector<MidiMessageId>> presssSource;
+   std::vector<std::vector<MidiMessageId>> pressSource;
    std::vector<std::vector<MidiMessageId>> releaseSource;
 };
 

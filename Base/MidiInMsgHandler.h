@@ -10,9 +10,11 @@
 #include <vector>
 
 #include "ControllerDeviceEvents.h"
+#include "DoubleBufferedMessageDrain.h"
 #include "Midi.h"
 #include "Midi1Input.h"
-#include "DoubleBufferedMessageDrain.h"
+#include "MidiMessageIds.h"
+#include "MidiMessageIdsExtension.h"
 #include "MusicDeviceDescription.h"
 
 namespace midi
@@ -26,7 +28,6 @@ class Dumper;
 
 namespace base
 {
-
 class MidiInMsgHandler
 {
 public:
@@ -49,29 +50,6 @@ private:
    // -------------------------
    // Main Map
    // -------------------------
-
-   // Map keys
-   struct MapKey
-   {
-      MapKey(const midi::MidiMessage& midiMsg) noexcept;
-      midi::MsgType midiMsgType{midi::NoValidMsg};
-      uint16_t id{0};
-
-      constexpr bool operator==(const MapKey& rhs) const noexcept
-      {
-         return id == rhs.id && midiMsgType == rhs.midiMsgType;
-      }
-      struct HashFn
-      {
-         size_t operator()(const MapKey& mapKey) const noexcept
-         {
-            return (static_cast<uint16_t>(mapKey.midiMsgType)
-                    << (sizeof(mapKey.id) * 8)) ^
-                   mapKey.id;
-         }
-      };
-   };
-
    // Map Values
    static constexpr int INVALID_IDX = -1;
    struct SoundDevParameterId
@@ -81,13 +59,13 @@ private:
 
    using MapDest = mpark::variant<SoundDevParameterId, ctrldev::EventId>;
 
-   std::unordered_map<MapKey, MapDest, MapKey::HashFn> m_map;
+   std::unordered_map<MidiMessageId, MapDest> m_map;
 
    // -------------------------
    // MPE Map
    // -------------------------
-   mutable std::array<std::optional<ctrldev::WidgetCoord>, midi::NUM_CHANNELS> m_mpeMap;
-
+   mutable std::array<std::optional<ctrldev::WidgetCoord>, midi::NUM_CHANNELS>
+      m_mpeMap;
 
    // -------------------------
    // Callback containers
@@ -96,12 +74,15 @@ private:
    std::vector<Cb> m_controlParameterCbs; // TODO : useless
 
    void initMappingCaches() noexcept;
-   void handleSoundDevParameterRouting(const SoundDevParameterId& id, 
-                                       const midi::MidiMessage& midiMsg) const noexcept;
-   void handleControllerParameterRouting(ctrldev::EventId id, 
-                                         const midi::MidiMessage& midiMsg) const noexcept;
+   void handleSoundDevParameterRouting(const SoundDevParameterId& id,
+                                       const midi::MidiMessage& midiMsg) const
+      noexcept;
+   void handleControllerParameterRouting(ctrldev::EventId id,
+                                         const midi::MidiMessage& midiMsg) const
+      noexcept;
 };
 
 } // namespace base
+
 
 #endif
