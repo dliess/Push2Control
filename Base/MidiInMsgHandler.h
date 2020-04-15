@@ -73,16 +73,19 @@ private:
    std::vector<Cb> m_soundParameterCbs;
    std::vector<Cb> m_controlParameterCbs; // TODO : useless
 
-   void initMappingCaches() noexcept;
    void handleSoundDevParameterRouting(const SoundDevParameterId& id,
                                        const midi::MidiMessage& midiMsg) const
       noexcept;
    void handleControllerParameterRouting(ctrldev::EventId id,
                                          const midi::MidiMessage& midiMsg) const
       noexcept;
+
+   void handleEventSource(const std::vector<std::vector<MidiMessageId>>& source,
+                          int widgetId, int eventId) noexcept;
+   void initCacheBySoundSection() noexcept;
+   void initCacheByControllerSection() noexcept;
 };
 
 } // namespace base
-
 
 #endif

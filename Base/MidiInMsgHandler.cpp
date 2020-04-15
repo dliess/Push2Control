@@ -9,7 +9,8 @@ base::MidiInMsgHandler::MidiInMsgHandler(
    m_midiIn(std::move(pMedium)),
    m_pDescr(pDescr)
 {
-   initMappingCaches();
+   initCacheBySoundSection();
+   initCacheByControllerSection();
 
    m_midiIn.registerMidiInCb([this](const midi::MidiMessage& midiMsg) {
       LOG_F(INFO, "midiMsg incoming");
@@ -86,7 +87,9 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                   },
                   [this, &msg](const ControllerDeviceEventIncremental& evt)
                      -> ctrldev::EventValue {
-                     return ctrldev::IncrementType{msg.controllerValue()};
+                     return ctrldev::IncrementType{
+                        msg.controllerValue() -
+                        (midi::Message<midi::ControlChange>::RES_MAX / 2)};
                   }},
                eventDescr);
          },
@@ -108,7 +111,10 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                   },
                   [this, &msg](const ControllerDeviceEventIncremental& evt)
                      -> ctrldev::EventValue {
-                     return ctrldev::IncrementType{msg.controllerValue()};
+                     return ctrldev::IncrementType{
+                        msg.controllerValue() -
+                        (midi::Message<midi::ControlChangeHighRes>::RES_MAX /
+                         2)};
                   }},
                eventDescr);
          },
@@ -129,7 +135,9 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                   },
                   [this, &msg](const ControllerDeviceEventIncremental& evt)
                      -> ctrldev::EventValue {
-                     return ctrldev::IncrementType{msg.getValue()};
+                     return ctrldev::IncrementType{
+                        msg.getValue() -
+                        (midi::Message<midi::NRPN>::RES_MAX / 2)};
                   }},
                eventDescr);
          },
@@ -224,53 +232,77 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
    }
 }
 
-void base::MidiInMsgHandler::initMappingCaches() noexcept
+void base::MidiInMsgHandler::handleEventSource(
+   const std::vector<std::vector<MidiMessageId>>& source, int widgetId,
+   int eventId) noexcept
 {
-   if (m_pDescr->soundSection)
+   assert(source.size() > 0 && source[0].size() > 0); // TODO
+   if (source.size() > 1 || source[0].size() > 1)
    {
-      for (const auto& param : m_pDescr->soundSection->parameters)
+      for (int row = 0; row < source.size(); ++row)
       {
-         if (param.midi.cc.size() == 2)
+         for (int col = 0; col < source[row].size(); ++col)
          {
-            m_midiIn.setCCHighResPair(param.midi.cc[0], param.midi.cc[1]);
+            m_map[source[row][col]] = ctrldev::EventId{
+               widgetId, std::optional<ctrldev::WidgetCoord>({row, col}),
+               eventId};
          }
       }
    }
-   if (m_pDescr->controllerSection)
+   else
    {
-      for (int widgetId = 0;
-           widgetId < m_pDescr->controllerSection->widgets.size(); ++widgetId)
+      m_map[source[0][0]] = ctrldev::EventId{widgetId, std::nullopt, eventId};
+   }
+}
+
+void base::MidiInMsgHandler::initCacheBySoundSection() noexcept
+{
+   if (!m_pDescr->soundSection)
+   {
+      return;
+   }
+
+   for (const auto& param : m_pDescr->soundSection->parameters)
+   {
+      if (param.midi.cc.size() == 2)
       {
-         const auto& events =
-            m_pDescr->controllerSection->widgets[widgetId].events;
-         for (int eventId = 0; eventId < events.size(); ++eventId)
-         {
-            mpark::visit(
-               midi::overload{
-                  [this, widgetId,
-                   eventId](const ControllerDeviceEventPressRelease& evt) {
-                     for (int row = 0; row < evt.pressSource.size(); ++row)
-                     {
-                        for (int col = 0; col < evt.pressSource[row].size();
-                             ++col)
-                        {
-                           m_map[evt.pressSource[row][col]] = ctrldev::EventId{
-                              widgetId,
-                              std::optional<ctrldev::WidgetCoord>({row, col}),
-                              eventId};
-                        }
-                     }
-                  },
-                  [this, widgetId,
-                   eventId](const ControllerDeviceEventContinousValue& evt) {
+         m_midiIn.setCCHighResPair(param.midi.cc[0], param.midi.cc[1]);
+      }
+   }
+}
 
-                  },
-                  [this, widgetId,
-                   eventId](const ControllerDeviceEventIncremental& evt) {
+void base::MidiInMsgHandler::initCacheByControllerSection() noexcept
+{
+   if (!m_pDescr->controllerSection)
+   {
+      return;
+   }
 
-                  }},
-               events[eventId]);
-         }
+   for (int widgetId = 0;
+        widgetId < m_pDescr->controllerSection->widgets.size(); ++widgetId)
+   {
+      const auto& widget = m_pDescr->controllerSection->widgets[widgetId];
+      for (int eventId = 0; eventId < widget.events.size(); ++eventId)
+      {
+         const auto& event = widget.events[eventId];
+         const bool multiDim =
+            (widget.dimension.numColumns > 1 || widget.dimension.numRows > 1);
+         mpark::visit(
+            midi::overload{
+               [this, widgetId,
+                eventId](const ControllerDeviceEventPressRelease& evt) {
+                  handleEventSource(evt.pressSource, widgetId, eventId);
+                  handleEventSource(evt.releaseSource, widgetId, eventId);
+               },
+               [this, widgetId,
+                eventId](const ControllerDeviceEventContinousValue& evt) {
+                  handleEventSource(evt.source, widgetId, eventId);
+               },
+               [this, widgetId,
+                eventId](const ControllerDeviceEventIncremental& evt) {
+                  handleEventSource(evt.source, widgetId, eventId);
+               }},
+            event);
       }
    }
 }
