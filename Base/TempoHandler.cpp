@@ -74,7 +74,7 @@ void TempoHandler::notifyMusicDevices() noexcept
 {
    for(int i = 0; i < m_rMusicDevices.size(); ++i)
    {
-      if(m_notificationMask & (1 << i))
+      if(m_notificationMask & (1 << i)) // TODO: do not send clock to every device
       {
          m_rMusicDevices.atIdx(i).second->quarterNotePer24Tick();
       }

@@ -50,8 +50,13 @@ base::MidiInMsgHandler::MidiInMsgHandler(
    initMappingCaches();
 
    m_midiIn.registerMidiInCb([this](const midi::MidiMessage& midiMsg) {
+      LOG_F(INFO, "midiMsg incoming");
       auto iter = m_map.find(MapKey(midiMsg));
-      if(m_map.end() == iter) return;
+      if(m_map.end() == iter)
+      {
+         LOG_F(ERROR, "No mapping for Midi msg");
+         return;
+      }
       mpark::visit( midi::overload{
          [this, &midiMsg](const SoundDevParameterId& id){
             handleSoundDevParameterRouting(id, midiMsg);

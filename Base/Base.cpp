@@ -35,11 +35,11 @@ void base::Base::waitForEnd()
 
 void base::Base::threadFunction()
 {
-   LOG_SCOPE_FUNCTION(INFO);
+   //LOG_SCOPE_FUNCTION(INFO);
 
-   VLOG_SCOPE_F(0, "Base::threadFunction()");
+   //VLOG_SCOPE_F(0, "Base::threadFunction()");
    {
-      VLOG_SCOPE_F(1, "PortNotifier update");
+      //VLOG_SCOPE_F(1, "PortNotifier update");
       midi::PortNotifiers::instance().update();
    }
    for (auto& musicDevice : musicDeviceHolder.musicDevices)

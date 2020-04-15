@@ -4,39 +4,36 @@
     "manufacturer" : "ExpressiveE",
     "productName" : "Touche SE",
     "controllerSection":{
-        "num_presets" : 3,
-        "parameters": [
+        "numPresets" : 16,
+        "widgets" :
+        [
             {
-                "name" : "Front",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [17]
-                }
-            },
-            {
-                "name" : "Back",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [16]
-                }
-            },
-            {
-                "name" : "Left",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [18]
-                }
-            },
-            {
-                "name" : "Right",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [19]
-                }
+                "name" : "Pad",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : 
+                [
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Front",
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 17 }]]
+                    },
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Back",
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 16 }]]
+                    },
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Left",
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 18 }]]
+                    },
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Right",
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 19 }]]
+                    }
+                ]
             }
-        ],
-        "parameter_categories": [
-            {"category_name": "Controls", "parameter_ids": [0, 1, 2, 3]}
         ]
     }
 }

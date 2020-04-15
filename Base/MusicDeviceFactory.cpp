@@ -23,10 +23,14 @@ base::MusicDeviceFactory::MusicDeviceFactory(
       [this](rtmidiadapt::PortIndex index,
              const rtmidiadapt::DeviceOnUsbPort& devOnUsbPort) {
          auto pMedium = std::make_unique<midi::UsbMidiIn>();
-         if (!pMedium->openPort(index))
          {
-            LOG_F(ERROR, "failed to open input port with index {}", index);
-            return;
+            LOG_SCOPE_FUNCTION(INFO);
+            VLOG_SCOPE_F(1, "open input port");
+            if (!pMedium->openPort(index))
+            {
+               LOG_F(ERROR, "failed to open input port with index {}", index);
+               return;
+            }
          }
          addMidiInputMedium(std::move(pMedium));
       },
@@ -35,10 +39,14 @@ base::MusicDeviceFactory::MusicDeviceFactory(
       [this](rtmidiadapt::PortIndex i,
              const rtmidiadapt::DeviceOnUsbPort& devOnUsbPort) {
          auto pMedium = std::make_unique<midi::UsbMidiOut>();
-         if (!pMedium->openPort(i))
          {
-            LOG_F(ERROR, "failed to open output port with index {}", i);
-            return;
+            LOG_SCOPE_FUNCTION(INFO);
+            VLOG_SCOPE_F(1, "open output port");
+            if (!pMedium->openPort(i))
+            {
+               LOG_F(ERROR, "failed to open output port with index {}", i);
+               return;
+            }
          }
          addMidiOutputMedium(std::move(pMedium));
       },
