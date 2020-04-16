@@ -1,3 +1,4 @@
+add_subdirectory(docopt.cpp)
 add_subdirectory(fmt)
 add_subdirectory(googletest)
 add_subdirectory(rtmidi)

@@ -7,9 +7,9 @@
 #include "ThreadedLoop.h"
 #include "UsbMidiPortNotifier.h"
 
-base::Base::Base() :
+base::Base::Base(const std::string& configDir) :
    musicDeviceHolder(),
-   musicDeviceFactory(musicDeviceHolder),
+   musicDeviceFactory(musicDeviceHolder, configDir),
    instruments(),
    instrumentsFactory(instruments, musicDeviceHolder),
    tempoHandler(musicDeviceHolder.musicDevices)

@@ -30,6 +30,8 @@ struct MusicDeviceDescription
 
    static inline std::string type2String(Type type);
    static inline Type typeFromString(const std::string& str);
+
+   void checkValidity() const;
 };
 
 

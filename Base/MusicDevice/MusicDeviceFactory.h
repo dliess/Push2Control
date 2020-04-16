@@ -2,6 +2,7 @@
 #define MUSIC_DEVICE_FACTORY_H
 
 #include <memory>
+#include <string>
 
 #include "DeviceDescriptionLoader.h"
 
@@ -20,7 +21,8 @@ namespace base
 class MusicDeviceFactory
 {
 public:
-   MusicDeviceFactory(MusicDeviceHolder& rMusicDeviceHolder);
+   MusicDeviceFactory(MusicDeviceHolder& rMusicDeviceHolder,
+                      const std::string& configDir);
 
    void addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium);
    void addMidiOutputMedium(std::unique_ptr<midi::IMidiOutMedium> pMedium);
@@ -34,7 +36,7 @@ private:
    std::shared_ptr<MusicDevice> findMusicDevice(
       const MusicDeviceId& deviceId) const noexcept;
    std::shared_ptr<MusicDevice> createAndInsertMusicDevice(
-      const MusicDeviceId& deviceId, const std::string& deviceName) noexcept;
+      const MusicDeviceId& deviceId, const std::string& deviceName);
    void createInstrumentFrom(
       std::shared_ptr<MusicDevice> pMusicDevice) noexcept;
 };

@@ -9,12 +9,14 @@
 #ifdef __INSERT_DUMMY_MIDI_DEVICES__
 #include "MidiMediumDummy.h"
 #endif
+#include <cassert>
 #include <loguru.hpp>
 #include <memory>
 
 base::MusicDeviceFactory::MusicDeviceFactory(
-   MusicDeviceHolder& rMusicDeviceHolder) :
-   m_rMusicDeviceHolder(rMusicDeviceHolder)
+   MusicDeviceHolder& rMusicDeviceHolder, const std::string& configDir) :
+   m_rMusicDeviceHolder(rMusicDeviceHolder),
+   deviceLoader(configDir)
 {
 #ifndef __INSERT_DUMMY_MIDI_DEVICES__
    midi::PortNotifiers::instance().inputs.registerNewPortCb(
@@ -57,20 +59,23 @@ void base::MusicDeviceFactory::addMidiInputMedium(
 {
    const MusicDeviceId deviceId(pMedium->getDeviceName(),
                                 pMedium->getPortName());
-   LOG_F(INFO, "Try to add midi input medium \"{}\"", deviceId.toStr());
    auto pMusicDevice = findMusicDevice(deviceId);
    if (!pMusicDevice)
    {
-      pMusicDevice =
-         createAndInsertMusicDevice(deviceId, pMedium->getDeviceName());
+      try
+      {
+         pMusicDevice =
+            createAndInsertMusicDevice(deviceId, pMedium->getDeviceName());
+      }
+      catch (std::exception& e)
+      {
+         LOG_F(ERROR, "Failed to add midi input medium'{}' {}", deviceId.toStr(), e.what());
+         return;
+      }
    }
-   if (!pMusicDevice)
-   {
-      LOG_F(ERROR, "Failed");
-      return;
-   }
+   assert(pMusicDevice != nullptr);
    pMusicDevice->addMidiIn(std::move(pMedium));
-   LOG_F(INFO, "Succeeded");
+   LOG_F(INFO, "Successfully added midi input medium '{}'", deviceId.toStr());
 }
 
 void base::MusicDeviceFactory::addMidiOutputMedium(
@@ -78,20 +83,23 @@ void base::MusicDeviceFactory::addMidiOutputMedium(
 {
    const MusicDeviceId deviceId(pMedium->getDeviceName(),
                                 pMedium->getPortName());
-   LOG_F(INFO, "Try to add midi output medium \"{}\"", deviceId.toStr());
    auto pMusicDevice = findMusicDevice(deviceId);
    if (!pMusicDevice)
    {
-      pMusicDevice =
-         createAndInsertMusicDevice(deviceId, pMedium->getDeviceName());
+      try
+      {
+         pMusicDevice =
+            createAndInsertMusicDevice(deviceId, pMedium->getDeviceName());
+      }
+      catch (std::exception& e)
+      {
+         LOG_F(ERROR, "Failed to add midi output medium '{}' {}", deviceId.toStr(), e.what());
+         return;
+      }
    }
-   if (!pMusicDevice)
-   {
-      LOG_F(ERROR, "Failed");
-      return;
-   }
+   assert(pMusicDevice != nullptr);
    pMusicDevice->addMidiOut(std::move(pMedium));
-   LOG_F(INFO, "Succeeded");
+   LOG_F(INFO, "Successfully added midi output medium '{}'", deviceId.toStr());
 }
 
 std::shared_ptr<MusicDevice> base::MusicDeviceFactory::findMusicDevice(
@@ -112,7 +120,7 @@ std::shared_ptr<MusicDevice> base::MusicDeviceFactory::findMusicDevice(
 
 std::shared_ptr<MusicDevice>
 base::MusicDeviceFactory::createAndInsertMusicDevice(
-   const MusicDeviceId& deviceId, const std::string& deviceName) noexcept
+   const MusicDeviceId& deviceId, const std::string& deviceName)
 {
    const auto pSimilarMusicDevice =
       findMusicDevice(MusicDeviceId(deviceName, MusicDeviceId::ANY_PORT));
@@ -126,16 +134,8 @@ base::MusicDeviceFactory::createAndInsertMusicDevice(
    else
    {
       pDescr = std::make_shared<MusicDeviceDescription>();
-      try
-      {
-         *pDescr = deviceLoader.load(deviceId);
-      }
-      catch (std::exception& e)
-      {
-         LOG_F(ERROR, "Parsing config file for '{}' failed, reason: {}",
-               deviceName, e.what());
-         return nullptr;
-      }
+      *pDescr = deviceLoader.load(deviceId);
+      pDescr->checkValidity(); // can throw
       if (pDescr->soundSection && pDescr->soundSection->parameters.size())
       {
          pSoundPresets = std::make_shared<SoundPresets>(pDescr->manufacturer,

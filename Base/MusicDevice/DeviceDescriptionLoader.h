@@ -11,10 +11,11 @@ struct MusicDeviceId;
 class DeviceDescriptionLoader
 {
 public:
-   DeviceDescriptionLoader();
+   DeviceDescriptionLoader(const std::string& configDir);
    MusicDeviceDescription load(const MusicDeviceId& musicDeviceId) const;
 
 private:
+   std::string m_configDir;
    using json = nlohmann::json;
    json m_jUsbMidiName2deviceMap;
    json m_jUsbMidiHubName2deviceMap;

@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <vector>
+#include <string>
 
 #include "Instruments.h"
 #include "InstrumentsFactory.h"
@@ -17,7 +18,7 @@ namespace base
 struct Base
 {
 public:
-   Base();
+   Base(const std::string& configDir);
    MusicDeviceHolder musicDeviceHolder;
    MusicDeviceFactory musicDeviceFactory;
    Instruments instruments;

@@ -40,3 +40,6 @@
 [submodule "3rdparty/qt-qml-models"]
 	path = 3rdparty/qt-qml-models
 	url = http://gitlab.unique-conception.org/qt-qml-tricks/qt-qml-models.git
+[submodule "3rdparty/docopt.cpp"]
+	path = 3rdparty/docopt.cpp
+	url = https://github.com/docopt/docopt.cpp

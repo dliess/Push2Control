@@ -8,11 +8,13 @@
 #include "MusicDeviceDescription.h"
 #include "MusicDeviceId.h"
 
-DeviceDescriptionLoader::DeviceDescriptionLoader()
+DeviceDescriptionLoader::DeviceDescriptionLoader(const std::string& configDir) :
+   m_configDir(configDir.empty() ? "." : configDir)
 {
-   const std::string mapFileName("MidiConfigs/usbMidiName2device.json");
+   const std::string mapFileName(
+      fmt::format("{}/MidiConfigs/usbMidiName2device.json", m_configDir));
    const std::string customMapFileName(
-      "MidiConfigs/custom_usbMidiName2device.json");
+      fmt::format("{}/MidiConfigs/custom_usbMidiName2device.json", m_configDir));
    std::ifstream mapFile(mapFileName);
    std::ifstream customMapFile(customMapFileName);
    if (mapFile.fail())
@@ -22,17 +24,23 @@ DeviceDescriptionLoader::DeviceDescriptionLoader()
    }
    if (customMapFile.fail())
    {
-      LOG_F(INFO, "could not find custom file '{}'", customMapFileName);
+      LOG_F(INFO, "There is no custom config file '{}'", customMapFileName);
    }
    try
    {
       mapFile >> m_jUsbMidiName2deviceMap;
+   }
+   catch (...)
+   {
+      LOG_F(ERROR, "ERROR at parsing ill formed '{}'", mapFileName);
+   }
+   try
+   {
       customMapFile >> m_jUsbMidiHubName2deviceMap;
    }
    catch (...)
    {
-      LOG_F(ERROR, "ERROR at parsing '{}' or '{}'", mapFileName,
-            customMapFileName);
+      LOG_F(ERROR, "ERROR at parsing ill formed '{}'", customMapFileName);
    }
 }
 
@@ -63,7 +71,7 @@ MusicDeviceDescription DeviceDescriptionLoader::load(
    }
 
    const std::string devFilePath =
-      fmt::format("MidiConfigs/Devices/{}/Config.json", *configPath);
+      fmt::format("{}/MidiConfigs/Devices/{}/Config.json", m_configDir, *configPath);
    std::ifstream devFile(devFilePath);
    if (devFile.fail())
    {
@@ -79,7 +87,7 @@ MusicDeviceDescription DeviceDescriptionLoader::load(
    }
    catch (std::exception& e)
    {
-      throw std::runtime_error(fmt::format("Parsing file {} failed, reason: {}",
+      throw std::runtime_error(fmt::format("Parsing ill-formed json file '{}' failed, reason: {}",
                                            devFilePath, e.what()));
    }
    return jDev.get<MusicDeviceDescription>();

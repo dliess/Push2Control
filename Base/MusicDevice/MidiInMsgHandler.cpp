@@ -236,7 +236,7 @@ void base::MidiInMsgHandler::handleEventSource(
    const std::vector<std::vector<MidiMessageId>>& source, int widgetId,
    int eventId) noexcept
 {
-   assert(source.size() > 0 && source[0].size() > 0); // TODO
+   assert(source.size() > 0 && source[0].size() > 0);
    if (source.size() > 1 || source[0].size() > 1)
    {
       for (int row = 0; row < source.size(); ++row)
