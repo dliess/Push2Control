@@ -8,7 +8,6 @@
 struct MusicDeviceHolder;
 struct MusicDeviceId;
 struct MusicDevice;
-struct Instruments;
 
 namespace midi
 {
@@ -21,8 +20,7 @@ namespace base
 class MusicDeviceFactory
 {
 public:
-   MusicDeviceFactory(MusicDeviceHolder& rMusicDeviceHolder,
-                      Instruments& rInstruments);
+   MusicDeviceFactory(MusicDeviceHolder& rMusicDeviceHolder);
 
    void addMidiInputMedium(std::unique_ptr<midi::IMidiInMedium> pMedium);
    void addMidiOutputMedium(std::unique_ptr<midi::IMidiOutMedium> pMedium);
@@ -32,7 +30,6 @@ public:
 
 private:
    MusicDeviceHolder& m_rMusicDeviceHolder;
-   Instruments& m_rInstruments;
    DeviceDescriptionLoader deviceLoader;
    std::shared_ptr<MusicDevice> findMusicDevice(
       const MusicDeviceId& deviceId) const noexcept;

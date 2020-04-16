@@ -1,6 +1,5 @@
 #include "MusicDeviceFactory.h"
 
-#include "Instruments.h"
 #include "MusicDeviceDescription.h"
 #include "MusicDeviceHolder.h"
 #include "MusicDeviceId.h"
@@ -14,9 +13,8 @@
 #include <memory>
 
 base::MusicDeviceFactory::MusicDeviceFactory(
-   MusicDeviceHolder& rMusicDeviceHolder, Instruments& rInstruments) :
-   m_rMusicDeviceHolder(rMusicDeviceHolder),
-   m_rInstruments(rInstruments)
+   MusicDeviceHolder& rMusicDeviceHolder) :
+   m_rMusicDeviceHolder(rMusicDeviceHolder)
 {
 #ifndef __INSERT_DUMMY_MIDI_DEVICES__
    midi::PortNotifiers::instance().inputs.registerNewPortCb(
@@ -174,19 +172,22 @@ base::MusicDeviceFactory::createAndInsertMusicDevice(
       case MusicDeviceDescription::Type::ControllerDevice:
       {
          m_rMusicDeviceHolder.controllerDevices[deviceId] = pMusicDevice;
+         m_rMusicDeviceHolder.controllerDevices.invokeAddCbs(deviceId);
          break;
       }
       case MusicDeviceDescription::Type::SoundDevice:
       {
          m_rMusicDeviceHolder.soundDevices[deviceId] = pMusicDevice;
-         createInstrumentFrom(pMusicDevice);
+         m_rMusicDeviceHolder.soundDevices.invokeAddCbs(deviceId);
          break;
       }
       case MusicDeviceDescription::Type::Both:
       {
          m_rMusicDeviceHolder.controllerDevices[deviceId] = pMusicDevice;
-         m_rMusicDeviceHolder.soundDevices[deviceId]      = pMusicDevice;
-         createInstrumentFrom(pMusicDevice);
+         m_rMusicDeviceHolder.controllerDevices.invokeAddCbs(deviceId);
+         m_rMusicDeviceHolder.soundDevices[deviceId] = pMusicDevice;
+         m_rMusicDeviceHolder.soundDevices.invokeAddCbs(deviceId);
+
          break;
       }
       default:
@@ -282,64 +283,3 @@ void base::MusicDeviceFactory::insertMusicDeviceDummies()
 }
 
 #endif
-
-void base::MusicDeviceFactory::createInstrumentFrom(
-   std::shared_ptr<MusicDevice> pMusicDevice) noexcept
-{
-   assert(pMusicDevice->pDescr->soundSection);
-   switch (pMusicDevice->pDescr->soundSection->defaultInstrumentType)
-   {
-      case SoundSection::DefaultInstrumentType::DrumKit:
-      {
-         KitInstrument kitInstrument;
-         kitInstrument.setName(pMusicDevice->pDescr->productName);
-         for (int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size();
-              ++i)
-         {
-            KitSound kitSound;
-            kitSound.name = pMusicDevice->pDescr->soundSection->voices[i].name;
-            kitSound.voices[0].soundDeviceId = pMusicDevice->deviceId();
-            kitSound.voices[0].pSoundDevice  = pMusicDevice;
-            kitSound.voices[0].voiceIndex    = i;
-            kitSound.voices[0].noteOffset    = 0;
-            kitInstrument.add(kitSound);
-         }
-         m_rInstruments.kitInstruments.push_back(kitInstrument);
-         break;
-      }
-      case SoundSection::DefaultInstrumentType::InstrumentPerVoice:
-      {
-         for (int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size();
-              ++i)
-         {
-            MelodicInstrument melodicInstrument;
-            std::string name = pMusicDevice->pDescr->productName;
-            if (pMusicDevice->pDescr->soundSection->voices.size() > 1)
-               name = name + " - " + std::to_string(i + 1);
-            melodicInstrument.setName(name);
-            melodicInstrument.addVoice(MelodicInstrumentVoice{
-               pMusicDevice->deviceId(), pMusicDevice, i});
-            m_rInstruments.melodicInstruments.push_back(melodicInstrument);
-         }
-         break;
-      }
-      case SoundSection::DefaultInstrumentType::OnePolyphonicInstrument:
-      {
-         MelodicInstrument melodicInstrument;
-         melodicInstrument.setName(pMusicDevice->pDescr->productName);
-         for (int i = 0; i < pMusicDevice->pDescr->soundSection->voices.size();
-              ++i)
-         {
-            melodicInstrument.addVoice(MelodicInstrumentVoice{
-               pMusicDevice->deviceId(), pMusicDevice, i});
-         }
-         m_rInstruments.melodicInstruments.push_back(melodicInstrument);
-         break;
-      }
-      default:
-      {
-         LOG_F(ERROR, "INTERNAL ERROR");
-         break;
-      }
-   }
-}

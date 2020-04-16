@@ -2,6 +2,7 @@
 #define KEY_VALUE_VECTOR_H
 
 #include <vector>
+#include <stdexcept>
 
 namespace util
 {
@@ -31,7 +32,7 @@ public:
                 return e.second;
             }
         }
-        throw std::out_of_range();
+        throw std::out_of_range("index error");
     }
     using iterator = typename std::vector< std::pair<Key, Value> >::iterator;
     using const_iterator = typename std::vector< std::pair<Key, Value> >::const_iterator;

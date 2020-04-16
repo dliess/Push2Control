@@ -1,10 +1,11 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "Instruments.h"
+#include "InstrumentsFactory.h"
 #include "KitInstrument.h"
 #include "MusicDeviceFactory.h"
 #include "MusicDeviceHolder.h"
@@ -17,9 +18,10 @@ struct Base
 {
 public:
    Base();
-   Instruments instruments;
    MusicDeviceHolder musicDeviceHolder;
    MusicDeviceFactory musicDeviceFactory;
+   Instruments instruments;
+   InstrumentsFactory instrumentsFactory;
    TempoHandler tempoHandler;
 
    void start();

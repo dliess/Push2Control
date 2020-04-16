@@ -7,6 +7,7 @@
 #include "Meta.h"
 #include <vector>
 
+struct MusicDeviceHolder;
 
 struct Instruments : public utils::Settings<Instruments>
 {

@@ -1,15 +1,14 @@
 #ifndef KIT_INSTRUMENT_H
 #define KIT_INSTRUMENT_H
 
-#include "MusicDeviceId.h"
-#include "MusicDeviceHolder.h"
-#include "Meta.h"
-#include <memory>
 #include <array>
-#include <vector>
+#include <memory>
 #include <string>
+#include <vector>
 
-struct MusicDeviceHolder;
+#include "Meta.h"
+#include "MusicDeviceHolder.h"
+#include "MusicDeviceId.h"
 struct MusicDevice;
 
 // TODO: find a namespacing solution for register_members(),
@@ -20,12 +19,13 @@ struct VoiceDescr
    std::shared_ptr<MusicDevice> pSoundDevice;
    int voiceIndex;
    int noteOffset;
-   void updateMusicDevicePtr(MusicDeviceHolder &rMusicDeviceHolder) noexcept{
-       auto iter = rMusicDeviceHolder.soundDevices.find(soundDeviceId);
-       if(rMusicDeviceHolder.soundDevices.end() != iter)
-       {
-           pSoundDevice = iter->second;
-       }
+   void updateMusicDevicePtr(MusicDeviceHolder& rMusicDeviceHolder) noexcept
+   {
+      auto iter = rMusicDeviceHolder.soundDevices.find(soundDeviceId);
+      if (rMusicDeviceHolder.soundDevices.end() != iter)
+      {
+         pSoundDevice = iter->second;
+      }
    }
 };
 struct KitSound
@@ -34,26 +34,31 @@ struct KitSound
    static constexpr int NUM_MAX_VOICES_PER_KIT_VOICE = 4;
    using Voices = std::array<VoiceDescr, NUM_MAX_VOICES_PER_KIT_VOICE>;
    Voices voices;
-   void init(MusicDeviceHolder &rMusicDeviceHolder) noexcept {
-       for(auto& voice : voices) voice.updateMusicDevicePtr(rMusicDeviceHolder);
+   void init(MusicDeviceHolder& rMusicDeviceHolder) noexcept
+   {
+      for (auto& voice : voices) voice.updateMusicDevicePtr(rMusicDeviceHolder);
    }
 };
 
 class KitInstrument
 {
 public:
-   void init(MusicDeviceHolder &rMusicDeviceHolder) noexcept;
+   void init(MusicDeviceHolder& rMusicDeviceHolder) noexcept;
    void noteOn(int soundIndex, int note, float velocity) noexcept;
    void noteOff(int soundIndex, int note, float velocity) noexcept;
    void addKitSound(const KitSound& kitSound) noexcept;
    void addKitSound(KitSound&& kitSound) noexcept;
    template<typename T>
-   void add(T&& kitSound) noexcept {m_sounds.emplace_back(std::forward<T>(kitSound));};
+   void add(T&& kitSound) noexcept
+   {
+      m_sounds.emplace_back(std::forward<T>(kitSound));
+   };
    std::string name() const noexcept;
    void setName(const std::string& name) noexcept;
    std::vector<KitSound>& sounds() noexcept;
 
    friend auto meta::registerMembers<KitInstrument>();
+
 private:
    std::string m_name;
    std::vector<KitSound> m_sounds;
@@ -61,34 +66,26 @@ private:
 
 namespace meta
 {
-
-template <>
+template<>
 inline auto registerMembers<KitInstrument>()
 {
-    return members(
-        member("sounds", &KitInstrument::m_sounds)
-    );
+   return members(member("sounds", &KitInstrument::m_sounds));
 }
 
-template <>
+template<>
 inline auto registerMembers<VoiceDescr>()
 {
-    return members(
-        member("soundDeviceId", &VoiceDescr::soundDeviceId),
-        member("voiceIndex",    &VoiceDescr::voiceIndex),
-        member("noteOffset",    &VoiceDescr::noteOffset)
-    );
+   return members(member("soundDeviceId", &VoiceDescr::soundDeviceId),
+                  member("voiceIndex", &VoiceDescr::voiceIndex),
+                  member("noteOffset", &VoiceDescr::noteOffset));
 }
 
-template <>
+template<>
 inline auto registerMembers<KitSound>()
 {
-    return members(
-        member("voices", &KitSound::voices)
-    );
+   return members(member("voices", &KitSound::voices));
 }
 
 } // namespace meta
-
 
 #endif // KIT_INSTRUMENT_H
