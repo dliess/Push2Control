@@ -13,20 +13,20 @@ void checkSource(const std::vector<std::vector<T>>& matrix2D,
                  const ControllerDeviceWidgetDimension& widgetDim,
                  const std::string& eventName)
 {
-   const auto dimSource = util::dimOf(matrix2D);
-   if (dimSource.first == 0 || dimSource.second == 0)
+   const auto [numRows, numCols] = util::dimOf(matrix2D);
+   if (numRows == 0 || numCols == 0)
    {
       throw std::runtime_error(
          fmt::format("dimension is 0 in source of event '{}'", eventName));
    }
-   if (dimSource.first > 1 || dimSource.second > 1)
+   if (numRows > 1 || numCols > 1)
    {
-      if (dimSource.first != widgetDim.numRows)
+      if (numRows != widgetDim.numRows)
       {
          throw std::runtime_error(fmt::format(
             "row dimension mismatch between widget and source of event '{}'", eventName));
       }
-      if (dimSource.second != widgetDim.numColumns)
+      if (numCols != widgetDim.numColumns)
       {
          throw std::runtime_error(fmt::format(
             "column dimension mismatch between widget and source of event '{}'", eventName));

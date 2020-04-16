@@ -4,7 +4,7 @@
 using namespace util;
 
 TEST(ThreadedLoopTest, Construct) {
-    ThreadedLoop threadedLoop([](){
+    ThreadedLoop threadedLoop(std::chrono::milliseconds(1), [](){
         
     });
 }

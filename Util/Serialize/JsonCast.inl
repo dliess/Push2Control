@@ -277,7 +277,14 @@ void deserialize_basic(mpark::variant<T...>& ret, const nlohmann::json& object)
          if(it != object.end() && *it != getClassNameOrIndex<Type>(i)){
                 throw std::runtime_error("");
          }
-         ret = object.get<Type>();
+         if constexpr (std::is_same<Type, mpark::monostate>::value)
+         {
+            ret = mpark::monostate();
+         }
+         else
+         {
+            ret = object.get<Type>();
+         }
          return false; // we have the match
       }catch(std::runtime_error& e){
          using FirstType = typename std::tuple_element<0, std::tuple<T...>>::type;

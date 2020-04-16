@@ -31,6 +31,22 @@ struct PopLocker : public Person
    unsigned locksPerSecond;
 };
 
+struct PopLocker2 : public Person
+{
+   PopLocker2() = default;
+   PopLocker2(std::string name, int age, int locksPerSecond) : Person(std::move(name), age), locksPerSecond(locksPerSecond) {}
+   bool operator==(const PopLocker& rhs) const { return Person::operator==(rhs) && locksPerSecond == rhs.locksPerSecond; }
+   unsigned locksPerSecond;
+};
+
+
+using PopLocker12 = mpark::variant<PopLocker, PopLocker2>;
+
+struct MainData
+{
+   std::vector<std::vector<PopLocker12>> data;
+};
+
 using Dancer = mpark::variant<BreakDancer, PopLocker>;
 
 namespace meta
@@ -57,6 +73,24 @@ inline auto registerMembers<PopLocker>()
 }
 
 template <>
+inline auto registerMembers<PopLocker2>()
+{
+   return members(
+      member("name", &PopLocker2::name),
+      member("age", &PopLocker2::age),
+      member("locksPerSecond", &PopLocker2::locksPerSecond)
+   );
+}
+
+template <>
+inline auto registerMembers<MainData>()
+{
+   return members(
+      member("data", &MainData::data)
+   );
+}
+
+template <>
 auto getClassNameOrIndex<Person>(int i) noexcept { return "Person"; }
 
 template <>
@@ -64,6 +98,10 @@ auto getClassNameOrIndex<BreakDancer>(int i) noexcept { return "BreakDancer"; }
 
 template <>
 auto getClassNameOrIndex<PopLocker>(int i) noexcept { return "PopLocker"; }
+
+template <>
+auto getClassNameOrIndex<PopLocker2>(int i) noexcept { return "PopLocker2"; }
+
 
 } // namespace meta
 
@@ -148,4 +186,43 @@ TEST(JsonParseVariantsTest, TestSubsetOrder2) {
    ClassAndSubClass dancerReadBack;
    jDancer.get_to(dancerReadBack);
    ASSERT_EQ(dancerReadBack, dancer);
+}
+
+TEST(JsonParseVariantsTest, TestType) {
+   const std::string_view jsonStr = R"(
+      {
+         "data" :
+         [ [ {".type" : "PopLocker", "age" : 20 , "locksPerSecond" : 20, "name" : "MrWiggles"},
+             {".type" : "PopLocker2", "age" : 5 , "locksPerSecond" : 5, "name" : "BabyWiggles"}
+           ] ]
+      }
+   )";
+
+   nlohmann::json j;
+   MainData mainData;
+   ASSERT_NO_THROW( j = nlohmann::json::parse(jsonStr) );
+   ASSERT_NO_THROW( mainData = j.get<MainData>() );
+   ASSERT_EQ( 1, mainData.data.size() );
+   ASSERT_EQ( 2, mainData.data[0].size() );
+   const auto& var1 = mainData.data[0][0];
+   const auto& var2 = mainData.data[0][1];
+   ASSERT_TRUE( mpark::holds_alternative<PopLocker>(var1) );
+   ASSERT_TRUE( mpark::holds_alternative<PopLocker2>(var2) );
+}
+
+TEST(JsonParseVariantsTest, BadType) {
+   const std::string_view jsonStr = R"(
+      {
+         "data" :
+         [ [ {".type" : "PopLocker", "age" : 20 , "locksPerSecond" : 20, "name" : "MrWiggles"},
+             {".type" : "PopLocker2", "age" : 5 , "locksPerSecond" : 5, "name" : "BabyWiggles"},
+             {".type" : "MessedUpType", "age" : 50 , "locksPerSecond" : 5, "name" : "OldWiggles"}
+           ] ]
+      }
+   )";
+
+   nlohmann::json j;
+   MainData mainData;
+   ASSERT_NO_THROW( j = nlohmann::json::parse(jsonStr) );
+   ASSERT_THROW( mainData = j.get<MainData>(), std::runtime_error );
 }

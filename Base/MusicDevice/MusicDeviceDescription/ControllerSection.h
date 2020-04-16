@@ -73,7 +73,8 @@ template <>
 inline auto registerMembers<ControllerDeviceEventIncremental>()
 {
    return members(
-      member("name", &ControllerDeviceEventIncremental::name)
+      member("name", &ControllerDeviceEventIncremental::name),
+      member("source", &ControllerDeviceEventIncremental::source)
    );
 }
 
@@ -87,7 +88,9 @@ template <>
 inline auto registerMembers<ControllerDeviceEventPressRelease>()
 {
    return members(
-      member("name", &ControllerDeviceEventPressRelease::name)
+      member("name", &ControllerDeviceEventPressRelease::name),
+      member("pressSource", &ControllerDeviceEventPressRelease::pressSource),
+      member("releaseSource", &ControllerDeviceEventPressRelease::releaseSource)
    );
 }
 
@@ -101,7 +104,8 @@ template <>
 inline auto registerMembers<ControllerDeviceEventContinousValue>()
 {
    return members(
-      member("name", &ControllerDeviceEventContinousValue::name)
+      member("name", &ControllerDeviceEventContinousValue::name),
+      member("source", &ControllerDeviceEventContinousValue::source)
    );
 }
 
