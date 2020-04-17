@@ -47,7 +47,12 @@ DeviceDescriptionLoader::DeviceDescriptionLoader(const std::string& configDir) :
 std::optional<std::string> DeviceDescriptionLoader::getConfigPath(
    const MusicDeviceId& musicDeviceId) const noexcept
 {
-   const auto hubIter = m_jUsbMidiHubName2deviceMap.find(musicDeviceId.toStr());
+   auto hubIter = m_jUsbMidiHubName2deviceMap.find(musicDeviceId.toStr());
+   if (m_jUsbMidiHubName2deviceMap.end() != hubIter)
+   {
+      return hubIter->get<std::string>();
+   }
+   hubIter = m_jUsbMidiHubName2deviceMap.find(musicDeviceId.deviceName);
    if (m_jUsbMidiHubName2deviceMap.end() != hubIter)
    {
       return hubIter->get<std::string>();
@@ -68,6 +73,10 @@ MusicDeviceDescription DeviceDescriptionLoader::load(
    {
       throw std::runtime_error(fmt::format(
          "Device {} could not be found in any map", musicDeviceId.toStr()));
+   }
+   if(*configPath == "--UNUSED--")
+   {
+      throw UnusedMidiPort();
    }
 
    const std::string devFilePath =

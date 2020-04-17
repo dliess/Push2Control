@@ -281,10 +281,6 @@
                 ]
             }
         ]
-
-        "parameter_categories": [
-            {"category_name": "Controls", "parameter_ids": [0]}
-        ]
     },
     "reactsToTransportCommands" : true
 }

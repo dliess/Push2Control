@@ -2,6 +2,7 @@
 #define DEVICE_DESCRIPTION_LOADER_H
 
 #include <string>
+#include <exception>
 
 #include "json.hpp"
 
@@ -11,6 +12,8 @@ struct MusicDeviceId;
 class DeviceDescriptionLoader
 {
 public:
+   struct UnusedMidiPort : public std::exception {};
+
    DeviceDescriptionLoader(const std::string& configDir);
    MusicDeviceDescription load(const MusicDeviceId& musicDeviceId) const;
 

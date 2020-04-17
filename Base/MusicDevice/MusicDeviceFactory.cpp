@@ -67,6 +67,10 @@ void base::MusicDeviceFactory::addMidiInputMedium(
          pMusicDevice =
             createAndInsertMusicDevice(deviceId, pMedium->getDeviceName());
       }
+      catch (DeviceDescriptionLoader::UnusedMidiPort& e)
+      {
+         return;
+      }
       catch (std::exception& e)
       {
          LOG_F(ERROR, "Failed to add midi input medium'{}' {}", deviceId.toStr(), e.what());
@@ -90,6 +94,10 @@ void base::MusicDeviceFactory::addMidiOutputMedium(
       {
          pMusicDevice =
             createAndInsertMusicDevice(deviceId, pMedium->getDeviceName());
+      }
+      catch (DeviceDescriptionLoader::UnusedMidiPort& e)
+      {
+         return;
       }
       catch (std::exception& e)
       {
@@ -134,7 +142,7 @@ base::MusicDeviceFactory::createAndInsertMusicDevice(
    else
    {
       pDescr = std::make_shared<MusicDeviceDescription>();
-      *pDescr = deviceLoader.load(deviceId);
+      *pDescr = deviceLoader.load(deviceId); // can throw
       pDescr->checkValidity(); // can throw
       if (pDescr->soundSection && pDescr->soundSection->parameters.size())
       {

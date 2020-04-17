@@ -4,12 +4,6 @@
 #include <mpark/variant.hpp>
 
 #include "JsonCast.h"
-inline std::string midiIdtoString(const MidiMessageId& msgId)
-{
-   nlohmann::json j;
-   nlohmann::to_json(j, msgId);
-   return j.dump();
-}
 
 std::string base::MidiInMsgHandler::cache2Str(
    const std::unordered_map<MidiMessageId, MapDest>& map)
@@ -30,8 +24,8 @@ base::MidiInMsgHandler::MidiInMsgHandler(
    m_pDescr(pDescr)
 {
    initCacheBySoundSection();
-   initCacheByControllerSection();
    LOG_F(INFO, "Initialized Controller cache \n{}", cache2Str(m_map));
+   initCacheByControllerSection();
 
    m_midiIn.registerMidiInCb([this](const midi::MidiMessage& midiMsg) {
       const auto midiId = midiMessageToId(midiMsg);
@@ -292,6 +286,14 @@ void base::MidiInMsgHandler::initCacheBySoundSection() noexcept
          m_midiIn.setCCHighResPair(param.midi.cc[0], param.midi.cc[1]);
       }
    }
+
+   // m_map[]
+   // TODO
+   // TODO
+   // TODO
+   // TODO
+
+
 }
 
 void base::MidiInMsgHandler::initCacheByControllerSection() noexcept
@@ -308,8 +310,6 @@ void base::MidiInMsgHandler::initCacheByControllerSection() noexcept
       for (int eventId = 0; eventId < widget.events.size(); ++eventId)
       {
          const auto& event = widget.events[eventId];
-         const bool multiDim =
-            (widget.dimension.numColumns > 1 || widget.dimension.numRows > 1);
          mpark::visit(
             midi::overload{
                [this, widgetId,
