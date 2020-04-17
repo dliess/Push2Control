@@ -773,91 +773,32 @@
         ]
     },
     "controllerSection":{
-        "num_presets" : 8,
-        "parameters": [      
+        "numPresets" : 16,
+        "widgets" :
+        [
             {
-                "name" : "Performance A",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [3],
-                    "nrpn" : [0, 0]
-                }
-            },
-            {
-                "name" : "Performance B",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [4],
-                    "nrpn" : [0, 1]
-                }
-            },
-            {
-                "name" : "Performance C",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [8],
-                    "nrpn" : [0, 2]
-                }
-            },
-            {
-                "name" : "Performance D",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [9],
-                    "nrpn" : [0, 3]
-                }
-            },
-            {
-                "name" : "Performance E",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [11],
-                    "nrpn" : [0, 4]
-                }
-            },
-            {
-                "name" : "Performance F",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [64],
-                    "nrpn" : [0, 5]
-                }
-            },
-            {
-                "name" : "Performance G",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [65],
-                    "nrpn" : [0, 6]
-                }
-            },
-            {
-                "name" : "Performance H",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [66],
-                    "nrpn" : [0, 7]
-                }
-            },
-            {
-                "name" : "Performance I",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [67],
-                    "nrpn" : [0, 8]
-                }
-            },
-            {
-                "name" : "Performance J",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [68],
-                    "nrpn" : [0, 9]
-                }
+                "name" : "Pad",
+                "dimension" : { "numRows": 1, "numColumns": 10 },
+                "events" : 
+                [
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Performance",
+                        "source" : [[
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 0 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 1 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 2 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 3 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 4 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 5 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 6 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 7 },
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 8 },                          
+                            { ".type" : "MidiNRPN", "idMsb" : 0, "idLsb" : 9 }                                                   
+                            ]]
+                    }
+                ]
             }
-        ],
-        "parameter_categories": [
-            {"category_name": "Performance Controls", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
         ]
     },
     "reactsToTransportCommands" : true

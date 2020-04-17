@@ -265,17 +265,23 @@
         }
     },
     "controllerSection":{
-        "num_presets" : 8,
-        "parameters": [      
-        {
-            "name" : "Cross-Fader",
-            
-            "type" : "continous",
-            "midi" : {
-                "cc" : [48]
+        "numPresets" : 16,
+        "widgets" :
+        [
+            {
+                "name" : "Cross-fader",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : 
+                [
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Cross-fader",
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 48 }]]
+                    }
+                ]
             }
-        }
-        ],
+        ]
+
         "parameter_categories": [
             {"category_name": "Controls", "parameter_ids": [0]}
         ]

@@ -9,33 +9,79 @@
         [
             {
                 "name" : "Keypad",
-                "dimension" : { "numRows": 1, "numColumns": 32 },
+                "dimension" : { "numRows": 1, "numColumns": 24 },
                 "events" : 
                 [
                     {
                         ".type" : "PressRelease",
                         "name" : "key",
                         "pressSource" : [[ 
-                            { ".type" : "MidiNoteOn", "note" : 41 }
+                            { ".type" : "MidiNoteOn", "note" : 84 },
+                            { ".type" : "MidiNoteOn", "note" : 85 },
+                            { ".type" : "MidiNoteOn", "note" : 86 },
+                            { ".type" : "MidiNoteOn", "note" : 87 },
+                            { ".type" : "MidiNoteOn", "note" : 88 },
+                            { ".type" : "MidiNoteOn", "note" : 89 },
+                            { ".type" : "MidiNoteOn", "note" : 90 },
+                            { ".type" : "MidiNoteOn", "note" : 91 },
+                            { ".type" : "MidiNoteOn", "note" : 92 },
+                            { ".type" : "MidiNoteOn", "note" : 93 },
+                            { ".type" : "MidiNoteOn", "note" : 94 },
+                            { ".type" : "MidiNoteOn", "note" : 95 },
+                            { ".type" : "MidiNoteOn", "note" : 96 },
+                            { ".type" : "MidiNoteOn", "note" : 97 },
+                            { ".type" : "MidiNoteOn", "note" : 98 },
+                            { ".type" : "MidiNoteOn", "note" : 99 },
+                            { ".type" : "MidiNoteOn", "note" : 100 },
+                            { ".type" : "MidiNoteOn", "note" : 101 },
+                            { ".type" : "MidiNoteOn", "note" : 102 },
+                            { ".type" : "MidiNoteOn", "note" : 103 },
+                            { ".type" : "MidiNoteOn", "note" : 104 },
+                            { ".type" : "MidiNoteOn", "note" : 105 },
+                            { ".type" : "MidiNoteOn", "note" : 106 },
+                            { ".type" : "MidiNoteOn", "note" : 107 }
                         ]],
                         "releaseSource" : [[ 
-                            { ".type" : "MidiNoteOff", "note" : 41 }
+                            { ".type" : "MidiNoteOff", "note" : 84 },
+                            { ".type" : "MidiNoteOff", "note" : 85 },
+                            { ".type" : "MidiNoteOff", "note" : 86 },
+                            { ".type" : "MidiNoteOff", "note" : 87 },
+                            { ".type" : "MidiNoteOff", "note" : 88 },
+                            { ".type" : "MidiNoteOff", "note" : 89 },
+                            { ".type" : "MidiNoteOff", "note" : 90 },
+                            { ".type" : "MidiNoteOff", "note" : 91 },
+                            { ".type" : "MidiNoteOff", "note" : 92 },
+                            { ".type" : "MidiNoteOff", "note" : 93 },
+                            { ".type" : "MidiNoteOff", "note" : 94 },
+                            { ".type" : "MidiNoteOff", "note" : 95 },
+                            { ".type" : "MidiNoteOff", "note" : 96 },
+                            { ".type" : "MidiNoteOff", "note" : 97 },
+                            { ".type" : "MidiNoteOff", "note" : 98 },
+                            { ".type" : "MidiNoteOff", "note" : 99 },
+                            { ".type" : "MidiNoteOff", "note" : 100 },
+                            { ".type" : "MidiNoteOff", "note" : 101 },
+                            { ".type" : "MidiNoteOff", "note" : 102 },
+                            { ".type" : "MidiNoteOff", "note" : 103 },
+                            { ".type" : "MidiNoteOff", "note" : 104 },
+                            { ".type" : "MidiNoteOff", "note" : 105 },
+                            { ".type" : "MidiNoteOff", "note" : 106 },
+                            { ".type" : "MidiNoteOff", "note" : 107 }
                         ]]
                     },
                     {
                         ".type" : "ContinousValue",
                         "name" : "MPE Aftertouch",
-                        "source" : [[{ ".type" : "MidiAfterTouchChannel" }]]    
+                        "source" : [[{ ".type" : "MidiAfterTouchChannel", "dummy" : 0 }]]    
                     },
                     {
                         ".type" : "ContinousValue",
                         "name" : "MPE PitchBend",
-                        "source" : [[{ ".type" : "MidiPitchBend" }]]    
+                        "source" : [[{ ".type" : "MidiPitchBend", "dummy" : 0 }]]    
                     },
                     {
                         ".type" : "ContinousValue",
                         "name" : "MPE PosY",
-                        "source" : [[{ ".type" : "MidiControlChange", "id" : 17 }]]    
+                        "source" : [[{ ".type" : "MidiControlChange", "id" : 74 }]]    
                     }
                 ]
             }

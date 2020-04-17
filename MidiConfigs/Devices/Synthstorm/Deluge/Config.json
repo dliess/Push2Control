@@ -105,9 +105,8 @@
         ]
     },
     "controllerSection":{
-        "num_presets" : 1,
-        "parameters": [],
-        "parameter_categories": []
+        "numPresets" : 1,
+        "widgets": []
     },
     "reactsToTransportCommands" : true
 }

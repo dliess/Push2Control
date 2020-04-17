@@ -60,11 +60,13 @@ struct MidiMsgId<midi::AfterTouchPoly>
 template<>
 struct MidiMsgId<midi::AfterTouchChannel>
 {
+   int dummy; // if not here, to_json segfaults
 };
 
 template<>
 struct MidiMsgId<midi::PitchBend>
 {
+   int dummy; // if not here, to_json segfaults
 };
 
 using MidiMessageId = mpark::variant< mpark::monostate,
@@ -166,7 +168,7 @@ inline auto getClassNameOrIndex<MidiMsgId<midi::AfterTouchChannel>>(
 template<>
 inline auto registerMembers<MidiMsgId<midi::AfterTouchChannel>>()
 {
-   return members();
+   return members(member("dummy", &MidiMsgId<midi::AfterTouchChannel>::dummy));
 }
 
 template<>
@@ -177,7 +179,7 @@ inline auto getClassNameOrIndex<MidiMsgId<midi::PitchBend>>(int i) noexcept
 template<>
 inline auto registerMembers<MidiMsgId<midi::PitchBend>>()
 {
-   return members();
+   return members(member("dummy", &MidiMsgId<midi::PitchBend>::dummy));
 }
 
 } // namespace meta

@@ -2,10 +2,12 @@
 #define CONTROLLER_DEVICE_EVENTS_H
 
 #include <mpark/variant.hpp>
+#include <string>
+
+#include "Overload.h"
 
 namespace base::ctrldev
 {
-
 constexpr int INVALID_IDX = -1;
 
 struct WidgetCoord
@@ -15,34 +17,34 @@ struct WidgetCoord
 };
 struct EventId
 {
-   int                        widgetId;
+   int widgetId;
    std::optional<WidgetCoord> widgetCoord;
-   int                        eventId;
+   int eventId;
 };
 
 struct PressReleaseType
 {
    float value; // -1.0 to 1.0
-};  
+};
 struct ContinousValueType
 {
-   float value;   // 0.0 to 1.0
+   float value; // 0.0 to 1.0
 };
 struct IncrementType
 {
    int value;
 };
-using EventValue = mpark::variant<mpark::monostate,
-                                  PressReleaseType, 
-                                  ContinousValueType,
-                                  IncrementType>;
+using EventValue = mpark::variant<mpark::monostate, PressReleaseType,
+                                  ContinousValueType, IncrementType>;
 
 struct Event
 {
-   EventId    id;
+   EventId id;
    EventValue value;
 };
 
 } // namespace base::ctrldev
+
+#include "ControllerDeviceEventsReflect.h"
 
 #endif

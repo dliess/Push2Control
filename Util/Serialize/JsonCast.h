@@ -21,7 +21,6 @@ namespace meta
 {
 
 /////////////////// SERIALIZATION
-
 template <typename Class,
     typename = std::enable_if_t <meta::isRegistered<Class>()>>
 nlohmann::json serialize(const Class& obj);

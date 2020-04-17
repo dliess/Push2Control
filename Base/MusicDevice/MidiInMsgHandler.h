@@ -56,10 +56,14 @@ private:
    {
       int parameterId{INVALID_IDX};
    };
+   friend auto meta::registerMembers<SoundDevParameterId>();
+   friend auto meta::getClassNameOrIndex<SoundDevParameterId>(int i) noexcept;
 
    using MapDest = mpark::variant<SoundDevParameterId, ctrldev::EventId>;
 
    std::unordered_map<MidiMessageId, MapDest> m_map;
+   static std::string cache2Str(const std::unordered_map<MidiMessageId, MapDest>& map);
+
 
    // -------------------------
    // MPE Map
@@ -87,5 +91,21 @@ private:
 };
 
 } // namespace base
+
+namespace meta
+{
+
+template<>
+inline auto registerMembers<base::MidiInMsgHandler::SoundDevParameterId>()
+{
+   return members(member("parameterId", &base::MidiInMsgHandler::SoundDevParameterId::parameterId));
+}
+template<>
+inline auto getClassNameOrIndex<base::MidiInMsgHandler::SoundDevParameterId>(int i) noexcept
+{
+   return "SoundDevParameterId";
+}
+
+} // namespace meta
 
 #endif

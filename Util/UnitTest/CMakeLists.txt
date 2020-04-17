@@ -3,12 +3,14 @@ cmake_minimum_required(VERSION 3.8)
 set (CMAKE_CXX_STANDARD 17)
 
 set(SOURCES "UT_main.cpp"
+            "UT_2DMatrixCheck.cpp"
             "UT_FixedSizeVector.cpp"
             "UT_KeyValueVector.cpp"
             "UT_JsonParseOptionals.cpp"
             "UT_JsonParseVariants.cpp"
             "UT_Overload.cpp"
             "UT_Ringbuffer.cpp"
+            "UT_ReflectionWithNamespace.cpp"
             "UT_ThreadedLoop.cpp"
 )
 

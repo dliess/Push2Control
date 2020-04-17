@@ -87,7 +87,7 @@
                     {
                         ".type" : "ContinousValue",
                         "name" : "global aftertouch",
-                        "source" : [[{ ".type" : "MidiAfterTouchChannel" }]]
+                        "source" : [[{ ".type" : "MidiAfterTouchChannel", "dummy" : 0}]]
                     }       
                 ]
             },
@@ -109,7 +109,7 @@
                     {
                         ".type" : "ContinousValue",
                         "name" : "PitchBend",
-                        "source" : [[{ ".type" : "MidiPitchBend" }]]
+                        "source" : [[{ ".type" : "MidiPitchBend", "dummy" : 0 }]]
                     }
                 ]
             }

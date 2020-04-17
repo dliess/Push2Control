@@ -3,6 +3,26 @@
 #include <loguru.hpp>
 #include <mpark/variant.hpp>
 
+#include "JsonCast.h"
+inline std::string midiIdtoString(const MidiMessageId& msgId)
+{
+   nlohmann::json j;
+   nlohmann::to_json(j, msgId);
+   return j.dump();
+}
+
+std::string base::MidiInMsgHandler::cache2Str(
+   const std::unordered_map<MidiMessageId, MapDest>& map)
+{
+   std::string ret;
+   for (auto iter = map.begin(); iter != map.end(); iter++)
+   {
+      ret.append(meta::serialize(iter->first).dump() + " --> " +
+                 meta::serialize(iter->second).dump() + "\n");
+   }
+   return ret;
+}
+
 base::MidiInMsgHandler::MidiInMsgHandler(
    std::unique_ptr<midi::IMidiInMedium> pMedium,
    std::shared_ptr<MusicDeviceDescription> pDescr) :
@@ -11,13 +31,15 @@ base::MidiInMsgHandler::MidiInMsgHandler(
 {
    initCacheBySoundSection();
    initCacheByControllerSection();
+   LOG_F(INFO, "Initialized Controller cache \n{}", cache2Str(m_map));
 
    m_midiIn.registerMidiInCb([this](const midi::MidiMessage& midiMsg) {
-      LOG_F(INFO, "midiMsg incoming");
-      auto iter = m_map.find(midiMessageToId(midiMsg));
+      const auto midiId = midiMessageToId(midiMsg);
+      auto iter         = m_map.find(midiId);
       if (m_map.end() == iter)
       {
-         LOG_F(ERROR, "No mapping for Midi msg {}", midi::toString(midiMsg));
+         LOG_F(ERROR, "No mapping for Midi msg id {}",
+               meta::serialize(midiId).dump());
          return;
       }
       mpark::visit(
@@ -26,8 +48,7 @@ base::MidiInMsgHandler::MidiInMsgHandler(
                         },
                         [this, &midiMsg](const ctrldev::EventId& id) {
                            handleControllerParameterRouting(id, midiMsg);
-                        },
-                        [](auto&& other) { /* Ignore them */ }},
+                        }},
          iter->second);
    });
 }
@@ -167,10 +188,10 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
             const midi::Message<midi::NoteOff>& msg) -> ctrldev::EventValue {
             return mpark::visit(
                midi::overload{
-                  [this, &msg](const ControllerDeviceEventContinousValue& evt)
+                  [this, &msg](const ControllerDeviceEventPressRelease& evt)
                      -> ctrldev::EventValue {
-                     return ctrldev::ContinousValueType{-1.0f *
-                                                        msg.relativeVelocity()};
+                     return ctrldev::PressReleaseType{-1.0f *
+                                                      msg.relativeVelocity()};
                   },
                   [](auto &&) -> ctrldev::EventValue {
                      return mpark::monostate();
@@ -228,6 +249,8 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
       midiMsg);
    if (!mpark::holds_alternative<mpark::monostate>(value))
    {
+      ctrldev::Event e{id, value};
+      LOG_F(INFO, "Processed: {}", meta::serialize(e).dump());
       // m_contrEvtConsumer.fireCtrlEvent(EventType{id, value}); TODO
    }
 }

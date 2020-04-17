@@ -109,7 +109,7 @@ inline constexpr static MidiMessageId midiMessageToId(
    return mpark::visit(
       midi::overload{
          [](const midi::Message<midi::ControlChange>& msg) -> MidiMessageId {
-            return MidiMsgId<midi::ControlChange>{msg.controllerValue()};
+            return MidiMsgId<midi::ControlChange>{msg.controllerNumber()};
          },
          [](const midi::Message<midi::ControlChangeHighRes>& msg)
             -> MidiMessageId {

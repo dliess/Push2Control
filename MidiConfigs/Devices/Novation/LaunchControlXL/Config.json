@@ -4,238 +4,226 @@
     "manufacturer" : "Novation",
     "productName" : "Launch Control XL",
     "controllerSection":{
-        "num_presets" : 1,
-        "parameters": [
+        "numPresets" : 16,
+        "widgets" :
+        [
             {
-                "name" : "Fader 1",              
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [77]
-                }
+                "name" : "Rotary Knobs",
+                "dimension" : { "numRows": 3, "numColumns": 8 },
+                "events" : 
+                [
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Rotary Knobs",
+                        "source" : [
+                            [
+                                { ".type" : "MidiControlChange", "id" : 13 },
+                                { ".type" : "MidiControlChange", "id" : 14 },
+                                { ".type" : "MidiControlChange", "id" : 15 },
+                                { ".type" : "MidiControlChange", "id" : 16 },
+                                { ".type" : "MidiControlChange", "id" : 17 },
+                                { ".type" : "MidiControlChange", "id" : 18 },
+                                { ".type" : "MidiControlChange", "id" : 19 },
+                                { ".type" : "MidiControlChange", "id" : 20 }
+                            ],
+                            [
+                                { ".type" : "MidiControlChange", "id" : 29 },
+                                { ".type" : "MidiControlChange", "id" : 30 },
+                                { ".type" : "MidiControlChange", "id" : 31 },
+                                { ".type" : "MidiControlChange", "id" : 32 },
+                                { ".type" : "MidiControlChange", "id" : 33 },
+                                { ".type" : "MidiControlChange", "id" : 34 },
+                                { ".type" : "MidiControlChange", "id" : 35 },
+                                { ".type" : "MidiControlChange", "id" : 36 }
+                            ],
+                            [
+                                { ".type" : "MidiControlChange", "id" : 49 },
+                                { ".type" : "MidiControlChange", "id" : 50 },
+                                { ".type" : "MidiControlChange", "id" : 51 },
+                                { ".type" : "MidiControlChange", "id" : 52 },
+                                { ".type" : "MidiControlChange", "id" : 53 },
+                                { ".type" : "MidiControlChange", "id" : 54 },
+                                { ".type" : "MidiControlChange", "id" : 55 },
+                                { ".type" : "MidiControlChange", "id" : 56 }
+                            ]
+                    ]
+                    }
+                ]
             },
             {
-                "name" : "Fader 2",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [78]
-                }
+                "name" : "Faders",
+                "dimension" : { "numRows": 1, "numColumns": 8 },
+                "events" : 
+                [
+                    {
+                        ".type" : "ContinousValue",
+                        "name" : "Fader",
+                        "source" : [
+                            [
+                                { ".type" : "MidiControlChange", "id" : 77 },
+                                { ".type" : "MidiControlChange", "id" : 78 },
+                                { ".type" : "MidiControlChange", "id" : 79 },
+                                { ".type" : "MidiControlChange", "id" : 80 },
+                                { ".type" : "MidiControlChange", "id" : 81 },
+                                { ".type" : "MidiControlChange", "id" : 82 },
+                                { ".type" : "MidiControlChange", "id" : 83 },
+                                { ".type" : "MidiControlChange", "id" : 84 }
+                            ]
+                        ]
+                    }
+                ]
             },
             {
-                "name" : "Fader 3",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [79]
-                }
+                "name" : "ButtonMatrix",
+                "dimension" : { "numRows": 2, "numColumns": 8 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "ButtonMatrix",
+                        "pressSource" :
+                        [
+                            [ 
+                                { ".type" : "MidiNoteOn", "note" : 41 },
+                                { ".type" : "MidiNoteOn", "note" : 42 },
+                                { ".type" : "MidiNoteOn", "note" : 43 },
+                                { ".type" : "MidiNoteOn", "note" : 44 },
+                                { ".type" : "MidiNoteOn", "note" : 57 },
+                                { ".type" : "MidiNoteOn", "note" : 58 },
+                                { ".type" : "MidiNoteOn", "note" : 59 },
+                                { ".type" : "MidiNoteOn", "note" : 60 }
+                            ],
+                            [ 
+                                { ".type" : "MidiNoteOn", "note" : 73 },
+                                { ".type" : "MidiNoteOn", "note" : 74 },
+                                { ".type" : "MidiNoteOn", "note" : 75 },
+                                { ".type" : "MidiNoteOn", "note" : 76 },
+                                { ".type" : "MidiNoteOn", "note" : 89 },
+                                { ".type" : "MidiNoteOn", "note" : 90 },
+                                { ".type" : "MidiNoteOn", "note" : 91 },
+                                { ".type" : "MidiNoteOn", "note" : 92 }
+                            ]
+                        ],
+                        "releaseSource" : 
+                        [
+                            [ 
+                                { ".type" : "MidiNoteOff", "note" : 41 },
+                                { ".type" : "MidiNoteOff", "note" : 42 },
+                                { ".type" : "MidiNoteOff", "note" : 43 },
+                                { ".type" : "MidiNoteOff", "note" : 44 },
+                                { ".type" : "MidiNoteOff", "note" : 57 },
+                                { ".type" : "MidiNoteOff", "note" : 58 },
+                                { ".type" : "MidiNoteOff", "note" : 59 },
+                                { ".type" : "MidiNoteOff", "note" : 60 }
+                            ],
+                            [ 
+                                { ".type" : "MidiNoteOff", "note" : 73 },
+                                { ".type" : "MidiNoteOff", "note" : 74 },
+                                { ".type" : "MidiNoteOff", "note" : 75 },
+                                { ".type" : "MidiNoteOff", "note" : 76 },
+                                { ".type" : "MidiNoteOff", "note" : 89 },
+                                { ".type" : "MidiNoteOff", "note" : 90 },
+                                { ".type" : "MidiNoteOff", "note" : 91 },
+                                { ".type" : "MidiNoteOff", "note" : 92 }
+                            ]
+                        ]
+                    }    
+                ]
             },
             {
-                "name" : "Fader 4",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [80]
-                }
+                "name" : "Send-Select",
+                "dimension" : { "numRows": 1, "numColumns": 2 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "Track-Select",
+                        "pressSource" :
+                         [[ 
+                            { ".type" : "MidiControlChange", "id" : 104 },
+                            { ".type" : "MidiControlChange", "id" : 105 }
+                         ]],
+                        "releaseSource" :
+                         [[
+                            { ".type" : "MidiControlChange", "id" : 104 },
+                            { ".type" : "MidiControlChange", "id" : 105 }
+                         ]]
+                    }    
+                ]
             },
             {
-                "name" : "Fader 5",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [81]
-                }
+                "name" : "Track-Select",
+                "dimension" : { "numRows": 1, "numColumns": 2 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "Track-Select",
+                        "pressSource" :
+                         [[ 
+                            { ".type" : "MidiControlChange", "id" : 106 },
+                            { ".type" : "MidiControlChange", "id" : 107 }
+                         ]],
+                        "releaseSource" :
+                         [[
+                            { ".type" : "MidiControlChange", "id" : 106 },
+                            { ".type" : "MidiControlChange", "id" : 107 }
+                         ]]
+                    }    
+                ]
             },
             {
-                "name" : "Fader 6",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [82]
-                }
+                "name" : "DeviceButton",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "DeviceButton",
+                        "pressSource" : [[ { ".type" : "MidiNoteOn", "note" : 105 } ]],
+                        "releaseSource" : [[ { ".type" : "MidiNoteOff", "note" : 105 } ]]
+                    }    
+                ]
             },
             {
-                "name" : "Fader 7",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [83]
-                }
+                "name" : "MuteButton",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "MuteButton",
+                        "pressSource" : [[ { ".type" : "MidiNoteOn", "note" : 106 } ]],
+                        "releaseSource" : [[ { ".type" : "MidiNoteOff", "note" : 106 } ]]
+                    }    
+                ]
             },
             {
-                "name" : "Fader 8",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [84]
-                }
+                "name" : "SoloButton",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "SoloButton",
+                        "pressSource" : [[ { ".type" : "MidiNoteOn", "note" : 107 } ]],
+                        "releaseSource" : [[ { ".type" : "MidiNoteOff", "note" : 107 } ]]
+                    }    
+                ]
             },
             {
-                "name" : "Rotary 1 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [13]
-                }
-            },
-            {
-                "name" : "Rotary 2 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [14]
-                }
-            },
-            {
-                "name" : "Rotary 3 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [15]
-                }
-            },
-            {
-                "name" : "Rotary 4 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [16]
-                }
-            },
-            {
-                "name" : "Rotary 5 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [17]
-                }
-            },
-            {
-                "name" : "Rotary 6 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [18]
-                }
-            },
-            {
-                "name" : "Rotary 7 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [19]
-                }
-            },
-            {
-                "name" : "Rotary 8 Top",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [20]
-                }
-            },
-            {
-                "name" : "Rotary 1 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [29]
-                }
-            },
-            {
-                "name" : "Rotary 2 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [30]
-                }
-            },
-            {
-                "name" : "Rotary 3 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [31]
-                }
-            },
-            {
-                "name" : "Rotary 4 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [32]
-                }
-            },
-            {
-                "name" : "Rotary 5 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [33]
-                }
-            },
-            {
-                "name" : "Rotary 6 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [34]
-                }
-            },
-            {
-                "name" : "Rotary 7 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [35]
-                }
-            },
-            {
-                "name" : "Rotary 8 Mid",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [36]
-                }
-            },
-            {
-                "name" : "Rotary 1 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [49]
-                }
-            },
-            {
-                "name" : "Rotary 2 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [50]
-                }
-            },
-            {
-                "name" : "Rotary 3 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [51]
-                }
-            },
-            {
-                "name" : "Rotary 4 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [52]
-                }
-            },
-            {
-                "name" : "Rotary 5 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [53]
-                }
-            },
-            {
-                "name" : "Rotary 6 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [54]
-                }
-            },
-            {
-                "name" : "Rotary 7 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [55]
-                }
-            },
-            {
-                "name" : "Rotary 8 Bot",
-                "type" : "continous",
-                "midi" : {
-                    "cc" : [56]
-                }
+                "name" : "RecordArmButton",
+                "dimension" : { "numRows": 1, "numColumns": 1 },
+                "events" : 
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "RecordArmButton",
+                        "pressSource" : [[ { ".type" : "MidiNoteOn", "note" : 108 } ]],
+                        "releaseSource" : [[ { ".type" : "MidiNoteOff", "note" : 108 } ]]
+                    }    
+                ]
             }
-        ],
-        "parameter_categories": [
-            {"category_name": "Linear Pot Row", "parameter_ids": [0, 1, 2, 3, 4, 5, 6, 7]},
-            {"category_name": "Rotary Row 1", "parameter_ids": [8, 9, 10, 11, 12, 13, 14, 15]},
-            {"category_name": "Rotary Row 2", "parameter_ids": [16, 17, 18, 19, 20, 21, 22, 23]},
-            {"category_name": "Rotary Row 3", "parameter_ids": [24, 25, 26, 27, 28, 29, 30, 31]}
         ]
     }
 }
