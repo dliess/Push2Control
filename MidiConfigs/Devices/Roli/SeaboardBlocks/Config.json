@@ -4,12 +4,12 @@
     "manufacturer" : "Roli",
     "productName" : "Seaboard Blocks",
     "controllerSection":{
-        "numPresets" : 0,
         "widgets": 
         [
             {
                 "name" : "Keypad",
                 "dimension" : { "numRows": 1, "numColumns": 24 },
+                "mpe" : true,
                 "events" : 
                 [
                     {

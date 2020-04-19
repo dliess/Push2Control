@@ -4,7 +4,6 @@
     "manufacturer" : "ExpressiveE",
     "productName" : "Touche SE",
     "controllerSection":{
-        "numPresets" : 16,
         "widgets" :
         [
             {

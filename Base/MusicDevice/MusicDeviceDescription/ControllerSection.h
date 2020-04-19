@@ -42,12 +42,12 @@ struct ControllerDeviceWidget
 {
    std::string                        name;
    ControllerDeviceWidgetDimension    dimension;
+   std::optional<bool>                mpe;
    std::vector<ControllerDeviceEvent> events;
 };
 
 struct ControllerSection
 {
-   int                                 numPresets;
    std::vector<ControllerDeviceWidget> widgets;
 };
 
@@ -115,6 +115,7 @@ inline auto registerMembers<ControllerDeviceWidget>()
    return members(
       member("name", &ControllerDeviceWidget::name),
       member("dimension", &ControllerDeviceWidget::dimension),
+      member("mpe", &ControllerDeviceWidget::mpe),
       member("events", &ControllerDeviceWidget::events)
    );
 }
@@ -123,7 +124,6 @@ template <>
 inline auto registerMembers<ControllerSection>()
 {
    return members(
-      member("numPresets", &ControllerSection::numPresets),
       member("widgets", &ControllerSection::widgets)
    );
 }

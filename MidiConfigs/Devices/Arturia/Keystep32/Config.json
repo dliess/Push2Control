@@ -4,7 +4,6 @@
     "manufacturer" : "Arturia",
     "productName" : "Keystep32",
     "controllerSection":{
-        "numPresets" : 16,
         "widgets": 
         [
             {

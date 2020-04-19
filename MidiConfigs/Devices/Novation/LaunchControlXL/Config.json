@@ -4,7 +4,6 @@
     "manufacturer" : "Novation",
     "productName" : "Launch Control XL",
     "controllerSection":{
-        "numPresets" : 16,
         "widgets" :
         [
             {

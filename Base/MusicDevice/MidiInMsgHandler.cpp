@@ -81,7 +81,8 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
    const auto& eventDescr =
       m_pDescr->controllerSection->widgets[id.widgetId].events[id.eventId];
 
-   const bool mpeMode = (0 == m_pDescr->controllerSection->numPresets);
+   const bool mpeMode = (m_pDescr->controllerSection->widgets[id.widgetId].mpe &&
+                         *m_pDescr->controllerSection->widgets[id.widgetId].mpe);
 
    const auto value = mpark::visit(
       midi::overload{
