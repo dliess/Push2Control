@@ -1,0 +1,90 @@
+@startuml
+
+Object SoundSection #white-pink
+Object Global #white-brown
+
+package "Voices"{
+Object Voice1 #white-yellow
+Object Voice2 #white-yellow
+Object Voice3 #white-yellow
+Object Voice4 #white-yellow
+Object Voice5 #white-yellow
+}
+
+package "SoundEngines"{
+   Object SoundEngine1 #white-red
+   Object SoundEngine2 #white-red
+}
+
+package "SoundEngine1_Parameters"{
+   Object Parameter1 #white-blue
+   Object Parameter2 #white-blue
+   Object Parameter3 #white-blue
+   Object Parameter4 #white-blue
+   Object Parameter5 #white-blue
+   Object Parameter6 #white-blue
+   Object Parameter7 #white-blue
+}
+
+package "Global_Parameters"{
+   Object Parameter8 #white-blue
+   Object Parameter9 #white-blue
+   Object Parameter10 #white-blue
+}
+
+package "SoundEngine2_Parameters"{
+   Object Parameter11 #white-blue
+   Object Parameter12 #white-blue
+   Object Parameter13 #white-blue
+}
+
+package "SoundEngine1_Components"{
+   Object Component__Filter #white-green
+   Object Component__Amp #white-green
+   Object Component__Osc #white-green
+}
+
+package "SoundEngine2_Components"{
+   Object Component__Fm #white-green
+}
+
+package "Global_Components"{
+   Object Component__GlobalEffect #white-green
+   Object Component__GlobalAmp #white-green
+}
+
+SoundSection --> Global
+SoundSection --> Voices
+SoundSection --> SoundEngines
+
+Global --> Global_Components
+Global --> Global_Parameters
+
+Voice1 --> SoundEngine1
+Voice2 --> SoundEngine1
+Voice3 --> SoundEngine1
+Voice4 --> SoundEngine2
+Voice5 --> SoundEngine2
+
+SoundEngine1 --> SoundEngine1_Components
+SoundEngine1 --> SoundEngine1_Parameters
+SoundEngine2 --> SoundEngine2_Components
+SoundEngine2 --> SoundEngine2_Parameters
+
+Component__Filter <..> Parameter1
+Component__Filter <..> Parameter2
+Component__Filter <..> Parameter3
+Component__Amp <..> Parameter4
+Component__Osc <..> Parameter5
+Component__Osc <..> Parameter6
+Component__Osc <..> Parameter7
+Component__GlobalEffect <..> Parameter8
+Component__GlobalEffect <..> Parameter9
+Component__GlobalAmp <..> Parameter10
+Component__Fm <..> Parameter11
+Component__Fm <..> Parameter12
+Component__Fm <..> Parameter13
+
+
+
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+
+Object SoundSection #white-pink
+Object Global #white-brown
+Object Voice1 #white-yellow
+Object Voice2 #white-yellow
+Object Voice3 #white-yellow
+Object Voice4 #white-yellow
+Object Voice5 #white-yellow
+Object SoundEngine1 #white-red
+Object SoundEngine2 #white-red
+Object Component__Filter #white-green
+Object Component__Amp #white-green
+Object Component__Osc #white-green
+Object Component__Fm #white-green
+Object Component__GlobalEffect #white-green
+Object Component__GlobalAmp #white-green
+Object Parameter1 #white-blue
+Object Parameter2 #white-blue
+Object Parameter3 #white-blue
+Object Parameter4 #white-blue
+Object Parameter5 #white-blue
+Object Parameter6 #white-blue
+Object Parameter7 #white-blue
+Object Parameter8 #white-blue
+Object Parameter9 #white-blue
+Object Parameter10 #white-blue
+Object Parameter11 #white-blue
+Object Parameter12 #white-blue
+Object Parameter13 #white-blue
+
+SoundSection -- Global
+SoundSection -- Voice1
+SoundSection -- Voice2
+SoundSection -- Voice3
+SoundSection -- Voice4
+SoundSection -- Voice5
+
+Global -- Component__GlobalEffect
+Global -- Component__GlobalAmp
+Voice1 -- SoundEngine1
+Voice2 -- SoundEngine1
+Voice3 -- SoundEngine1
+Voice4 -- SoundEngine2
+Voice5 -- SoundEngine2
+
+SoundEngine1 -- Component__Osc
+SoundEngine1 -- Component__Amp
+SoundEngine1 -- Component__Filter
+SoundEngine2 -- Component__Fm
+
+Component__Filter -- Parameter1
+Component__Filter -- Parameter2
+Component__Filter -- Parameter3
+Component__Amp -- Parameter4
+Component__Osc -- Parameter5
+Component__Osc -- Parameter6
+Component__Osc -- Parameter7
+Component__GlobalEffect -- Parameter8
+Component__GlobalEffect -- Parameter9
+Component__GlobalAmp -- Parameter10
+Component__Fm -- Parameter11
+Component__Fm -- Parameter12
+Component__Fm -- Parameter13
+
+
+
+@enduml
