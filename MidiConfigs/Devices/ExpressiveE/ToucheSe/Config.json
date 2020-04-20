@@ -32,7 +32,29 @@
                         "source" : [[{ ".type" : "MidiControlChange", "id" : 19 }]]
                     }
                 ]
-            }
+            },
+            {
+                "name" : "Pad",
+                "dimension" : { "numRows": 1, "numColumns": 2 },
+                "events" :
+                [
+                    {
+                        ".type" : "PressRelease",
+                        "name" : "Buttons",
+                        "pressSource" :
+                        [[ 
+                            { ".type" : "MidiControlChange", "id" : 80 },
+                            { ".type" : "MidiControlChange", "id" : 81 }
+                        ]],
+                        "releaseSource" :
+                        [[
+                            { ".type" : "MidiControlChange", "id" : 80 },
+                            { ".type" : "MidiControlChange", "id" : 81 }
+                        ]]
+                    }
+                ]
+            }    
+
         ]
     }
 }

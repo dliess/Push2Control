@@ -26,7 +26,7 @@ void base::Base::start()
       throw std::runtime_error("midi::PortNotifiers::instance().init() failed");
    }
    m_pMidiOutThreadLoop = std::make_unique<util::ThreadedLoop>(
-      std::chrono::milliseconds(500), [this]() { threadFunction(); });
+      std::chrono::milliseconds(50), [this]() { threadFunction(); });
 }
 
 void base::Base::waitForEnd()
