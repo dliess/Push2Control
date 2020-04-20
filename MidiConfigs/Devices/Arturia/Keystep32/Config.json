@@ -106,7 +106,7 @@
                 "dimension" : { "numRows": 1, "numColumns": 1 },
                 "events" : [
                     {
-                        ".type" : "ContinousValue",
+                        ".type" : "RelativeValue",
                         "name" : "PitchBend",
                         "source" : [[{ ".type" : "MidiPitchBend", "dummy" : 0 }]]
                     }

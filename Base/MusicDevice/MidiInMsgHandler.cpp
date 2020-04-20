@@ -107,6 +107,10 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                      -> ctrldev::EventValue {
                      return ctrldev::ContinousValueType{msg.getRelativeValue()};
                   },
+                  [this, &msg](const ControllerDeviceEventRelativeValue& evt)
+                     -> ctrldev::EventValue {
+                     return ctrldev::RelativeValueType{msg.getRelativeValue() - 0.5f};
+                  },
                   [this, &msg](const ControllerDeviceEventIncremental& evt)
                      -> ctrldev::EventValue {
                      return ctrldev::IncrementType{
@@ -131,6 +135,10 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                      -> ctrldev::EventValue {
                      return ctrldev::ContinousValueType{msg.getRelativeValue()};
                   },
+                  [this, &msg](const ControllerDeviceEventRelativeValue& evt)
+                     -> ctrldev::EventValue {
+                     return ctrldev::RelativeValueType{msg.getRelativeValue() - 0.5f};
+                  },
                   [this, &msg](const ControllerDeviceEventIncremental& evt)
                      -> ctrldev::EventValue {
                      return ctrldev::IncrementType{
@@ -154,6 +162,10 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                   [this, &msg](const ControllerDeviceEventContinousValue& evt)
                      -> ctrldev::EventValue {
                      return ctrldev::ContinousValueType{msg.getRelativeValue()};
+                  },
+                  [this, &msg](const ControllerDeviceEventRelativeValue& evt)
+                     -> ctrldev::EventValue {
+                     return ctrldev::RelativeValueType{msg.getRelativeValue() - 0.5f};
                   },
                   [this, &msg](const ControllerDeviceEventIncremental& evt)
                      -> ctrldev::EventValue {
@@ -234,10 +246,10 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                id.widgetCoord = m_mpeMap[msg.channel() - 1];
             return mpark::visit(
                midi::overload{
-                  [this, &msg](const ControllerDeviceEventContinousValue& evt)
+                  [this, &msg](const ControllerDeviceEventRelativeValue& evt)
                      -> ctrldev::EventValue {
-                     return ctrldev::ContinousValueType{
-                        float(msg.value())}; // TODO: is value() correct?
+                     return ctrldev::RelativeValueType{
+                        float(msg.value())}; // TODO: need some coefficient?
                   },
                   [](auto &&) -> ctrldev::EventValue {
                      return mpark::monostate();
@@ -326,6 +338,10 @@ void base::MidiInMsgHandler::initCacheByControllerSection() noexcept
                },
                [this, widgetId,
                 eventId](const ControllerDeviceEventContinousValue& evt) {
+                  handleEventSource(evt.source, widgetId, eventId);
+               },
+               [this, widgetId,
+                eventId](const ControllerDeviceEventRelativeValue& evt) {
                   handleEventSource(evt.source, widgetId, eventId);
                },
                [this, widgetId,

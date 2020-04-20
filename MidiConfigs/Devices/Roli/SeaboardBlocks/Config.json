@@ -74,12 +74,12 @@
                         "source" : [[{ ".type" : "MidiAfterTouchChannel", "dummy" : 0 }]]    
                     },
                     {
-                        ".type" : "Incremental",
+                        ".type" : "RelativeValue",
                         "name" : "MPE PitchBend",
                         "source" : [[{ ".type" : "MidiPitchBend", "dummy" : 0 }]]    
                     },
                     {
-                        ".type" : "Incremental",
+                        ".type" : "RelativeValue",
                         "name" : "MPE PosY",
                         "source" : [[{ ".type" : "MidiControlChange", "id" : 74 }]]    
                     }

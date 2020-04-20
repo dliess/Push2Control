@@ -34,8 +34,13 @@ struct IncrementType
 {
    int value;
 };
+struct RelativeValueType
+{
+   float value;
+};
+
 using EventValue = mpark::variant<mpark::monostate, PressReleaseType,
-                                  ContinousValueType, IncrementType>;
+                                  ContinousValueType, IncrementType, RelativeValueType>;
 
 struct Event
 {

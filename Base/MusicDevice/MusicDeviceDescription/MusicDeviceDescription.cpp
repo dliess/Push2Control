@@ -56,6 +56,9 @@ void MusicDeviceDescription::checkValidity() const
                   [&widget](const ControllerDeviceEventContinousValue& evt) {
                      checkSource(evt.source, widget.dimension, evt.name);
                   },
+                  [&widget](const ControllerDeviceEventRelativeValue& evt) {
+                     checkSource(evt.source, widget.dimension, evt.name);
+                  },
                   [&widget](const ControllerDeviceEventIncremental& evt) {
                      checkSource(evt.source, widget.dimension, evt.name);
                   }},
