@@ -41,6 +41,7 @@
                     {
                         ".type" : "PressRelease",
                         "name" : "Buttons",
+                        "sourceHasInvertedLogic" : true,
                         "pressSource" :
                         [[ 
                             { ".type" : "MidiControlChange", "id" : 80 },

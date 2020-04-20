@@ -22,6 +22,7 @@ struct ControllerDeviceEventIncremental
 struct ControllerDeviceEventPressRelease
 {
    std::string name;
+   std::optional<bool> sourceHasInvertedLogic;
    std::vector<std::vector<MidiMessageId>> pressSource;
    std::vector<std::vector<MidiMessageId>> releaseSource;
 };
@@ -89,6 +90,7 @@ inline auto registerMembers<ControllerDeviceEventPressRelease>()
 {
    return members(
       member("name", &ControllerDeviceEventPressRelease::name),
+      member("sourceHasInvertedLogic", &ControllerDeviceEventPressRelease::sourceHasInvertedLogic),
       member("pressSource", &ControllerDeviceEventPressRelease::pressSource),
       member("releaseSource", &ControllerDeviceEventPressRelease::releaseSource)
    );

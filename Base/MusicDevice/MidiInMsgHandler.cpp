@@ -94,8 +94,14 @@ void base::MidiInMsgHandler::handleControllerParameterRouting(
                midi::overload{
                   [this, &msg](const ControllerDeviceEventPressRelease& evt)
                      -> ctrldev::EventValue {
-                     return ctrldev::PressReleaseType{
-                        msg.controllerValue() ? 1.0f : -1.0f};
+                        if(evt.sourceHasInvertedLogic && *evt.sourceHasInvertedLogic){
+                           return ctrldev::PressReleaseType{
+                              msg.controllerValue() ? -1.0f : 1.0f};
+                        }
+                        else{
+                           return ctrldev::PressReleaseType{
+                              msg.controllerValue() ? 1.0f : -1.0f};
+                        }
                   },
                   [this, &msg](const ControllerDeviceEventContinousValue& evt)
                      -> ctrldev::EventValue {
